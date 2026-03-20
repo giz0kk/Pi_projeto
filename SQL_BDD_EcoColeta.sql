@@ -2,7 +2,7 @@ CREATE DATABASE ecocoleta;
 USE ecocoleta;
 
 -- =========================
--- Bairro
+-- Bairro.
 -- =========================
 CREATE TABLE bairro (
     id_bairro INT AUTO_INCREMENT PRIMARY KEY,
