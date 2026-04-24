@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoColeta - Home</title>
   <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="notif-popup.css">
 </head>
 
 <body class="app home">
@@ -34,10 +35,54 @@
     </nav>
 
     <div class="icones">
-      <div class="icone-circulo">
-        <a href="#">
+      <div class="notif-wrapper">
+        <a href="#" id="notifBtn">
           <img src="img/icon notificacao.png" alt="Notificação">
         </a>
+
+        <div id="notifOverlay" class="overlay hidden">
+          <div class="notif-box">
+            
+            <div class="header">
+              <h2>Notificações</h2>
+              <span class="gear">⚙️</span>
+            </div>
+
+            <div class="section">
+              <p class="section-title">IMPORTANTE</p>
+
+              <div class="item">
+                <div class="icon green">♻️</div>
+                <div>
+                  <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                  <span>há 30 minutos</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="section">
+              <p class="section-title">MAIS NOTIFICAÇÕES</p>
+
+              <div class="item">
+                <div class="icon yellow">🏆</div>
+                <div class="content">
+                  <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                  <span>há 3 horas</span>
+                </div>
+                <div class="badge">+50 pts</div>
+              </div>
+
+              <div class="item">
+                <div class="icon purple">📅</div>
+                <div>
+                  <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                  <span>há 5 horas</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
 
       <div class="icone-circulo">
@@ -177,6 +222,23 @@
     <p class="copy">©️ 2026 EcoColeta. Todos os direitos reservados.</p>
 
   </footer>
+
+  <script>
+    const notifBtn = document.getElementById('notifBtn');
+    const notifOverlay = document.getElementById('notifOverlay');
+    const notifBox = document.querySelector('.notif-box');
+
+    notifBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      notifOverlay.classList.remove('hidden');
+    });
+
+    notifOverlay.addEventListener('click', function(e) {
+      if (e.target === notifOverlay) {
+        notifOverlay.classList.add('hidden');
+      }
+    });
+  </script>
 
 </body>
 </html>
