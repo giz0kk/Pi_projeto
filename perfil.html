@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perfil do Usuário</title>
   <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="notif-popup.css">
 </head>
 
 <body class="app perfil">
@@ -23,7 +24,6 @@ function selecionar(celula) {
 
 <!-- HEADER -->
 <header class="topo">
-<<<<<<< HEAD
   <div class="logo">
     <img src="img/logo.2.png" alt="Logo EcoColeta">
   </div>
@@ -47,40 +47,51 @@ function selecionar(celula) {
   </nav>
 
   <div class="icones">
-    <div class="icone-circulo">
-      <a href="#"><img src="img/icon notificacao.png"></a>
+    <div class="notif-wrapper">
+      <a href="#" id="notifBtn">
+        <img src="img/icon notificacao.png" alt="Notificação">
+      </a>
+
+      <div id="notifOverlay" class="overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="close-notif">✕</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="icone-circulo">
       <a href="perfil.html"><img src="img/icons pessoa.png"></a>
     </div>
-=======
-  <div class="nav-left">
-    <a href="tela-inicia.html" class="logo-link">
-      <img src="img/logo.2.png" alt="Logo EcoColeta" class="logo">
-    </a>
-
-    <nav>
-      <ul class="menu">
-        <li><a href="tela-inicia.html">Home</a></li>
-        <li><a href="#">Gerar Relatório</a></li>
-        <li><a href="#">Como Funciona</a></li>
-        <li><a href="ecopontos.html">EcoPontos</a></li>
-        <li><a href="#">Prêmios</a></li>
-        <li><a href="#">Educação</a></li>
-        <li><a href="quemsomos.html">Quem Somos</a></li>
-        <li><a href="Ranking.html">Ranking</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <div class="icones">
-    <a href="#" class="icone-circulo">
-      <img src="img/icon notificacao.png" alt="Notificação">
-    </a>
-    <a href="perfil.html" class="icone-circulo">
-      <img src="img/icons pessoa.png" alt="Perfil">
-    </a>
->>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
   </div>
 </header>
 
@@ -212,6 +223,29 @@ function selecionar(celula) {
 
   </div>
 </footer>
+
+  <script>
+    const notifBtn = document.getElementById('notifBtn');
+    const notifOverlay = document.getElementById('notifOverlay');
+    const closeBtn = document.querySelector('.close-notif');
+
+    notifBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      notifOverlay.classList.remove('hidden');
+    });
+
+    closeBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      notifOverlay.classList.add('hidden');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!notifOverlay.contains(e.target) && e.target !== notifBtn) {
+        notifOverlay.classList.add('hidden');
+      }
+    });
+  </script>
 
 </body>
 </html>

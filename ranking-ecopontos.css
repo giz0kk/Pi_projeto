@@ -10,7 +10,6 @@ body {
 .topo {
   width: 100%;
   background: linear-gradient(to right, #9ff0a8, #d4f7d8);
-<<<<<<< HEAD
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,72 +31,10 @@ body {
  object-fit: contain;
 
 }
-=======
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-}
-
-.topo-inner {
-  width: min(1240px, calc(100% - 40px));
-  height: 80px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  justify-items: center;
-  gap: 16px;
-}
-
-.logo-link {
-  justify-self: start;
-}
-
-nav {
-  justify-self: center;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.icones {
-  justify-self: end;
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-
-main {
-  padding-top: 90px;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-}
-
-.logo-link {
-  display: inline-flex;
-  align-items: center;
-}
-
-.topo .logo,
-.topo .logo-link img {
-  width: auto;
-  max-width: 380px;
-  max-height: 95px;
-  height: auto;
-  object-fit: contain;
-}
-
->>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
 .menu {
   display: flex;
   gap: 18px;
   list-style: none;
-<<<<<<< HEAD
 }
 .menu li a {
   display: flex;
@@ -123,55 +60,6 @@ nav {
 }
 .icones img {
   width: 24px;
-=======
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-  min-width: 0;
-  justify-content: center;
-}
-
-.menu li {
-  white-space: nowrap;
-}
-
-.menu li a {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: #1b1b1b;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 6px 0;
-  transition: color 0.2s ease;
-}
-
-.menu li a:hover {
-  color: #0f5e32;
-}
-
-.icones {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-
-.icone-circulo {
-  width: 36px;
-  height: 36px;
-  border-radius: 0;
-  background: transparent;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: none;
-  padding: 0;
-}
-
-.icones img {
-  width: 18px;
-  height: auto;
->>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
   cursor: pointer;
 }
 .content {
@@ -614,11 +502,7 @@ footer .logo{
 .ecopontos .container {
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
   gap: 30px;
-=======
-  gap: 40px; /* mais espaço */
->>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
   padding: 20px;
   align-items: flex-start;
 }
@@ -636,7 +520,6 @@ footer .logo{
   margin-bottom: 12px;
 }
 
-<<<<<<< HEAD
 .ecopontos .filtro input {
   flex: 1;
   padding: 8px 12px;
@@ -656,56 +539,27 @@ footer .logo{
   height: 600px;
   border-radius: 15px;
   background: url('img/mapa\ incio.png') center/cover;
-=======
-.ecopontos .filtro input,
-.ecopontos .filtro select {
-  padding: 10px 14px;
-  border-radius: 25px;
-  border: 1px solid #ddd;
-  outline: none;
-  font-size: 14px;
-}
-
-.ecopontos .mapa {
-  width: 520px;  
-  height: 420px;    
-  border-radius: 15px;
-  background: url('img/mapa incio.png') center/cover;
->>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
 }
 
 
 .ecopontos .lista {
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
   gap: 15px;
-=======
-  gap: 20px;
->>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
 }
 
 
 .ecopontos .ecoponto-card {
-<<<<<<< HEAD
   width: 360px;
   background: #fff;
   padding: 15px;
-=======
-  width: 500px; /* antes 360px */
-  background: #fff;
-  padding: 18px;
->>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
   border-radius: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-left: 6px solid #59d87b;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-<<<<<<< HEAD
   transition: 0.3s;
-=======
->>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
 }
 .ecopontos .ecoponto-card:hover {
   transform: scale(1.02);
@@ -714,7 +568,6 @@ footer .logo{
 
 .ecopontos .ecoponto-card h3 {
   color: #2c2c8c;
-<<<<<<< HEAD
   margin-bottom: 5px;
 }
 
@@ -723,36 +576,14 @@ footer .logo{
 }
 
 .pagina-ecopontos.ecoponto-card span {
-=======
-  font-size: 18px;
-  margin-bottom: 6px;
-}
-
-.ecopontos .ecoponto-card p {
-  font-size: 14px;
-  color: #444;
-}
-
-.ecopontos .ecoponto-card span {
->>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
   font-size: 12px;
   color: #777;
 }
 
 .pagina-ecopontos .ecoponto-card .icones {
   display: flex;
-<<<<<<< HEAD
   gap: 6px;
   font-size: 20px;
-=======
-  gap: 10px;
-  align-items: center;
-}
-
-.pagina-ecopontos .ecoponto-card .icones img {
-  width: 28px;
-  height: 28px;
->>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
 }
 
 .pagina-ecopontos .content {
@@ -777,11 +608,7 @@ footer .logo{
 
 .pagina-ecopontos .mapa-box {
   background: #fff;
-<<<<<<< HEAD
   padding: 15px;
-=======
-  padding: 20px;
->>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }

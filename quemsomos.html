@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quem Somos - EcoColeta</title>
   <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="notif-popup.css">
 </head>
 <body class="quem-somos">
 
@@ -29,9 +30,48 @@
   </div>
 
   <div class="icones">
-    <a href="#" class="icone-circulo">
-      <img src="img/icon notificacao.png" alt="Notificação">
-    </a>
+    <div class="notif-wrapper">
+      <a href="#" id="notifBtn">
+        <img src="img/icon notificacao.png" alt="Notificação">
+      </a>
+
+      <div id="notifOverlay" class="overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="close-notif">✕</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <a href="perfil.html" class="icone-circulo">
       <img src="img/icons pessoa.png" alt="Perfil">
     </a>
@@ -105,6 +145,29 @@
 
   <p class="copy">© 2026 EcoColeta. Todos os direitos reservados.</p>
 </footer>
+
+  <script>
+    const notifBtn = document.getElementById('notifBtn');
+    const notifOverlay = document.getElementById('notifOverlay');
+    const closeBtn = document.querySelector('.close-notif');
+
+    notifBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      notifOverlay.classList.remove('hidden');
+    });
+
+    closeBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      notifOverlay.classList.add('hidden');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!notifOverlay.contains(e.target) && e.target !== notifBtn) {
+        notifOverlay.classList.add('hidden');
+      }
+    });
+  </script>
 
 </body>
 </html>
