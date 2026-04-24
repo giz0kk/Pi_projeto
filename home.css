@@ -10,10 +10,15 @@ html, body {
 }
 .topo {
   width: 100%;
+<<<<<<< HEAD
+=======
+  height: 80px;
+>>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
   background: linear-gradient(to right, #9ff0a8, #d4f7d8);
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD
   padding: 12px 25px;
 }
 
@@ -32,6 +37,45 @@ html, body {
  height: auto;
  object-fit: contain;
 
+=======
+  padding: 0 18px;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: nowrap;
+  min-width: 0;
+  flex: 1;
+}
+
+nav {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo img {
+  width: auto;
+  max-width: 420px;
+  max-height: 65px;
+  height: auto;
+  object-fit: contain;
+>>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
 }
 
 
@@ -40,6 +84,7 @@ html, body {
   display: flex;
   gap: 18px;
   list-style: none;
+<<<<<<< HEAD
 }
 
 .menu li a {
@@ -50,10 +95,37 @@ html, body {
   color: #333;
   font-size: 14px;
   font-weight: 500;
+=======
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  min-width: 0;
+  justify-content: center;
+}
+
+.menu li {
+  white-space: nowrap;
+}
+
+.menu li a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #1b1b1b;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+.menu li a:hover {
+  color: #0f5e32;
+>>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
 }
 
 .icones {
   display: flex;
+<<<<<<< HEAD
   gap: 15px;
 }
 .icone-circulo {
@@ -67,6 +139,25 @@ html, body {
 }
 .icones img {
   width: 24px;
+=======
+  gap: 14px;
+  align-items: center;
+}
+.icone-circulo {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none;
+  padding: 0;
+}
+.icones img {
+  width: 22px;
+  height: auto;
+>>>>>>> 855ab37ed8ce31ff58843c3b3de7071b293a1ff3
   cursor: pointer;
 }
 
