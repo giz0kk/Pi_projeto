@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil do Usuário</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<body class="app perfil">
+
+<script>
+function selecionar(celula) {
+  if (celula.classList.contains("coleta")) {
+    celula.classList.remove("coleta");
+    celula.innerText = "";
+  } else {
+    celula.classList.add("coleta");
+    celula.innerText = "Coleta";
+  }
+}
+</script>
+
+<!-- HEADER -->
+<header class="topo">
+  <div class="nav-left">
+    <a href="tela-inicia.html" class="logo-link">
+      <img src="img/logo.2.png" alt="Logo EcoColeta" class="logo">
+    </a>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="tela-inicia.html">Home</a></li>
+        <li><a href="#">Gerar Relatório</a></li>
+        <li><a href="#">Como Funciona</a></li>
+        <li><a href="ecopontos.html">EcoPontos</a></li>
+        <li><a href="#">Prêmios</a></li>
+        <li><a href="#">Educação</a></li>
+        <li><a href="quemsomos.html">Quem Somos</a></li>
+        <li><a href="Ranking.html">Ranking</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="icones">
+    <a href="#" class="icone-circulo">
+      <img src="img/icon notificacao.png" alt="Notificação">
+    </a>
+    <a href="perfil.html" class="icone-circulo">
+      <img src="img/icons pessoa.png" alt="Perfil">
+    </a>
+  </div>
+</header>
+
+
+<div class="container">
+
+  <h2 class="titulo-perfil">Perfil do Usuário</h2>
+
+ 
+  <div class="perfil-card">
+    <div class="perfil-esquerda">
+
+      <img src="img/mulher.png" class="foto-perfil">
+
+      <div class="info-perfil">
+        <h2>Beatriz Helena</h2>
+        <p>UID: beatriz@email.com</p>
+
+        <div class="ecopontos">
+          <span>1.250 EcoPoints</span>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="btn-editar" onclick="window.location.href='edicaoperfil.html'">
+      Editar perfil
+    </button>
+
+    <img src="img/lapis.png" class="icone-lapis">
+  </div>
+
+  <div class="conteudo-inferior">
+
+    <div class="box">
+      <h3>Histórico de Reciclagem</h3>
+
+      <div class="item-historico">
+        <div class="historico-info">
+          <span class="bolinha-verde"></span>
+          <span>Coleta em EcoPonto Central</span>
+        </div>
+        <span class="data-historico">12/03/2026</span>
+      </div>
+
+      <div class="item-historico">
+        <div class="historico-info">
+          <span class="bolinha-verde"></span>
+          <span>Entrega de Papel e Vidro</span>
+        </div>
+        <span class="data-historico">05/02/2026</span>
+      </div>
+
+    </div>
+
+    <div class="box">
+      <div class="topo-notificacoes">
+        <h3>Notificações</h3>
+        <a href="#" class="ver-mais">Ver mais →</a>
+      </div>
+
+      <div class="notificacao">
+        <div>
+          <strong>EcoPoints Recebidos</strong>
+          <p>+25 pontos por reciclar plástico</p>
+        </div>
+        <span>Agora →</span>
+      </div>
+
+    </div>
+
+    <div class="box">
+      <h3 class="titulo-agendamento">Agendamento de Coleta</h3>
+
+      <div class="card-nova-coleta">
+        <div>
+          <span>Agende uma nova coleta</span>
+          <p>Escolha um horário disponível</p>
+        </div>
+        <button class="btn-mais">+</button>
+      </div>
+
+      <h4 class="titulo-calendario">Calendário de Coleta</h4>
+
+      <div class="agenda-coleta">
+
+        <div class="cabecalho-dias">
+          <span></span>
+          <span>Dom</span>
+          <span>Seg</span>
+          <span>Ter</span>
+          <span>Qua</span>
+          <span>Qui</span>
+          <span>Sex</span>
+          <span>Sáb</span>
+        </div>
+
+        <div class="linha-horario">
+          <div class="hora">07h às 10h</div>
+          <div class="celula" onclick="selecionar(this)"></div>
+          <div class="celula coleta" onclick="selecionar(this)">Coleta</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="col">
+      <h3>Institucional</h3>
+      <p>Universidade Faculdade Paraíso</p>
+      <p>CNPJ: 00.000.000/0000-00</p>
+    </div>
+
+    <div class="col center">
+      <img src="img/logo preta.png" class="logo">
+    </div>
+
+    <div class="col">
+      <h3>Contatos</h3>
+      <p>(88) 90000-0000</p>
+      <p>ecocoleta@gmail.com</p>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
