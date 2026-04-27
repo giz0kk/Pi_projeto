@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Funciona - EcoColeta</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="notif-popup.css">
+  <style>
+    .como-container {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 30px;
+    }
+    .como-container h1 {
+      color: #2e7d32;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .passo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .passo-numero {
+      width: 60px;
+      height: 60px;
+      background: #2e7d32;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+    .passo-conteudo h3 {
+      color: #1b5e20;
+      margin-bottom: 10px;
+    }
+    .passo-conteudo p {
+      color: #666;
+      line-height: 1.6;
+    }
+    .beneficios {
+      margin-top: 50px;
+    }
+    .beneficios h2 {
+      color: #2e7d32;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .grid-beneficios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .beneficio-card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .beneficio-card .icone {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+    .beneficio-card h4 {
+      color: #1b5e20;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="nav-left">
+    <a href="tela-inicia.html" class="logo-link">
+      <img src="img/logo.2.png" alt="Logo EcoColeta" class="logo">
+    </a>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="tela-inicia.html">Home</a></li>
+        <li><a href="pagina-relatorio.html">Relatório</a></li>
+        <li><a href="como-funciona.html">Como Funciona</a></li>
+        <li><a href="ecopontos.html">EcoPontos</a></li>
+        <li><a href="premios-disponiveis.html">Prêmios</a></li>
+        <li><a href="educacao.html">Educação</a></li>
+        <li><a href="quemsomos.html">Quem Somos</a></li>
+        <li><a href="Ranking.html">Ranking</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="icones">
+    <div class="notif-wrapper">
+      <button class="notif-btn icone-circulo" aria-label="Notificações">
+        <img src="img/icon notificacao.png" alt="Notificação">
+      </button>
+      <div class="notif-overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="perfil.html" class="icone-circulo">
+      <img src="img/icons pessoa.png" alt="Perfil">
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="como-container">
+    <h1>♻️ Como Funciona a EcoColeta</h1>
+    
+    <div class="passo">
+      <div class="passo-numero">1</div>
+      <div class="passo-conteudo">
+        <h3>Cadastre-se</h3>
+        <p>Crie sua conta na EcoColeta e tenha acesso ao sistema de coleta seletiva. É rápido e gratuito!</p>
+      </div>
+    </div>
+    
+    <div class="passo">
+      <div class="passo-numero">2</div>
+      <div class="passo-conteudo">
+        <h3>Encontre Ecopontos</h3>
+        <p>Use o mapa para encontrar os pontos de coleta mais próximos de você. Veja horários e tipos de materiais aceitos.</p>
+      </div>
+    </div>
+    
+    <div class="passo">
+      <div class="passo-numero">3</div>
+      <div class="passo-conteudo">
+        <h3>Faça a Separação</h3>
+        <p>Separe seus materiais recicláveis em casa. Lembre-se: plástico, metal, papel e vidro em recipientes separados.</p>
+      </div>
+    </div>
+    
+    <div class="passo">
+      <div class="passo-numero">4</div>
+      <div class="passo-conteudo">
+        <h3>Leve ao Ecoponto</h3>
+        <p>Descarte os materiais no ecoponto mais próximo. Escaneie o QR code para registrar sua coleta e ganhar pontos!</p>
+      </div>
+    </div>
+    
+    <div class="passo">
+      <div class="passo-numero">5</div>
+      <div class="passo-conteudo">
+        <h3>Troque por Prêmios</h3>
+        <p>Acumule pontos e troque por descontos, produtos sustentáveis e outras recompensas exclusivas.</p>
+      </div>
+    </div>
+    
+    <div class="beneficios">
+      <h2>🌟 Benefícios</h2>
+      <div class="grid-beneficios">
+        <div class="beneficio-card">
+          <div class="icone">🌱</div>
+          <h4>Impacto Ambiental</h4>
+          <p>Contribua para um futuro mais sustentável</p>
+        </div>
+        <div class="beneficio-card">
+          <div class="icone">🎁</div>
+          <h4>Recompensas</h4>
+          <p>Troque pontos por prêmios exclusivos</p>
+        </div>
+        <div class="beneficio-card">
+          <div class="icone">🏆</div>
+          <h4>Ranking</h4>
+          <p>Compita com outros usuários e suba no ranking</p>
+        </div>
+        <div class="beneficio-card">
+          <div class="icone">📱</div>
+          <h4>Tecnologia</h4>
+          <p>Acompanhe suas estatísticas em tempo real</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="quemsomos.html">Quem Somos</a>
+    <a href="#">Política de Privacidade</a>
+    <a href="#">Termos de Uso</a>
+  </div>
+  <div class="social-icons">
+    <img src="img/icons facebook.png">
+    <img src="img/email.2.png">
+    <img src="img/icons apicativo X.png">
+    <img src="img/icons-youtube.png">
+    <img src="img/icons-instagram.png">
+  </div>
+  <p class="copy">© 2026 EcoColeta. Todos os direitos reservados.</p>
+</footer>
+
+<script src="notif-system.js"></script>
+
+</body>
+</html>

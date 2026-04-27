@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Ranking EcoColeta</title>
   <link rel="stylesheet" href="ranking-ecopontos.css">
+  <link rel="stylesheet" href="notif-popup.css">
 </head>
 <body>
 
@@ -16,11 +17,11 @@
     <nav>
       <ul class="menu">
         <li><a href="tela-inicia.html">Home</a></li>
-        <li><a href="tela-inicia.html">Gerar Relatório</a></li>
-        <li><a href="#">Como Funciona</a></li>
+        <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+        <li><a href="como-funciona.html">Como Funciona</a></li>
         <li><a href="ecopontos.html">EcoPontos</a></li>
-        <li><a href="#">Prêmios</a></li>
-        <li><a href="#">Educação</a></li>
+        <li><a href="premios-disponiveis.html">Prêmios</a></li>
+        <li><a href="educacao.html">Educação</a></li>
         <li><a href="quemsomos.html">Quem Somos</a></li>
         <li><a href="Ranking.html">Ranking</a></li>
       </ul>
@@ -28,9 +29,47 @@
   </div>
 
   <div class="icones">
-    <a href="#" class="icone-circulo">
-      <img src="img/icon notificacao.png" alt="Notificação">
-    </a>
+    <div class="notif-wrapper">
+      <button class="notif-btn icone-circulo" aria-label="Notificações">
+        <img src="img/icon notificacao.png" alt="Notificação">
+      </button>
+      <div class="notif-overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <a href="perfil.html" class="icone-circulo">
       <img src="img/icons pessoa.png" alt="Perfil">
     </a>
@@ -169,3 +208,8 @@
 
 </footer>
 </div>
+<script src="premios.js"></script>
+  <script src="notif-system.js"></script>
+  <script src="sistema.js"></script>
+
+

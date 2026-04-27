@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <title>Ecopontos</title>
   <link rel="stylesheet" href="ranking-ecopontos.css">
+  <link rel="stylesheet" href="notif-popup.css">
 </head>
 
 <body class="ecopontos">
 
 <header class="topo">
-  <div class="topo-inner">
+  <div class="nav-left">
     <a href="tela-inicia.html" class="logo-link">
       <img src="img/logo.2.png" alt="Logo EcoColeta" class="logo">
     </a>
@@ -17,24 +18,62 @@
     <nav>
       <ul class="menu">
         <li><a href="tela-inicia.html">Home</a></li>
-        <li><a href="#">Gerar Relatório</a></li>
-        <li><a href="#">Como Funciona</a></li>
+        <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+        <li><a href="como-funciona.html">Como Funciona</a></li>
         <li><a href="ecopontos.html">EcoPontos</a></li>
-        <li><a href="#">Prêmios</a></li>
-        <li><a href="#">Educação</a></li>
+        <li><a href="premios-disponiveis.html">Prêmios</a></li>
+        <li><a href="educacao.html">Educação</a></li>
         <li><a href="quemsomos.html">Quem Somos</a></li>
         <li><a href="Ranking.html">Ranking</a></li>
       </ul>
     </nav>
+  </div>
 
-    <div class="icones">
-      <a href="#" class="icone-circulo">
+  <div class="icones">
+    <div class="notif-wrapper">
+      <button class="notif-btn icone-circulo" aria-label="Notificações">
         <img src="img/icon notificacao.png" alt="Notificação">
-      </a>
-      <a href="perfil.html" class="icone-circulo">
-        <img src="img/icons pessoa.png" alt="Perfil">
-      </a>
+      </button>
+      <div class="notif-overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <a href="perfil.html" class="icone-circulo">
+      <img src="img/icons pessoa.png" alt="Perfil">
+    </a>
   </div>
 </header>
 <main>
@@ -180,5 +219,9 @@
 
 </footer>
 
+  <script src="premios.js"></script>
+  <script src="notif-system.js"></script>
+  <script src="sistema.js"></script>
 </body>
 </html>
+

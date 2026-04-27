@@ -1,7 +1,7 @@
 body {
   margin: 0;
   background: #f4f6f8;
-  font-family: Arial, sans-serif;
+  font-family: sans-serif;
 }
 
 *{
@@ -9,7 +9,14 @@ body {
 }
 .topo {
   width: 100%;
+  height: 80px;
   background: linear-gradient(to right, #9ff0a8, #d4f7d8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px;
+  gap: 16px;
+  flex-wrap: nowrap;
   position: fixed;
   top: 0;
   left: 0;
@@ -17,26 +24,20 @@ body {
   z-index: 100;
 }
 
-.topo-inner {
-  width: min(1240px, calc(100% - 40px));
-  height: 80px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+.nav-left {
+  display: flex;
   align-items: center;
-  justify-items: center;
-  gap: 16px;
-}
-
-.logo-link {
-  justify-self: start;
+  gap: 24px;
+  flex-wrap: nowrap;
+  min-width: 0;
+  flex: 1;
 }
 
 nav {
-  justify-self: center;
+  flex: 1;
+  min-width: 0;
   display: flex;
   justify-content: center;
-  width: 100%;
 }
 
 .icones {
@@ -129,7 +130,7 @@ nav {
 }
 .ranking-section {
     padding: 30px;
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
 }
 
 .topo-ranking {
@@ -140,7 +141,7 @@ nav {
 }
 .topo-ranking h2 {
   font-size: 22px;
-  color: #131318;
+  color: #1d1b5c;
 }
 
 .busca {
@@ -177,7 +178,7 @@ nav {
     display: flex;
     gap: 20px;
     align-items: flex-start;
-    color: #131318;
+    color: #1d1b5c;
 }
 .tabela {
     width: 65%;
@@ -190,7 +191,7 @@ table {
     overflow: hidden;
 }
 thead {
-    background: #2f8f83;
+    background: #1f7a3d;
     color: white;
 }
 
@@ -422,8 +423,6 @@ footer .logo {
   width: 140px;
   display: block;
   margin: 0 auto;
-  top: -30px;
-  ma
 }
 
 .col h3 {

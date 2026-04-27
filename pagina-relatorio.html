@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerar Relatório - EcoColeta</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="notif-popup.css">
+  <style>
+    .relatorio-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .relatorio-container h1 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+    .form-group select, .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .btn-gerar {
+      background: #2e7d32;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-gerar:hover {
+      background: #1b5e20;
+    }
+    .resultado {
+      margin-top: 30px;
+      padding: 20px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      display: none;
+    }
+    .resultado.show {
+      display: block;
+    }
+    .estatistica {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+    .estatistica-item {
+      text-align: center;
+    }
+    .estatistica-item .numero {
+      font-size: 32px;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+    .estatistica-item .label {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="nav-left">
+    <a href="tela-inicia.html" class="logo-link">
+      <img src="img/logo.2.png" alt="Logo EcoColeta" class="logo">
+    </a>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="tela-inicia.html">Home</a></li>
+        <li><a href="pagina-relatorio.html">Relatório</a></li>
+        <li><a href="como-funciona.html">Como Funciona</a></li>
+        <li><a href="ecopontos.html">EcoPontos</a></li>
+        <li><a href="premios-disponiveis.html">Prêmios</a></li>
+        <li><a href="educacao.html">Educação</a></li>
+        <li><a href="quemsomos.html">Quem Somos</a></li>
+        <li><a href="Ranking.html">Ranking</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="icones">
+    <div class="notif-wrapper">
+      <button class="notif-btn icone-circulo" aria-label="Notificações">
+        <img src="img/icon notificacao.png" alt="Notificação">
+      </button>
+      <div class="notif-overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="perfil.html" class="icone-circulo">
+      <img src="img/icons pessoa.png" alt="Perfil">
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="relatorio-container">
+    <h1>📊 Gerar Relatório</h1>
+    <p>Visualize suas estatísticas de coleta e impacto ambiental.</p>
+    
+    <div class="form-group">
+      <label for="periodo">Período:</label>
+      <select id="periodo">
+        <option value="7">Últimos 7 dias</option>
+        <option value="30" selected>Últimos 30 dias</option>
+        <option value="90">Últimos 90 dias</option>
+        <option value="365">Último ano</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="tipo">Tipo de Relatório:</label>
+      <select id="tipo">
+        <option value="geral">Geral</option>
+        <option value="coletas">Coletas Realizadas</option>
+        <option value="pontos">Pontos Acumulados</option>
+        <option value="ambiental">Impacto Ambiental</option>
+      </select>
+    </div>
+    
+    <button class="btn-gerar" onclick="gerarRelatorio()">Gerar Relatório</button>
+    
+    <div class="resultado" id="resultado">
+      <h2>Resultados do Período</h2>
+      <div class="estatistica">
+        <div class="estatistica-item">
+          <div class="numero">24</div>
+          <div class="label">Coletas</div>
+        </div>
+        <div class="estatistica-item">
+          <div class="numero">1.250</div>
+          <div class="label">Pontos</div>
+        </div>
+        <div class="estatistica-item">
+          <div class="numero">48kg</div>
+          <div class="label">Reciclado</div>
+        </div>
+        <div class="estatistica-item">
+          <div class="numero">12kg</div>
+          <div class="label">CO₂ Economizado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="quemsomos.html">Quem Somos</a>
+    <a href="#">Política de Privacidade</a>
+    <a href="#">Termos de Uso</a>
+  </div>
+  <div class="social-icons">
+    <img src="img/icons facebook.png">
+    <img src="img/email.2.png">
+    <img src="img/icons apicativo X.png">
+    <img src="img/icons-youtube.png">
+    <img src="img/icons-instagram.png">
+  </div>
+  <p class="copy">© 2026 EcoColeta. Todos os direitos reservados.</p>
+</footer>
+
+<script src="notif-system.js"></script>
+<script>
+  function gerarRelatorio() {
+    document.getElementById('resultado').classList.add('show');
+  }
+</script>
+<script src="sistema.js"></script>
+
+</body>
+</html>

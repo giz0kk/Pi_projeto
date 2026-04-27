@@ -49,7 +49,7 @@ nav {
 .logo img {
   width: auto;
   max-width: 420px;
-  max-height: 65px;
+  max-height: 30px;
   height: auto;
   object-fit: contain;
 }
