@@ -1,57 +1,47 @@
 \\tela de incio\\
+
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   overflow: auto;
 }
+
 *{
   box-sizing: border-box;
 }
 .topo {
   width: 100%;
-  height: 80px;
   background: linear-gradient(to right, #9ff0a8, #d4f7d8);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 18px;
-  gap: 16px;
-  flex-wrap: nowrap;
-}
-
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: nowrap;
-  min-width: 0;
-  flex: 1;
-}
-
-nav {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  justify-content: center;
+  padding: 12px 25px;
 }
 
 .logo {
+  width: 120px;
+  height: 50px;
+  overflow: visible;
   display: flex;
   align-items: center;
-}
-
-.logo-link {
-  display: inline-flex;
-  align-items: center;
+  gap: 10px;
+  padding: 0;
 }
 
 .logo img {
+<<<<<<< HEAD
   width: auto;
   max-width: 420px;
   max-height: 30px;
   height: auto;
   object-fit: contain;
+=======
+  width: 200px;
+ height: auto;
+ object-fit: contain;
+
+>>>>>>> d9352b4a9b27f91b4f5fc41d3a1fced2b43e492a
 }
 
 
@@ -60,51 +50,33 @@ nav {
   display: flex;
   gap: 18px;
   list-style: none;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-  min-width: 0;
-  justify-content: center;
-}
-
-.menu li {
-  white-space: nowrap;
 }
 
 .menu li a {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  gap: 6px;
   text-decoration: none;
-  color: #1b1b1b;
+  color: #333;
   font-size: 14px;
-  font-weight: 600;
-  padding: 6px 0;
-  transition: color 0.2s ease;
-}
-
-.menu li a:hover {
-  color: #0f5e32;
+  font-weight: 500;
 }
 
 .icones {
   display: flex;
-  gap: 14px;
-  align-items: center;
+  gap: 15px;
 }
 .icone-circulo {
-  width: auto;
-  height: auto;
-  border-radius: 0;
-  background: transparent;
-  display: inline-flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #59d87b, #3b4fa3);
+  display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: none;
-  padding: 0;
 }
 .icones img {
-  width: 22px;
-  height: auto;
+  width: 24px;
   cursor: pointer;
 }
 
