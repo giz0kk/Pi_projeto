@@ -1,0 +1,407 @@
+html, body{
+    margin:0;
+    padding:0;
+    font-family: 'poppins',Arial,Arial, Helvetica, sans-serif;
+    background:#ffffff;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+
+.topo{
+    width:100%;
+    height: 80px;
+    background:linear-gradient(to right,#9ff0a8,#d4f7d8);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0px 40px;
+    border-bottom:1px solid #2f318f;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    width: 200px;
+    height:auto;
+}
+
+.menu{
+    display:flex;
+    gap: 22px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    flex:1;
+    justify-content: center;
+}
+
+.menu li a{
+    text-decoration:none;
+    color:#000;
+    font: size 14px;
+    font-weight: 600;
+    display:flex;
+    align-items:center;
+    gap:5;
+}
+
+.icon{
+    width: 16px;
+    height:16px;
+}
+
+.icones{
+    display:flex;
+    gap:18px;
+    align-items: center;
+}
+
+.icone-circulo{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#59d87b,#3b4fa3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.icone-circulo img{
+    width:16px;
+}
+
+
+.container{
+    width:95%;
+    margin:20px auto;
+}
+
+.titulo-perfil{
+    text-align:center;
+    color:#2f318f;
+    font-size:22px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+
+.perfil-card{
+    width:100%;
+    border:2px solid #cfd2ff;
+    border-radius:20px;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.perfil-esquerda{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.foto-perfil{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.info-perfil h2{
+    margin:0;
+    color:#2f318f;
+    font-size:24px;
+}
+
+.info-perfil p{
+    margin:4px 0 10px;
+    color:#666;
+    font-size:13px;
+}
+
+.ecopontos{
+    background:#178d37;
+    color:#fff;
+    padding:5px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+    display:inline-block;
+}
+
+.btn-editar{
+    background:#178d37;
+    color:#fff;
+    border:none;
+    border-radius:20px;
+    padding:8px 25px;
+    font-size:13px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.icone-lapis{
+    width:14px;
+    margin-left:5px;
+}
+
+.conteudo-inferior{
+    margin-top:12px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.box{
+    border:2px solid #cfd2ff;
+    border-radius:20px;
+    padding:12px 15px;
+}
+
+.box h3{
+    margin:0 0 8px;
+    color:#2f318f;
+    font-size:18px;
+}
+
+
+.item-historico{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:7px 0;
+    border-bottom:1px solid #d7d9ff;
+    font-size:13px;
+}
+
+.historico-info{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.bolinha-verde{
+    width:10px;
+    height:10px;
+    background:#1c9d3f;
+    border-radius:50%;
+}
+
+.data-historico{
+    color:#777;
+    font-size:12px;
+}
+
+
+.topo-notificacoes{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.ver-mais{
+    text-decoration:none;
+    color:#2f318f;
+    font-size:12px;
+}
+
+.notificacao{
+    border:1px solid #d7d9ff;
+    border-radius:20px;
+    padding:10px 15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+    font-size:12px;
+}
+
+
+.titulo-agendamento{
+    text-align:center;
+    color:#2f318f;
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.card-nova-coleta{
+    width:320px;
+    background: linear-gradient(90deg,#0D914F);
+    color:#fff;
+    padding:10px 14px;
+    border-radius:10px 10px 0 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:0;
+    font-size:13px;
+}
+
+.card-nova-coleta p{
+    margin:0;
+    font-size:14px;
+    font-weight: 500;
+    flex: 1;
+}
+.box-agenda{
+    width: 320px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba( 0,0,0,0.15);
+    background: #fff;
+}
+
+.btn-mais{
+    width:20px;
+    height:20px;
+    border:none;
+    background:transparent;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    margin:0;
+}
+ .card-principal{
+    background:#fff;
+    border-radius:20px;
+    padding:15px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.1);
+}
+.titulo-calendario{
+    text-align:right;
+    margin: 10px 0;
+    padding:0px;
+    background:none;
+    color:#2f318f;
+    font-size:16px;
+    font-weight: 600;
+}
+.conteudo-box{
+    height: 90px;
+    background: #fff;
+}
+ .Calendário-box{
+    display: flex;
+    flex-direction: column;
+ }
+
+.agenda-coleta{
+    width:100%;
+    border:1px solid #d7d9ff;
+}
+
+.cabecalho-dias,
+.linha-horario{
+    display:grid;
+    grid-template-columns:120px repeat(7,1fr);
+}
+
+.cabecalho-dias span{
+    background:#7ee68a;
+    color:#fff;
+    text-align:center;
+    padding:8px 0;
+    font-size:12px;
+    border-right:1px solid #fff;
+}
+
+.hora{
+    padding:12px 8px;
+    font-size:12px;
+    border-bottom:1px solid #d7d9ff;
+}
+
+.celula{
+    min-height:45px;
+    border-bottom:1px solid #d7d9ff;
+    border-right:1px solid #d7d9ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.celula.coleta{
+    background:#178d37;
+    color:#fff;
+    border-radius:8px;
+    margin:6px;
+    min-height:28px;
+}
+ 
+
+.footer {
+  background: #c8f3dc;
+  padding: 30px 40px;
+  border-top: 2px solid #2e8b57;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+ max-width: 1000px;
+ margin:  0 auto;
+ display: flex;
+ justify-content: space-between;
+  align-items: center;
+}
+
+.footer-info,
+.footer-contato {
+  width: 30%;
+  font-size: 14px;
+  transform: translateY(-10px);
+}
+
+.footer-info h4,
+.footer-contato h4 {
+  margin-bottom: 10px;
+}
+
+.footer-info p,
+.footer-contato p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.footer-logo {
+  text-align: center;
+}
+
+.footer-logo img {
+  width: 200px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+.social {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social img {
+  width: 20px;
+  margin: 0 8px;
+  cursor: pointer;
+}
+
+
+.footer-copy { 
+  text-align: center;
+  font-size: 12px;
+  margin-top: 15px;
+  border-top: 1px solid #999;
+  padding-top: 10px;
+  width: 100%;
+}

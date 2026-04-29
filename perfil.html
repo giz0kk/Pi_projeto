@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil do Usuário</title>
+  <link rel="stylesheet" href="perfil.css">
+</head>
+
+<body class="app perfil">
+
+<header class="topo">
+
+  <div class="logo">
+    <img src="img/logo.2.png" alt="Logo EcoColeta">
+  </div>
+
+  <ul class="menu">
+    <li><a href="tela-inicia.html" class="ativo"><img src="img/icons home.png" class="icon">Home</a></li>
+    <li><a href="#">Gerar Relatório</a></li>
+    <li><a href="#">Como Funciona</a></li>
+    <li><a href="ecopontos.html">EcoPontos</a></li>
+    <li><a href="premios-disponiveis.html">Prêmios</a></li>
+    <li><a href="#">Educação</a></li>
+    <li><a href="#">Quem Somos</a></li>
+    <li><a href="Ranking.html">Ranking</a></li>
+  </ul>
+
+  <div class="icones">
+    <div class="icone-circulo">
+      <a href="#"><img src="img/icon notificacao.png"></a>
+    </div>
+
+    <div class="icone-circulo">
+      <a href="perfil.html"><img src="img/icons pessoa.png"></a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <h2 class="titulo-perfil">Perfil do Usuário</h2>
+
+  <div class="perfil-card">
+    <div class="perfil-esquerda">
+      <img src="img/mulher.png" class="foto-perfil">
+
+      <div class="info-perfil">
+        <h2>Beatriz Helena</h2>
+        <p>UID: beatriz@email.com</p>
+        <div class="ecopontos">1.250 EcoPoints</div>
+      </div>
+    </div>
+
+    <button class="btn-editar" onclick="window.location.href='edicaoperfil.html'">
+      Editar perfil <img src="img/lapis.png" class="icone-lapis">
+    </button>
+  </div>
+
+  <div class="conteudo-inferior">
+
+    <div class="box">
+      <h3>Histórico de Reciclagem</h3>
+
+      <div class="item-historico">
+        <div class="historico-info">
+          <span class="bolinha-verde"></span>
+          <span>Coleta em EcoPonto Central</span>
+        </div>
+        <span class="data-historico">12/03/2026</span>
+      </div>
+
+      <div class="item-historico">
+        <div class="historico-info">
+          <span class="bolinha-verde"></span>
+          <span>Entrega de Papel e Vidro</span>
+        </div>
+        <span class="data-historico">05/02/2026</span>
+      </div>
+
+      <div class="item-historico">
+        <div class="historico-info">
+          <span class="bolinha-verde"></span>
+          <span>Reciclagem de Plástico</span>
+        </div>
+        <span class="data-historico">19/01/2026</span>
+      </div>
+
+      <div class="item-historico">
+        <div class="historico-info">
+          <span class="bolinha-verde"></span>
+          <span>Coleta de Lixo Eletrônico</span>
+        </div>
+        <span class="data-historico">10/01/2026</span>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="topo-notificacoes">
+        <h3>Notificações</h3>
+        <a href="#" class="ver-mais">ver mais ></a>
+      </div>
+
+      <div class="notificacao">
+        <div>
+          <strong>EcoPontos Recebidos</strong>
+          <p>+25 pontos por reciclar plástico</p>
+        </div>
+        <span>Agora mesmo ></span>
+      </div>
+
+      <div class="notificacao">
+        <div>
+          <strong>EcoPontos Recebidos</strong>
+          <p>+25 pontos por reciclar plástico</p>
+        </div>
+        <span>Agora mesmo ></span>
+      </div>
+
+      <div class="notificacao">
+        <div>
+          <strong>EcoPontos Recebidos</strong>
+          <p>+25 pontos por reciclar plástico</p>
+        </div>
+        <span>Agora mesmo ></span>
+      </div>
+    </div>
+
+    <div class="card-principal">
+      <h3 class="titulo-agendamento">Agendamento de coleta</h3>
+
+      <div class="area-agendamento">
+
+        <div class="box-agenda">
+          <div class="card-nova-coleta">
+            <span>Agende uma nova coleta</span>
+            <button class="btn-mais">+</button>
+          </div>
+          <div class="conteudo-box"></div>
+        </div>
+
+        <div class="Calendário-box">
+          <h4 class="titulo-calendario">Calendário de coleta</h4>
+
+          <div class="agenda-coleta">
+
+            <div class="cabecalho-dias">
+              <span></span>
+              <span>Dom</span>
+              <span>Seg</span>
+              <span>Ter</span>
+              <span>Qua</span>
+              <span>Qui</span>
+              <span>Sex</span>
+              <span>Sáb</span>
+            </div>
+
+            <div class="linha-horario">
+              <div class="hora">07:00 às 10:00</div>
+              <div class="celula"></div>
+              <div class="celula"></div>
+              <div class="celula"></div>
+              <div class="celula"></div>
+              <div class="celula"></div>
+              <div class="celula coleta">Coleta</div>
+              <div class="celula coleta">Coleta</div>
+            </div>
+
+            <div class="linha-horario">
+              <div class="hora">10:00 às 13:00</div>
+              <div class="celula"></div>
+              <div class="celula coleta">Coleta</div>
+              <div class="celula"></div>
+              <div class="celula coleta">Coleta</div>
+              <div class="celula"></div>
+              <div class="celula"></div>
+              <div class="celula"></div>
+            </div>
+
+            <div class="linha-horario">
+              <div class="hora">13:00 às 16:00</div>
+              <div class="celula"></div>
+              <div class="celula"></div>
+              <div class="celula coleta">Coleta</div>
+              <div class="celula"></div>
+              <div class="celula coleta">Coleta</div>
+              <div class="celula"></div>
+              <div class="celula"></div>
+            </div>
+
+            <div class="linha-horario">
+              <div class="hora">16:00 às 19:00</div>
+              <div class="celula"></div>
+              <div class="celula"></div>
+              <div class="celula"></div>
+              <div class="celula coleta">Coleta</div>
+              <div class="celula"></div>
+              <div class="celula"></div>
+              <div class="celula coleta">Coleta</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-info">
+      <h4>Institucional</h4>
+      <p><img src="img/icons pessoa.png" class="icon"> Universidade Faculdade Paraíso</p>
+      <p><img src="img/cnpj..png" class="icon"> CNPJ: 00.000.000/0000-00</p>
+    </div>
+
+    <div class="footer-logo">
+      <img src="img/logo preta.png" alt="EcoColeta">
+    </div>
+
+    <div class="footer-contato">
+      <h4>Contato</h4>
+      <p><img src="img/telefone-.png" class="icon"> (88) 90000-0000</p>
+      <p><img src="img/o-email 1.png" class="icon"> ecocoleta@gmail.com</p>
+    </div>
+
+  </div>
+
+  <div class="social">
+    <img src="img/icons facebook.png">
+    <img src="img/email.2.png">
+    <img src="img/icons apicativo X.png">
+    <img src="img/icons-youtube.png">
+    <img src="img/icons-instagram.png">
+  </div>
+
+  <div class="footer-copy">
+    <p>©️ 2026 Todos os direitos reservados</p>
+  </div>
+</footer>
+
+<script src="perfil.js"></script>
+</body>
+</html>

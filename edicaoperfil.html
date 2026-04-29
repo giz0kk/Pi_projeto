@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Perfil</title>
+  <link rel="stylesheet" href="edicaoperfil.css">
+</head>
+
+<body class="app editar-perfil">
+
+  <div class="perfil-container">
+
+    
+    <div class="perfil-topo">
+
+      <div class="perfil-info">
+
+        <div class="foto-box">
+          <img src="img/mulher.png" class="foto-perfil">
+          <img src="img/image.png" class="icone-camera">
+
+           <input type="file" id="fileInput" accept="image/*" hidden>
+        </div>
+
+        <div class="nome-com-lapis">
+          <span class="nome">Beatriz Helena</span>
+
+          <div class="lapis">
+            <img src="img/lapis.png" alt="Editar nome">
+          </div>
+        </div>
+
+      </div>
+    
+    <button type="button" class="perfil-botao" onclick="confirmarPerfil()">
+  Confirmar
+</button>
+
+    </div>
+
+    
+    <div class="perfil-form">
+
+      <div class="perfil-campo">
+        <label>E-mail</label>
+        <input type="email" placeholder="Digite aqui o seu e-mail...">
+      </div>
+
+      <div class="perfil-campo">
+        <label>Confirmar e-mail</label>
+        <input type="email" placeholder="Confirme seu e-mail...">
+      </div>
+
+      <div class="perfil-campo">
+        <label>Senha</label>
+        <input type="password" placeholder="Digite aqui a sua senha...">
+      </div>
+
+      <div class="perfil-campo">
+        <label>Confirmar senha</label>
+        <input type="password" placeholder="Confirme sua senha...">
+      </div>
+
+    </div>
+
+  </div>
+  
+
+ <script src="edicaoperfil.js"></script>
+</body>
+</html>

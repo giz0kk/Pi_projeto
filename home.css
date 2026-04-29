@@ -1,0 +1,401 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+.topo{
+    width:100%;
+    height: 80px;
+    background:linear-gradient(to right,#9ff0a8,#d4f7d8);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0px 40px;
+    border-bottom:1px solid #2f318f;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    width: 200px;
+    height:auto;
+}
+
+.menu{
+    display:flex;
+    gap: 22px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    flex:1;
+    justify-content: center;
+}
+
+.menu li a{
+    text-decoration:none;
+    color:#000;
+    font: size 14px;
+    font-weight: 600;
+    display:flex;
+    align-items:center;
+    gap:5;
+}
+
+.icon{
+    width: 16px;
+    height:16px;
+}
+
+.icones{
+    display:flex;
+    gap:18px;
+    align-items: center;
+}
+
+.icone-circulo{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#59d87b,#3b4fa3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.icone-circulo img{
+    width:16px;
+}
+
+
+.container{
+    width:95%;
+    margin:10px auto;
+}
+.banner {
+  width: 100%;
+  height: 320px;
+  background-image: url(img/planeta\ fundo.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding-left: 60px;
+}
+
+.banner-texto h1 {
+  color: white;
+  font-size: 45px;
+  width: 500px;
+  margin-bottom: 15px;
+}
+
+.banner-texto p {
+  color: white;
+  font-size: 18px;
+}
+
+
+.materiais-container {
+  width: 100%;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.titulo-materiais {
+  font-size: 22px;
+  color: #1d1b5c;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.materiais {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.material {
+  width: 120px;
+  height: 80px;
+  border-radius: 18px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.material span {
+  font-size: 15px;
+}
+
+.material h3 {
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+.vermelho { background: #f44336; }
+.azul { background: #2196f3; }
+.verde { background: #4caf50; }
+.amarelo { background: #fbc02d; color: black; }
+.cinza { background: #757575; }
+.marrom { background: #8d6e63; }
+
+
+.conteudo {
+  display: flex;
+  gap: 20px;
+  padding: 30px 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  border: 2px solid #7bbf8f;
+}
+
+.eco-pontos {
+  width: 60%;
+}
+
+.eco-pontos h2 {
+  color: #1d1b5c;
+  margin-bottom: 20px;
+}
+
+.mapa {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.lista-pontos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ponto {
+  background: #f5f5f5;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  padding: 12px 15px;
+}
+
+.ponto strong {
+  display: block;
+  color: #1f7a3d;
+  margin-bottom: 5px;
+}
+
+.ponto p {
+  margin: 0;
+  color: #555;
+}
+
+.lado-direito {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aprender ul {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.aprender ul li {
+  margin-bottom: 10px;
+}
+
+button {
+  margin-top: 20px;
+  background: linear-gradient(to right, #1f7a3d, #46b96c);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.premios {
+  width: 100%;
+  padding: 50px;
+}
+
+.premios h2 {
+  text-align: center;
+  color: #1d1b5c;
+  font-size: 34px;
+  margin-bottom: 25px;
+}
+
+.premio-item {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #d8d8d8;
+  border-radius: 18px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.premio-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  background: #e6e6e6;
+}
+
+.premio-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btn-premio {
+  display: block;
+  margin: 25px auto 0;
+  width: 180px;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(to right, #0b8a3d, #53d769);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.apoiadores-section {
+  width: 100%;
+  padding: 35px 0;
+  text-align: center;
+  border-top: 4px solid #2d2470;
+  border-bottom: 4px solid #2d2470;
+  margin-top: 30px;
+}
+
+.apoiadores {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.apoio-box {
+  width: 140px;
+  height: 55px;
+  border: 3px solid #2d2470;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-apoiador {
+  width: 260px;
+  height: 48px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(to right, #0a8f3f, #55d46d);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.footer {
+  background: #c8f3dc;
+  padding: 60px 0 25px;
+  border-top: 2px solid #2e8b57;
+  font-family: Arial, sans-serif;
+}
+
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.footer-info,
+.footer-contato {
+ width: 30%;
+ font-size: 14px;
+ transform: translateY(-10px);
+}
+
+.footer-info h4,
+.footer-contato h4 {
+  margin-bottom: 10px;
+}
+
+.footer-info p,
+.footer-contato p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.icon {
+  width: 16px;
+  height:16px;
+
+}
+
+.footer-logo {
+  text-align: center;
+}
+
+.footer-logo img {
+  width: 200px;
+}
+
+
+.social {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.social img {
+  width: 20px;
+  margin: 0 8px;
+  cursor: pointer;
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 15px;
+  border-top: 1px solid #999;
+  padding-top: 10px;
+  width: 100%;
+
+}
