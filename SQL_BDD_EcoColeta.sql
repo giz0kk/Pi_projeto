@@ -29,8 +29,7 @@ CREATE TABLE usuario (
     senha_hash VARCHAR(255) NOT NULL,
     data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
     tipo_usuario ENUM('admin', 'morador', 'cooperativa') NOT NULL,
-    id_rua INT,
-    FOREIGN KEY (id_rua) REFERENCES rua(id_rua)
+    id_rua INT
 );
 
 -- =========================
