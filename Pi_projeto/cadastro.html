@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - EcoColeta</title>  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">  <link rel="stylesheet" href="premios.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="notif-popup.css">
+</head>
+
+<body class="auth cadastro">
+
+  <img src="Imagens/logo telas.png" class="logo">
+
+  <div class="container">
+    <h2>Criar Conta</h2>
+
+    <input id="registerName" type="text" placeholder="Digite seu nome">
+    <span class="field-error" id="nameError"></span>
+    <input id="registerEmail" type="email" placeholder="Digite seu e-mail">
+    <span class="field-error" id="emailError"></span>
+    <input id="registerPassword" type="password" placeholder="Digite sua senha">
+    <span class="field-error" id="passwordError"></span>
+    <input id="registerConfirm" type="password" placeholder="Confirme sua senha">
+    <span class="field-error" id="confirmError"></span>
+
+    <button class="btn-verde" type="button" onclick="register()">Criar Conta</button>
+
+    <p class="link"
+      onclick="window.location.href='login.html'">
+      Já possui uma conta? Faça login
+    </p>
+  </div>
+
+  <div class="login-modal-overlay" id="registerModal">
+    <div class="login-modal">
+      <div class="login-modal-header">
+        <h3>Sucesso</h3>
+        <button class="close-login-modal" type="button" aria-label="Fechar">&times;</button>
+      </div>
+      <p id="registerModalMessage">Conta criada com sucesso!</p>
+      <button class="btn-verde" id="continueRegister" type="button">Continuar</button>
+    </div>
+  </div>
+
+  <script>
+    function showError(inputId, errorId, message) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById(errorId);
+      if (input) input.classList.add('input-error');
+      if (error) error.textContent = message;
+    }
+
+    function clearErrors() {
+      ['registerName', 'registerEmail', 'registerPassword', 'registerConfirm'].forEach((id) => {
+        const input = document.getElementById(id);
+        if (input) input.classList.remove('input-error');
+      });
+      ['nameError', 'emailError', 'passwordError', 'confirmError'].forEach((id) => {
+        const error = document.getElementById(id);
+        if (error) error.textContent = '';
+      });
+    }
+
+    function showRegisterModal(message) {
+      const modal = document.getElementById('registerModal');
+      const modalMessage = document.getElementById('registerModalMessage');
+      if (modalMessage) modalMessage.textContent = message;
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeRegisterModal() {
+      const modal = document.getElementById('registerModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function register() {
+      clearErrors();
+      const name = document.getElementById('registerName').value.trim();
+      const email = document.getElementById('registerEmail').value.trim();
+      const password = document.getElementById('registerPassword').value.trim();
+      const confirm = document.getElementById('registerConfirm').value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      let valid = true;
+
+      if (!name) {
+        showError('registerName', 'nameError', 'Digite seu nome.');
+        valid = false;
+      }
+      if (!email) {
+        showError('registerEmail', 'emailError', 'Digite um e-mail.');
+        valid = false;
+      } else if (!emailPattern.test(email)) {
+        showError('registerEmail', 'emailError', 'Digite um e-mail válido.');
+        valid = false;
+      }
+      if (!password) {
+        showError('registerPassword', 'passwordError', 'Digite sua senha.');
+        valid = false;
+      }
+      if (!confirm) {
+        showError('registerConfirm', 'confirmError', 'Confirme sua senha.');
+        valid = false;
+      } else if (password && password !== confirm) {
+        showError('registerConfirm', 'confirmError', 'As senhas não coincidem.');
+        valid = false;
+      }
+
+      if (!valid) {
+        return;
+      }
+
+      showRegisterModal('Conta criada com sucesso!');
+    }
+
+    const registerModal = document.getElementById('registerModal');
+    if (registerModal) {
+      const closeButtons = registerModal.querySelectorAll('.close-login-modal, #continueRegister');
+      closeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          if (button.id === 'continueRegister') {
+            localStorage.setItem('loggedIn', 'true');
+            window.location.href = 'tela-inicia.html';
+          } else {
+            closeRegisterModal();
+          }
+        });
+      });
+
+      registerModal.addEventListener('click', (event) => {
+        if (event.target === registerModal) {
+          closeRegisterModal();
+        }
+      });
+    }
+  </script>
+</body>
+</html>

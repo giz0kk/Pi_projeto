@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificação - EcoColeta</title>  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">  <link rel="stylesheet" href="premios.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="notif-popup.css">
+</head>
+
+<body class="auth verificacao">
+
+  <header class="topo">
+    <div class="nav-left">
+      <a href="tela-inicia.html" class="logo-link">
+        <img src="Imagens/logo.2.png" alt="EcoColeta">
+      </a>
+
+      <nav>
+        <ul class="menu">
+          <li><a href="tela-inicia.html">Home</a></li>
+          <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+          <li><a href="como-funciona.html">Como Funciona</a></li>
+          <li><a href="ecopontos.html">EcoPontos</a></li>
+          <li><a href="premios-disponiveis.html">Prêmios</a></li>
+          <li><a href="#">Educação</a></li>
+          <li><a href="quem-somos.html">Quem Somos</a></li>
+          <li><a href="Ranking.html">Ranking</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="icones">
+      <div class="notif-wrapper">
+        <button class="notif-btn" aria-label="Notificações">
+            <img src="Imagens/icon notificacao.png" alt="Notificações" class="icon">
+          </button>
+        <div class="notif-overlay hidden">
+          <div class="notif-box">
+            <div class="header">
+              <h2>Notificações</h2>
+              <span class="gear">⚙️</span>
+            </div>
+            <div class="section">
+              <p class="section-title">IMPORTANTE</p>
+              <div class="item">
+                <div class="icon green">♻️</div>
+                <div>
+                  <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                  <span>há 30 minutos</span>
+                </div>
+              </div>
+            </div>
+            <div class="section">
+              <p class="section-title">MAIS NOTIFICAÇÕES</p>
+              <div class="item">
+                <div class="icon yellow">🏆</div>
+                <div class="content">
+                  <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                  <span>há 3 horas</span>
+                </div>
+                <div class="badge">+50 pts</div>
+              </div>
+              <div class="item">
+                <div class="icon purple">📅</div>
+                <div>
+                  <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                  <span>há 5 horas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="perfil.html">
+        <img src="Imagens/icons pessoa.png" alt="Perfil">
+      </a>
+    </div>
+  </header>
+
+  <script src="notif-popup.js"></script>
+  
+
+  <div class="container">
+    
+    <p class="text">
+      O seu código de verificação foi enviado por e-mail para <br>
+      <strong id="resetEmailDisplay"></strong>
+    </p>
+
+    <div class="codigo">
+      <input class="code-digit" id="digit1" type="text" maxlength="1" inputmode="numeric" autocomplete="one-time-code">
+      <input class="code-digit" id="digit2" type="text" maxlength="1" inputmode="numeric" autocomplete="one-time-code">
+      <input class="code-digit" id="digit3" type="text" maxlength="1" inputmode="numeric" autocomplete="one-time-code">
+      <input class="code-digit" id="digit4" type="text" maxlength="1" inputmode="numeric" autocomplete="one-time-code">
+      <input class="code-digit" id="digit5" type="text" maxlength="1" inputmode="numeric" autocomplete="one-time-code">
+      <input class="code-digit" id="digit6" type="text" maxlength="1" inputmode="numeric" autocomplete="one-time-code">
+    </div>
+    <span class="field-error" id="codeError"></span>
+
+    <p class="tempo" id="countdownText">Aguarde 51 segundos para reenviar.</p>
+
+    <button class="btn-verde" type="button" onclick="verifyResetCode()">Próximo</button>
+
+    <p class="reenviar">
+      Não recebeu o código?
+      <span class="reenviar-link disabled" id="resendLink" onclick="resendCode()">Reenviar agora</span>
+    </p>
+
+  </div>
+
+  <script>
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+
+    function getStoredCode() {
+      return sessionStorage.getItem('resetCode') || '';
+    }
+
+    let resendTimeout = null;
+    let resendAllowed = false;
+
+    function verifyResetCode() {
+      const digits = Array.from(document.querySelectorAll('.code-digit')).map((input) => input.value.trim());
+      const code = digits.join('');
+      const storedCode = getStoredCode();
+
+      if (code.length !== 6) {
+        setText('codeError', 'Digite o código completo.');
+        return;
+      }
+
+      if (code !== storedCode) {
+        setText('codeError', 'Código incorreto. Verifique o e-mail e tente novamente.');
+        return;
+      }
+
+      sessionStorage.setItem('resetVerified', 'true');
+      window.location.href = 'nova-senha.html';
+    }
+
+    function setResendState(allowed) {
+      const resendLink = document.getElementById('resendLink');
+      if (!resendLink) return;
+      resendAllowed = allowed;
+      if (allowed) {
+        resendLink.classList.remove('disabled');
+      } else {
+        resendLink.classList.add('disabled');
+      }
+    }
+
+    function updateCountdownText(seconds) {
+      const countdownText = document.getElementById('countdownText');
+      if (!countdownText) return;
+      if (seconds > 0) {
+        countdownText.textContent = `Aguarde ${seconds} segundo${seconds === 1 ? '' : 's'} para reenviar.`;
+      } else {
+        countdownText.textContent = 'Você pode reenviar o código agora.';
+      }
+    }
+
+    function startResendCountdown(duration) {
+      let remaining = duration;
+      setResendState(false);
+      updateCountdownText(remaining);
+
+      if (resendTimeout) {
+        clearInterval(resendTimeout);
+      }
+
+      resendTimeout = setInterval(() => {
+        remaining -= 1;
+        updateCountdownText(remaining);
+        if (remaining <= 0) {
+          clearInterval(resendTimeout);
+          resendTimeout = null;
+          setResendState(true);
+        }
+      }, 1000);
+    }
+
+    function resendCode() {
+      const email = sessionStorage.getItem('resetEmail');
+      if (!email) {
+        window.location.href = 'recuperar.html';
+        return;
+      }
+      if (!resendAllowed) {
+        setText('codeError', 'Aguarde o tempo de reenviar terminar.');
+        return;
+      }
+      const resetCode = Math.floor(100000 + Math.random() * 900000).toString();
+      sessionStorage.setItem('resetCode', resetCode);
+      sessionStorage.setItem('resetVerified', 'false');
+      console.log('Novo código de redefinição:', resetCode);
+      setText('codeError', 'Novo código enviado. Verifique seu e-mail.');
+      startResendCountdown(51);
+    }
+
+    function setupCodeInputs() {
+      const inputs = Array.from(document.querySelectorAll('.code-digit'));
+      inputs.forEach((input, index) => {
+        input.addEventListener('input', (event) => {
+          const value = event.target.value.replace(/[^0-9]/g, '');
+          event.target.value = value;
+          if (value && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+          }
+        });
+        input.addEventListener('keydown', (event) => {
+          if (event.key === 'Backspace' && !event.target.value && index > 0) {
+            inputs[index - 1].focus();
+          }
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const email = sessionStorage.getItem('resetEmail');
+      const code = getStoredCode();
+      if (!email || !code) {
+        window.location.href = 'recuperar.html';
+        return;
+      }
+      setText('resetEmailDisplay', email);
+      setupCodeInputs();
+      startResendCountdown(51);
+    });
+  </script>
+</body>
+</html>
