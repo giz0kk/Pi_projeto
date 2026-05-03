@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoColeta - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="notif-popup.css">
+  <script>
+  if (!localStorage.getItem('loggedIn')) {
+    window.location.href = 'login.html';
+  }
+  </script>
+</head>
+
+<body class="app home">
+
+  <header class="topo">
+  <div class="nav-left">
+    <a href="tela-inicia.html" class="logo-link">
+      <img src="Imagens/logo.2.png" alt="EcoColeta">
+    </a>
+    <nav>
+      <ul class="menu">
+        <li><a href="tela-inicia.html">Home</a></li>
+        <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+        <li><a href="como-funciona.html">Como Funciona</a></li>
+        <li><a href="ecopontos.html">EcoPontos</a></li>
+        <li><a href="premios-disponiveis.html">Prêmios</a></li>
+        <li><a href="#">Educação</a></li>
+        <li><a href="quem-somos.html">Quem Somos</a></li>
+        <li><a href="Ranking.html">Ranking</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="icones">
+    <div class="notif-wrapper">
+      <button class="notif-btn" aria-label="Notificações">
+          <img src="Imagens/icon notificacao.png" alt="Notificações" class="icon">
+      </button>
+      <div class="notif-overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="perfil.html">
+      <img src="Imagens/icons pessoa.png" alt="Perfil">
+    </a>
+  </div>
+</header>
+
+<script src="notif-popup.js"></script>
+    
+
+  <section class="banner">
+    <div class="banner-texto">
+      <h1>Seja Bem Vindo ao EcoColeta</h1>
+      <p>Mantenha o planeta limpo e ganhe benefícios em troca</p>
+    </div>
+  </section>
+  <section class="titulo-materiais">
+    <h2>Nossa mudança no planeta</h2>
+  </section>
+
+  <section class="materiais">
+    <div class="material vermelho"><span>Plástico</span><h3>12 kg</h3></div>
+    <div class="material azul"><span>Papel</span><h3>12 kg</h3></div>
+    <div class="material verde"><span>Vidro</span><h3>12 kg</h3></div>
+    <div class="material amarelo"><span>Metal</span><h3>12 kg</h3></div>
+    <div class="material cinza"><span>Orgânico</span><h3>12 kg</h3></div>
+    <div class="material marrom"><span>Madeira</span><h3>12 kg</h3></div>
+  </section>
+
+  <main class="conteudo">
+
+    <section class="eco-pontos card">
+      <h2>EcoPontos perto de você</h2>
+
+      <div class="mapa-wrapper">
+      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1WgZ9B9QNFKKUwv49P1Q4t0mUogqHzc0&ehbc=2E312F&noprof=1" class="mapa"></iframe>
+    </div>
+
+      <div class="lista-pontos">
+        <div class="ponto"><strong>EcoPonto Central</strong><p>Rua Central, Centro</p></div>
+        <div class="ponto"><strong>Ponto Verde Bairro Sul</strong><p>Rua Verdejante, Sul</p></div>
+        <div class="ponto"><strong>EcoPonto Bairro Branco</strong><p>Rua Branca, Crato</p></div>
+        <div class="ponto"><strong>EcoPonto Morro Norte</strong><p>Rua Norte, Lagoa Azul</p></div>
+      </div>
+    </section>
+
+    <section class="lado-direito">
+
+      <div class="card aprender">
+        <h2>Aprenda a separar seu lixo</h2>
+
+        <ul>
+          <li>Como o lixo deve ser separado</li>
+          <li>Por que o lixo deve ser separado</li>
+          <li>Quais materiais podem ser reciclados</li>
+          <li>Dicas ambientais para reciclagem</li>
+        </ul>
+
+        <button>Aprenda Mais</button>
+      </div>
+
+      <div class="card premios">
+        <h2>Prêmios</h2>
+
+        <div class="premio-item">
+          <div class="premio-info">
+            <div>
+              <h4>IronFlex</h4>
+              <p>30% de descontos</p>
+            </div>
+            <p class="premio-pontos">289 pontos</p>
+          </div>
+        </div>
+
+        <div class="premio-item">
+          <div class="premio-info">
+            <div>
+              <h4>MoveUp Gym</h4>
+              <p>20% de descontos</p>
+            </div>
+            <p class="premio-pontos">412 pontos</p>
+          </div>
+        </div>
+
+        <div class="premio-item">
+          <div class="premio-info">
+            <div>
+              <h4>Pão Nobre</h4>
+              <p>15% de descontos</p>
+            </div>
+            <p class="premio-pontos">150 pontos</p>
+          </div>
+        </div>
+
+        <button class="btn-premio">Ver Mais</button>
+      </div>
+
+    </section>
+  </main>
+
+  <section class="apoiadores-section">
+    <div class="linha-topo"></div>
+
+    <div class="apoiadores">
+      <div class="apoio-card"><div class="apoio-box">VitaNex</div><p>Apoiador</p><span>1</span></div>
+      <div class="apoio-card"><div class="apoio-box">PharmaLeaf</div><p>Apoiador</p><span>1</span></div>
+      <div class="apoio-card"><div class="apoio-box">SaúdePrime</div><p>Apoiador</p><span>2</span></div>
+      <div class="apoio-card"><div class="apoio-box">MaxCompra</div><p>Apoiador</p><span>3</span></div>
+      <div class="apoio-card"><div class="apoio-box">MercaPlus</div><p>Apoiador</p><span>4</span></div>
+    </div>
+
+    <button class="btn-apoiador">Vire um Apoiador</button>
+  </section>
+
+  <footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-info">
+      <h4>Institucional</h4>
+      <p><img src="Imagens/icons pessoa.png" class="icon"> Universidade Faculdade Paraíso</p>
+      <p><img src="Imagens/cnpj..png" class="icon"> CNPJ: 00.000.000/0000-00</p>
+    </div>
+
+    <div class="footer-logo">
+      <img src="Imagens/logo preta.png" alt="EcoColeta">
+    </div>
+
+    <div class="footer-contato">
+      <h4>Contato</h4>
+      <p><img src="Imagens/telefone-.png" class="icon"> (88) 90000-0000</p>
+      <p><img src="Imagens/o-email 1.png" class="icon"> ecocoleta@gmail.com</p>
+    </div>
+
+  </div>
+
+  <div class="social">
+    <img src="Imagens/icons facebook.png">
+    <img src="Imagens/email.2.png">
+    <img src="Imagens/icons apicativo X.png">
+    <img src="Imagens/icons-youtube.png">
+    <img src="Imagens/icons-instagram.png">
+  </div>
+
+  <div class="footer-copy">
+    <p>©️ 2026 Todos os direitos reservados</p>
+  </div>
+</footer>
+
+<script src="home.js"></script>
+</body>
+</html>

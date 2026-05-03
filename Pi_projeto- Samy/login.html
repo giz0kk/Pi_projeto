@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - EcoColeta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="premios.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="notif-popup.css">
+</head>
+
+<body class="auth login">
+
+  <img src="Imagens/logo telas.png" class="logo">
+
+  <div class="container">
+    <h2>Bem-vindo ao <span class="verde">EcoColeta</span></h2>
+
+    <input id="loginEmail" type="email" placeholder="Digite seu e-mail">
+    <span class="field-error" id="emailError"></span>
+    <input id="loginPassword" type="password" placeholder="Digite sua senha">
+    <span class="field-error" id="passwordError"></span>
+
+    <p class="link" onclick="window.location.href='recuperar.html'">
+      Esqueceu a senha?
+    </p>
+
+    <button class="btn-verde" type="button" onclick="login()">Entrar</button>
+
+    <button class="btn-borda" type="button"
+      onclick="window.location.href='cadastro.html'">
+      Cadastre-se
+    </button>
+  </div>
+
+  <div class="login-modal-overlay" id="loginModal">
+    <div class="login-modal">
+      <div class="login-modal-header">
+        <h3>Atenção</h3>
+        <button class="close-login-modal" type="button" aria-label="Fechar">&times;</button>
+      </div>
+      <p id="loginModalMessage">Login realizado com sucesso!</p>
+      <button class="btn-verde" id="continueLogin" type="button">Continuar</button>
+    </div>
+  </div>
+
+  <script>
+    function showError(inputId, errorId, message) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById(errorId);
+      if (input) input.classList.add('input-error');
+      if (error) error.textContent = message;
+    }
+
+    function clearErrors() {
+      ['loginEmail', 'loginPassword'].forEach((id) => {
+        const input = document.getElementById(id);
+        if (input) input.classList.remove('input-error');
+      });
+      ['emailError', 'passwordError'].forEach((id) => {
+        const error = document.getElementById(id);
+        if (error) error.textContent = '';
+      });
+    }
+
+    function showLoginModal(message) {
+      const loginModal = document.getElementById('loginModal');
+      const modalMessage = document.getElementById('loginModalMessage');
+      if (modalMessage) modalMessage.textContent = message;
+      if (loginModal) loginModal.classList.add('active');
+    }
+
+    function closeLoginModal() {
+      const modal = document.getElementById('loginModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function login() {
+      clearErrors();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+      let valid = true;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!email) {
+        showError('loginEmail', 'emailError', 'Digite um e-mail.');
+        valid = false;
+      } else if (!emailPattern.test(email)) {
+        showError('loginEmail', 'emailError', 'Digite um e-mail válido.');
+        valid = false;
+      }
+
+      if (!password) {
+        showError('loginPassword', 'passwordError', 'Digite sua senha.');
+        valid = false;
+      }
+
+      if (!valid) {
+        return;
+      }
+
+      showLoginModal('Login realizado com sucesso!');
+    }
+
+    const loginModal = document.getElementById('loginModal');
+    if (loginModal) {
+      const closeButtons = loginModal.querySelectorAll('.close-login-modal, #continueLogin');
+      closeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          if (button.id === 'continueLogin') {
+            localStorage.setItem('loggedIn', 'true');
+            window.location.href = 'tela-inicia.html';
+          } else {
+            closeLoginModal();
+          }
+        });
+      });
+
+      loginModal.addEventListener('click', (event) => {
+        if (event.target === loginModal) {
+          closeLoginModal();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
