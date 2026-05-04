@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório Semanal | EcoColeta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="relatorio-semanal.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="notif-popup.css">
+  <script>
+    if (!localStorage.getItem('loggedIn')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+</head>
+<body class="app relatorio-semanal">
+    <header class="topo">
+  <div class="nav-left">
+    <a href="tela-inicia.html" class="logo-link">
+      <img src="Imagens/logo.2.png" alt="EcoColeta">
+    </a>
+    <nav>
+      <ul class="menu">
+        <li><a href="tela-inicia.html">Home</a></li>
+        <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+        <li><a href="como-funciona.html">Como Funciona</a></li>
+        <li><a href="ecopontos.html">EcoPontos</a></li>
+        <li><a href="premios-disponiveis.html">Prêmios</a></li>
+        <li><a href="educacao-ambiental.html">Educação</a></li>
+        <li><a href="quem-somos.html">Quem Somos</a></li>
+        <li><a href="Ranking.html">Ranking</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="icones">
+    <div class="notif-wrapper">
+      <button class="notif-btn" aria-label="Notificações">
+          <img src="Imagens/icon notificacao.png" alt="Notificações" class="icon">
+      </button>
+      <div class="notif-overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="perfil.html">
+      <img src="Imagens/icons pessoa.png" alt="Perfil">
+    </a>
+  </div>
+</header>
+
+  <main>
+    <div class="content-wrapper">
+      <section class="report-header">
+        <div>
+          <p class="subtitle">Relatório Semanal</p>
+          <h1>18 de março a 24 de março de 2025</h1>
+        </div>
+        <div class="week-badge">Semana 12</div>
+      </section>
+
+      <section class="report-cards">
+        <article class="report-card">
+          <p>Total reciclado</p>
+          <strong>16,1 kg</strong>
+          <span>(+2,7 kg vs. anterior)</span>
+        </article>
+        <article class="report-card">
+          <p>EcoPontos ganhos</p>
+          <strong>32</strong>
+          <span>(+6 pontos)</span>
+        </article>
+        <article class="report-card">
+          <p>Dia mais produtivo</p>
+          <strong>Sexta-feira</strong>
+          <span>3.5kg reciclados</span>
+        </article>
+      </section>
+
+      <section class="weekly-chart-card">
+        <div class="weekly-chart-header">
+          <div>
+            <h2>Kg reciclados por dia</h2>
+          </div>
+          <div class="weekly-target">Meta da semana: <strong>15,0 kg</strong></div>
+        </div>
+
+        <div class="weekly-chart">
+          <div class="y-axis">
+            <span>4</span>
+            <span>3</span>
+            <span>2</span>
+            <span>1</span>
+            <span>0</span>
+          </div>
+          <div class="bars-grid">
+            <div class="bar-item">
+              <span class="day-label">S</span>
+              <span class="bar" style="height: 25%;">1 kg</span>
+              <span class="date-label">18/03</span>
+            </div>
+            <div class="bar-item green">
+              <span class="day-label">T</span>
+              <span class="bar" style="height: 50%;">2 kg</span>
+              <span class="date-label">19/03</span>
+            </div>
+            <div class="bar-item">
+              <span class="day-label">Q</span>
+              <span class="bar" style="height: 70%;">2,8 kg</span>
+              <span class="date-label">20/03</span>
+            </div>
+            <div class="bar-item green">
+              <span class="day-label">Q</span>
+              <span class="bar" style="height: 62%;">2,5 kg</span>
+              <span class="date-label">21/03</span>
+            </div>
+            <div class="bar-item">
+              <span class="day-label">S</span>
+              <span class="bar" style="height: 88%;">3,5 kg</span>
+              <span class="date-label">22/03</span>
+            </div>
+            <div class="bar-item green">
+              <span class="day-label">S</span>
+              <span class="bar" style="height: 45%;">1,8 kg</span>
+              <span class="date-label">23/03</span>
+            </div>
+            <div class="bar-item">
+              <span class="day-label">D</span>
+              <span class="bar" style="height: 62%;">2,5 kg</span>
+              <span class="date-label">24/03</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="weekly-summary">
+          <span>Total da semana: <strong>16,1 kg</strong></span>
+          <span>Média diária: <strong>2,3 kg</strong></span>
+        </div>
+      </section>
+
+      <section class="daily-details">
+        <h3>Detalhamento por dia</h3>
+        <ul>
+          <li><span>Segunda-feira</span><strong>1 kg</strong></li>
+          <li><span>Terça-feira</span><strong>2 kg</strong></li>
+          <li><span>Quarta-feira</span><strong>2,8 kg</strong></li>
+          <li><span>Quinta-feira</span><strong>2,5 kg</strong></li>
+          <li><span>Sexta-feira <span class="best-day">Melhor dia</span></span><strong>3,5 kg</strong></li>
+          <li><span>Sábado</span><strong>1,8 kg</strong></li>
+          <li><span>Domingo</span><strong>2,5 kg</strong></li>
+        </ul>
+      </section>
+
+      <section class="performance-note">
+        <div>
+          <strong>Desempenho: +20% melhor que a semana passada!</strong>
+          <p>Parabéns você está fazendo a diferença para o meio ambiente</p>
+        </div>
+      </section>
+
+      <section class="report-actions">
+        <a href="#" id="downloadPdfBtn" class="action-btn download-btn">Baixar PDF</a>
+        <a href="#" id="shareReportBtn" class="action-btn share-btn">Compartilhar</a>
+        <a href="pagina-relatorio.html" class="action-btn period-btn">Ver outro período</a>
+      </section>
+
+      <footer class="report-footer">
+        <p>Relatório gerado em 24 de março de 2025 às 18:30 • ecoColeta</p>
+      </footer>
+    </div>
+  </main>
+
+  <script src="notif-popup.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const downloadBtn = document.getElementById('downloadPdfBtn');
+      const shareBtn = document.getElementById('shareReportBtn');
+      const shareData = {
+        title: 'Relatório Semanal EcoColeta',
+        text: 'Confira meu relatório semanal no EcoColeta.',
+        url: window.location.href
+      };
+
+      downloadBtn?.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.print();
+      });
+
+      shareBtn?.addEventListener('click', async function(event) {
+        event.preventDefault();
+
+        if (navigator.share) {
+          try {
+            await navigator.share(shareData);
+          } catch (error) {
+            console.log('Compartilhamento cancelado ou não disponível', error);
+          }
+          return;
+        }
+
+        const copyText = shareData.url;
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(copyText);
+            alert('Link do relatório copiado para a área de transferência!');
+            return;
+          } catch (copyError) {
+            console.log('Erro ao copiar para a área de transferência', copyError);
+          }
+        }
+
+        const tempTextarea = document.createElement('textarea');
+        tempTextarea.value = copyText;
+        tempTextarea.style.position = 'fixed';
+        tempTextarea.style.left = '-9999px';
+        document.body.appendChild(tempTextarea);
+        tempTextarea.focus();
+        tempTextarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextarea);
+        alert('Link do relatório copiado para a área de transferência!');
+      });
+    });
+  </script>
+</body>
+</html>

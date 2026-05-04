@@ -6,6 +6,7 @@
   <title>Perfil do Usuário</title>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="perfil.css">
+  <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="notif-popup.css">
   <script>
   if (!localStorage.getItem('loggedIn')) {
@@ -17,7 +18,7 @@
 <body class="app perfil">
 
 
-  <header class="topo">
+    <header class="topo">
   <div class="nav-left">
     <a href="tela-inicia.html" class="logo-link">
       <img src="Imagens/logo.2.png" alt="EcoColeta">
@@ -29,7 +30,7 @@
         <li><a href="como-funciona.html">Como Funciona</a></li>
         <li><a href="ecopontos.html">EcoPontos</a></li>
         <li><a href="premios-disponiveis.html">Prêmios</a></li>
-        <li><a href="#">Educação</a></li>
+        <li><a href="educacao-ambiental.html">Educação</a></li>
         <li><a href="quem-somos.html">Quem Somos</a></li>
         <li><a href="Ranking.html">Ranking</a></li>
       </ul>
@@ -164,29 +165,34 @@
             <input type="password" id="modalPasswordConfirm" placeholder="Confirme sua senha..." required>
           </div>
 
-          <div class="perfil-campo endereco-campo">
-            <label>Endereço</label>
-            <input type="text" id="modalEndereco" placeholder="Rua, avenida, travessa..." required>
+          <div class="perfil-campo endereco-campo hidden">
+            <label>CEP</label>
+            <input type="text" id="modalCep" placeholder="Digite o CEP..." required>
           </div>
 
-          <div class="perfil-campo endereco-campo">
-            <label>Bairro</label>
-            <input type="text" id="modalBairro" placeholder="Digite o bairro..." required>
+          <div class="perfil-campo endereco-campo hidden">
+            <label>Cidade / Estado</label>
+            <input type="text" id="modalCidadeEstado" placeholder="Digite a cidade e o estado..." required>
           </div>
 
-          <div class="perfil-campo endereco-campo">
+          <div class="perfil-campo endereco-campo hidden">
+            <label>Rua</label>
+            <input type="text" id="modalRua" placeholder="Digite o nome da rua..." required>
+          </div>
+
+          <div class="perfil-campo endereco-campo hidden">
             <label>Número</label>
             <input type="text" id="modalNumero" placeholder="Digite o número..." required>
           </div>
 
-          <div class="perfil-campo endereco-campo">
-            <label>Cidade</label>
-            <input type="text" id="modalCidade" placeholder="Digite a cidade..." required>
+          <div class="perfil-campo endereco-campo hidden">
+            <label>Bairro</label>
+            <input type="text" id="modalBairro" placeholder="Digite o bairro..." required>
           </div>
 
-          <div class="perfil-campo endereco-campo">
+          <div class="perfil-campo endereco-campo hidden">
             <label>Complemento</label>
-            <input type="text" id="modalComplemento" placeholder="Apartamento, bloco, referência...">
+            <input type="text" id="modalComplemento" placeholder="Digite o complemento...">
           </div>
 
         </div>
@@ -196,6 +202,16 @@
           <button type="submit" class="btn-editar" id="confirmarPerfilBtn">Salvar alterações</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <div class="save-confirm-overlay hidden" id="saveConfirmOverlay">
+    <div class="save-confirm-dialog">
+      <p>Tem certeza que deseja salvar as alterações?</p>
+      <div class="save-confirm-actions">
+        <button type="button" class="btn-cancel" id="cancelSaveBtn">Cancelar</button>
+        <button type="button" class="btn-editar" id="confirmSaveBtn">Confirmar</button>
+      </div>
     </div>
   </div>
 
@@ -303,16 +319,14 @@
 
       <div class="area-agendamento">
 
-        <div class="box-agenda">
-          <div class="card-nova-coleta">
-            <span>Agende uma nova coleta</span>
-            <button class="btn-mais">+</button>
-          </div>
-          <div class="conteudo-box"></div>
-        </div>
-
         <div class="Calendário-box">
-          <h4 class="titulo-calendario">Calendário de coleta - Maio 2026</h4>
+          <div class="calendar-header">
+            <h4 id="calendarMonthYear" class="titulo-calendario">Calendário de coleta - Maio 2026</h4>
+            <div class="calendar-controls">
+              <button type="button" id="calendarPrev" class="btn-calendar" aria-label="Mês anterior">◀</button>
+              <button type="button" id="calendarNext" class="btn-calendar" aria-label="Próximo mês">▶</button>
+            </div>
+          </div>
 
           <div class="agenda-coleta">
 
@@ -383,6 +397,14 @@
             </div>
 
           </div>
+        </div>
+
+        <div class="box-agenda">
+          <div class="card-nova-coleta">
+            <span>Agende uma nova coleta</span>
+            <button class="btn-mais">+</button>
+          </div>
+          <div class="conteudo-box"></div>
         </div>
 
       </div>

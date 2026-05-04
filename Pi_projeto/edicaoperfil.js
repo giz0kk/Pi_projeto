@@ -1,34 +1,101 @@
-function confirmarPerfil() {
-  const campos = document.querySelectorAll('.perfil-campo input');
-  let todosPreenchidos = true;
+const saveConfirmOverlay = document.getElementById('saveConfirmOverlay');
+const confirmSaveBtn = document.getElementById('confirmSaveBtn');
+const cancelSaveBtn = document.getElementById('cancelSaveBtn');
 
-  campos.forEach(campo => {
-    if (campo.value.trim() === "") {
-      todosPreenchidos = false;
-    }
+function showSaveConfirm() {
+  if (saveConfirmOverlay) {
+    saveConfirmOverlay.classList.remove('hidden');
+  }
+}
+
+function hideSaveConfirm() {
+  if (saveConfirmOverlay) {
+    saveConfirmOverlay.classList.add('hidden');
+  }
+}
+
+function showError(inputId, errorId, message) {
+  const input = document.getElementById(inputId);
+  const error = document.getElementById(errorId);
+  if (input) input.classList.add('input-error');
+  if (error) error.textContent = message;
+}
+
+function clearErrors() {
+  ['editEmail', 'editConfirmEmail', 'editPassword', 'editConfirmPassword'].forEach((id) => {
+    const input = document.getElementById(id);
+    if (input) input.classList.remove('input-error');
   });
+  ['emailError', 'confirmEmailError', 'passwordError', 'confirmPasswordError'].forEach((id) => {
+    const error = document.getElementById(id);
+    if (error) error.textContent = '';
+  });
+}
 
-  if (!todosPreenchidos) {
-    alert("Preencha todos os campos obrigatórios antes de continuar!");
+function validarPerfil() {
+  clearErrors();
+  const email = document.getElementById('editEmail').value.trim();
+  const confirmEmail = document.getElementById('editConfirmEmail').value.trim();
+  const password = document.getElementById('editPassword').value.trim();
+  const confirmPassword = document.getElementById('editConfirmPassword').value.trim();
+  let valid = true;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!email) {
+    showError('editEmail', 'emailError', 'Digite um e-mail.');
+    valid = false;
+  } else if (!emailPattern.test(email)) {
+    showError('editEmail', 'emailError', 'Digite um e-mail válido.');
+    valid = false;
+  }
+
+  if (!confirmEmail) {
+    showError('editConfirmEmail', 'confirmEmailError', 'Confirme seu e-mail.');
+    valid = false;
+  } else if (email !== confirmEmail) {
+    showError('editConfirmEmail', 'confirmEmailError', 'Os e-mails não coincidem.');
+    valid = false;
+  }
+
+  if (!password) {
+    showError('editPassword', 'passwordError', 'Digite sua senha.');
+    valid = false;
+  }
+
+  if (!confirmPassword) {
+    showError('editConfirmPassword', 'confirmPasswordError', 'Confirme sua senha.');
+    valid = false;
+  } else if (password !== confirmPassword) {
+    showError('editConfirmPassword', 'confirmPasswordError', 'As senhas não coincidem.');
+    valid = false;
+  }
+
+  return valid;
+}
+
+function performSave() {
+  if (!validarPerfil()) {
     return;
   }
 
-  // Validação específica para e-mails
-  const emails = document.querySelectorAll('input[type="email"]');
-  if (emails.length >= 2 && emails[0].value !== emails[1].value) {
-    alert("Os e-mails não coincidem.");
-    return;
-  }
-
-  // Validação específica para senhas
-  const senhas = document.querySelectorAll('input[type="password"]');
-  if (senhas.length >= 2 && senhas[0].value !== senhas[1].value) {
-    alert("As senhas não coincidem.");
-    return;
-  }
-
+  hideSaveConfirm();
   alert("Perfil atualizado com sucesso!");
   window.location.href = "perfil.html";
+}
+
+function confirmarPerfil() {
+  if (!validarPerfil()) {
+    return;
+  }
+  showSaveConfirm();
+}
+
+if (confirmSaveBtn) {
+  confirmSaveBtn.addEventListener('click', performSave);
+}
+
+if (cancelSaveBtn) {
+  cancelSaveBtn.addEventListener('click', hideSaveConfirm);
 }
 
 /* ===== EDITAR NOME ===== */

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerar Relatório | EcoColeta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="perfil.css">
+  <link rel="stylesheet" href="pagina-relatorio.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="notif-popup.css">
+  <script>
+    if (!localStorage.getItem('loggedIn')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+</head>
+<body class="app relatorio">
+    <header class="topo">
+  <div class="nav-left">
+    <a href="tela-inicia.html" class="logo-link">
+      <img src="Imagens/logo.2.png" alt="EcoColeta">
+    </a>
+    <nav>
+      <ul class="menu">
+        <li><a href="tela-inicia.html">Home</a></li>
+        <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+        <li><a href="como-funciona.html">Como Funciona</a></li>
+        <li><a href="ecopontos.html">EcoPontos</a></li>
+        <li><a href="premios-disponiveis.html">Prêmios</a></li>
+        <li><a href="educacao-ambiental.html">Educação</a></li>
+        <li><a href="quem-somos.html">Quem Somos</a></li>
+        <li><a href="Ranking.html">Ranking</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="icones">
+    <div class="notif-wrapper">
+      <button class="notif-btn" aria-label="Notificações">
+          <img src="Imagens/icon notificacao.png" alt="Notificações" class="icon">
+      </button>
+      <div class="notif-overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="perfil.html">
+      <img src="Imagens/icons pessoa.png" alt="Perfil">
+    </a>
+  </div>
+</header>
+
+  <script src="notif-popup.js"></script>
+
+  <main>
+    <div class="container">
+      <section class="page-header">
+        <div>
+          <h1>Impacto Ambiental</h1>
+        <p>Veja o comportamento de reciclagem e os resultados por bairro, material e período.</p>
+      </div>
+
+      <div class="period-buttons">
+        <button type="button" class="period-btn active" data-period="diario">Diário</button>
+        <button type="button" class="period-btn" data-period="semanal">Semanal</button>
+        <button type="button" class="period-btn" data-period="mensal">Mensal</button>
+        <button type="button" class="period-btn" data-period="trimestral">Trimestral</button>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <h2>Reciclagem por bairro</h2>
+        <ul>
+          <li><span>Centro</span><strong>420 kg</strong></li>
+          <li><span>Nova Esperança</span><strong>360 kg</strong></li>
+          <li><span>Jardim Verde</span><strong>290 kg</strong></li>
+          <li><span>Industrial</span><strong>170 kg</strong></li>
+        </ul>
+      </article>
+      <article class="stat-card">
+        <h2>Materiais reciclados</h2>
+        <ul>
+          <li><span>Plástico</span><strong>200 kg</strong></li>
+          <li><span>Papel</span><strong>67 kg</strong></li>
+          <li><span>Vidro</span><strong>250 kg</strong></li>
+          <li><span>Metal</span><strong>300 kg</strong></li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="chart-panel">
+      <div class="chart-card">
+        <div class="chart-header">
+          <h2>Material Reciclado</h2>
+          <div class="chart-meta">
+            <span>Total reciclado: 25kgs</span>
+            <span>EcoPontos Recebidos: 765</span>
+          </div>
+        </div>
+
+        <div class="bar-chart">
+          <div class="y-axis">
+            <span>4</span>
+            <span>3</span>
+            <span>2</span>
+            <span>1</span>
+            <span>0</span>
+          </div>
+          <div class="bars-grid">
+            <div class="bar-item">
+              <span class="bar" style="height: 40%;"><span class="bar-value">1.4 kg</span></span>
+              <strong>Dom</strong>
+            </div>
+            <div class="bar-item">
+              <span class="bar" style="height: 60%;"><span class="bar-value">2.5 kg</span></span>
+              <strong>Seg</strong>
+            </div>
+            <div class="bar-item">
+              <span class="bar" style="height: 68%;"><span class="bar-value">3.0 kg</span></span>
+              <strong>Ter</strong>
+            </div>
+            <div class="bar-item">
+              <span class="bar" style="height: 52%;"><span class="bar-value">1.9 kg</span></span>
+              <strong>Qua</strong>
+            </div>
+            <div class="bar-item">
+              <span class="bar" style="height: 72%;"><span class="bar-value">3.8 kg</span></span>
+              <strong>Qui</strong>
+            </div>
+            <div class="bar-item">
+              <span class="bar" style="height: 50%;"><span class="bar-value">2.0 kg</span></span>
+              <strong>Sex</strong>
+            </div>
+            <div class="bar-item">
+              <span class="bar" style="height: 58%;"><span class="bar-value">2.4 kg</span></span>
+              <strong>Sáb</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-legend">
+          <span><span class="legend-dot"></span><strong>Kg Reciclados</strong><span class="legend-value">25 kg</span></span>
+          <span><span class="legend-dot"></span><strong>Total reciclado</strong><span class="legend-value">25 kg</span></span>
+          <span><span class="legend-dot"></span><strong>EcoPontos</strong><span class="legend-value">765</span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom-panel">
+      <article class="highlight-card">
+        <div class="section-title"><span class="marker">📍</span> Rua Das Palmeiras</div>
+        <div class="profile-pill">
+          <img src="Imagens/icons pessoa.png" alt="Perfil">
+          <div class="profile-info">
+            <strong>Marília Silva</strong>
+            <span>Coletora destaque da semana</span>
+          </div>
+        </div>
+      </article>
+      <article class="generate-card">
+        <h2>Gere aqui o seu relatório semanal e acompanhe suas contribuições ao longo da semana.</h2>
+        <p>Descubra o impacto ambiental das suas ações e compartilhe seus resultados com sua comunidade.</p>
+        <button class="generate-btn">Gerar Relatório</button>
+      </article>
+    </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-info">
+        <h4>Institucional</h4>
+        <p><img src="Imagens/icons pessoa.png" class="icon"> Universidade Faculdade Paraíso</p>
+        <p><img src="Imagens/cnpj..png" class="icon"> CNPJ: 00.000.000/0000-00</p>
+      </div>
+
+      <div class="footer-logo">
+        <img src="Imagens/logo preta.png" alt="EcoColeta">
+      </div>
+
+      <div class="footer-contato">
+        <h4>Contato</h4>
+        <p><img src="Imagens/telefone-.png" class="icon"> (88) 90000-0000</p>
+        <p><img src="Imagens/o-email 1.png" class="icon"> ecocoleta@gmail.com</p>
+      </div>
+
+    </div>
+
+    <div class="social">
+      <img src="Imagens/icons facebook.png" alt="Facebook">
+      <img src="Imagens/email.2.png" alt="Email">
+      <img src="Imagens/icons apicativo X.png" alt="X">
+      <img src="Imagens/icons-youtube.png" alt="YouTube">
+      <img src="Imagens/icons-instagram.png" alt="Instagram">
+    </div>
+
+    <div class="footer-copy">
+      <p>©️ 2026 Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <script src="home.js"></script>
+  <script>
+    const periodButtons = document.querySelectorAll('.period-btn');
+    const barItems = document.querySelectorAll('.bar-item .bar');
+    const chartMeta = document.querySelector('.chart-meta');
+    const legendValues = document.querySelectorAll('.chart-legend .legend-value');
+    const generateReportBtn = document.querySelector('.generate-btn');
+
+    const chartData = {
+      diario: {
+        totalReciclado: '25 kg',
+        ecoPontos: '765',
+        bars: [3, 4, 4, 3, 5, 3, 3]
+      },
+      semanal: {
+        totalReciclado: '175 kg',
+        ecoPontos: '4.230',
+        bars: [25, 23, 28, 24, 26, 22, 27]
+      },
+      mensal: {
+        totalReciclado: '680 kg',
+        ecoPontos: '17.520',
+        bars: [95, 100, 98, 92, 105, 90, 100]
+      },
+      trimestral: {
+        totalReciclado: '1.980 kg',
+        ecoPontos: '52.300',
+        bars: [290, 310, 300, 280, 305, 295, 200]
+      }
+    };
+
+    function updateChart(periodKey) {
+      const period = chartData[periodKey];
+      if (!period) return;
+
+      chartMeta.innerHTML = `
+        <span>Total reciclado: ${period.totalReciclado}</span>
+        <span>EcoPontos Recebidos: ${period.ecoPontos}</span>
+      `;
+
+      const maxBarValue = Math.max(...period.bars, 1);
+
+      barItems.forEach((bar, index) => {
+        const value = period.bars[index] || 0;
+        const height = Math.max(40, Math.round((value / maxBarValue) * 100));
+        bar.style.height = `${height}%`;
+        bar.style.minHeight = '40px';
+        bar.innerHTML = `<span class="bar-value">${value} kg</span>`;
+      });
+
+      if (legendValues.length >= 3) {
+        const totalKg = period.bars.reduce((sum, item) => sum + item, 0);
+        legendValues[0].textContent = `${totalKg} kg`;
+        legendValues[1].textContent = `${period.totalReciclado}`;
+        legendValues[2].textContent = `${period.ecoPontos}`;
+      }
+    }
+
+    periodButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        periodButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        updateChart(button.dataset.period);
+      });
+    });
+
+    if (generateReportBtn) {
+      generateReportBtn.addEventListener('click', () => {
+        window.location.href = 'relatorio-semanal.html';
+      });
+    }
+
+    updateChart('diario');
+
+    // Preencher dados do usuário na seção de destaque
+    const userName = localStorage.getItem('userName') || 'Usuário';
+    const userRua = localStorage.getItem('userRua') || 'Rua Das Palmeiras';
+    const userBairro = localStorage.getItem('userBairro') || '';
+    const userFoto = localStorage.getItem('userFoto') || 'Imagens/icons pessoa.png';
+
+    const profileImg = document.querySelector('.profile-pill img');
+    const profileName = document.querySelector('.profile-pill .profile-info strong');
+    const sectionTitle = document.querySelector('.highlight-card .section-title');
+
+    if (profileImg) {
+      profileImg.src = userFoto;
+    }
+
+    if (profileName) {
+      profileName.textContent = userName;
+    }
+
+    let userLocation = userRua;
+    if (userBairro) {
+      userLocation += ` - ${userBairro}`;
+    }
+
+    if (sectionTitle) {
+      sectionTitle.innerHTML = `<span class="marker">📍</span> ${userLocation.toUpperCase()}`;
+    }
+  </script>
+</body>
+</html>

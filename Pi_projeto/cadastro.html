@@ -3,31 +3,333 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro - EcoColeta</title>  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">  <link rel="stylesheet" href="premios.css">
+  <title>Cadastro - EcoColeta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="premios.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="notif-popup.css">
+  <style>
+    .auth .container {
+      background: rgba(255, 255, 255, 0.98);
+      padding: 40px 32px;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+
+    .auth .container h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1E3A8A;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .auth .container .subtitle {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 32px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1E3A8A;
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .auth input {
+      width: 100%;
+      padding: 14px 16px;
+      margin: 0;
+      border-radius: 12px;
+      border: 1.5px solid #e2e8f0;
+      outline: none;
+      font-size: 15px;
+      font-family: 'Sora', sans-serif;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .auth input::placeholder {
+      color: #94a3b8;
+      font-weight: 400;
+    }
+
+    .auth input:focus {
+      border-color: #2E7D32;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+    }
+
+    .auth input:hover:not(:focus) {
+      border-color: #cbd5e1;
+    }
+
+    .auth input.input-error {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.02);
+    }
+
+    .auth input.input-error:focus {
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+
+    .field-error {
+      color: #ef4444;
+      font-size: 12px;
+      margin-top: 6px;
+      text-align: left;
+      display: block;
+      min-height: 18px;
+      font-weight: 500;
+    }
+
+    .form-actions {
+      margin-top: 24px;
+      margin-bottom: 20px;
+    }
+
+    .link {
+      color: #2E7D32;
+      font-size: 13px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      display: inline-block;
+      margin-top: 16px;
+    }
+
+    .link:hover {
+      color: #1B5E20;
+      text-decoration: underline;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin-top: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .btn-verde {
+      background: linear-gradient(135deg, #8FFFC7 0%, #7fd9b5 100%);
+      color: #0f2c21;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(143, 255, 199, 0.3);
+    }
+
+    .btn-verde:hover {
+      box-shadow: 0 8px 25px rgba(143, 255, 199, 0.4);
+    }
+
+    .auth .logo-container {
+      margin-bottom: 20px;
+    }
+
+    .auth .logo-container img {
+      width: 140px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .login-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .login-modal-overlay.active {
+      display: flex;
+    }
+
+    .login-modal {
+      width: 100%;
+      max-width: 400px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      text-align: left;
+      animation: slideUp 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 16px;
+    }
+
+    .login-modal-header h3 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1E3A8A;
+      letter-spacing: -0.3px;
+    }
+
+    .close-login-modal {
+      background: transparent;
+      border: none;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      color: #94a3b8;
+      transition: all 0.2s ease;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-login-modal:hover {
+      color: #1E3A8A;
+      background: rgba(30, 58, 138, 0.05);
+      border-radius: 8px;
+    }
+
+    .login-modal p {
+      color: #475569;
+      margin: 0 0 24px 0;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    #continueRegister {
+      margin-top: 0;
+    }
+
+    @media (max-width: 480px) {
+      .auth .container {
+        padding: 32px 24px;
+        max-width: 100%;
+      }
+
+      .auth .container h2 {
+        font-size: 24px;
+      }
+
+      button {
+        padding: 13px 16px;
+        font-size: 14px;
+      }
+
+      .auth input {
+        padding: 13px 16px;
+        font-size: 14px;
+      }
+
+      .login-modal {
+        padding: 24px;
+      }
+
+      .login-modal-header h3 {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 
 <body class="auth cadastro">
 
-  <img src="Imagens/logo telas.png" class="logo">
+  <div class="auth logo-container">
+    <img src="Imagens/logo telas.png" alt="EcoColeta Logo">
+  </div>
 
   <div class="container">
     <h2>Criar Conta</h2>
+    <p class="subtitle">Junte-se a nós e comece a reciclar</p>
 
-    <input id="registerName" type="text" placeholder="Digite seu nome">
-    <span class="field-error" id="nameError"></span>
-    <input id="registerEmail" type="email" placeholder="Digite seu e-mail">
-    <span class="field-error" id="emailError"></span>
-    <input id="registerPassword" type="password" placeholder="Digite sua senha">
-    <span class="field-error" id="passwordError"></span>
-    <input id="registerConfirm" type="password" placeholder="Confirme sua senha">
-    <span class="field-error" id="confirmError"></span>
+    <div class="form-group">
+      <label for="registerName">Nome completo</label>
+      <input id="registerName" type="text" placeholder="Seu nome">
+      <span class="field-error" id="nameError"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="registerEmail">E-mail</label>
+      <input id="registerEmail" type="email" placeholder="seu@email.com">
+      <span class="field-error" id="emailError"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="registerPassword">Senha</label>
+      <input id="registerPassword" type="password" placeholder="••••••••">
+      <span class="field-error" id="passwordError"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="registerConfirm">Confirme sua senha</label>
+      <input id="registerConfirm" type="password" placeholder="••••••••">
+      <span class="field-error" id="confirmError"></span>
+    </div>
 
     <button class="btn-verde" type="button" onclick="register()">Criar Conta</button>
 
-    <p class="link"
-      onclick="window.location.href='login.html'">
+    <p class="link" onclick="window.location.href='login.html'">
       Já possui uma conta? Faça login
     </p>
   </div>
@@ -120,6 +422,11 @@
         button.addEventListener('click', () => {
           if (button.id === 'continueRegister') {
             localStorage.setItem('loggedIn', 'true');
+            // Salvar nome e email do usuário
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userEmail', email);
             window.location.href = 'tela-inicia.html';
           } else {
             closeRegisterModal();

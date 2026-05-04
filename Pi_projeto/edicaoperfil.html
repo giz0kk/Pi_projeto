@@ -55,55 +55,40 @@
         </div>
 
         
-        <div class="perfil-form">
-
           <div class="perfil-campo">
             <label>E-mail</label>
-            <input type="email" placeholder="Digite aqui o seu e-mail...">
+            <input id="editEmail" type="email" placeholder="Digite aqui o seu e-mail..." required>
+            <span class="field-error" id="emailError"></span>
           </div>
 
           <div class="perfil-campo">
             <label>Confirmar e-mail</label>
-            <input type="email" placeholder="Confirme seu e-mail...">
+            <input id="editConfirmEmail" type="email" placeholder="Confirme seu e-mail..." required>
+            <span class="field-error" id="confirmEmailError"></span>
           </div>
 
           <div class="perfil-campo">
             <label>Senha</label>
-            <input type="password" placeholder="Digite aqui a sua senha...">
+            <input id="editPassword" type="password" placeholder="Digite aqui a sua senha..." required>
+            <span class="field-error" id="passwordError"></span>
           </div>
 
           <div class="perfil-campo">
             <label>Confirmar senha</label>
-            <input type="password" placeholder="Confirme sua senha...">
+            <input id="editConfirmPassword" type="password" placeholder="Confirme sua senha..." required>
+            <span class="field-error" id="confirmPasswordError"></span>
           </div>
 
-          <div class="perfil-campo">
-            <label>Endereço</label>
-            <input type="text" placeholder="Rua, avenida, travessa...">
-          </div>
+      </div>
+    </div>
+  </div>
 
-          <div class="perfil-campo">
-            <label>Bairro</label>
-            <input type="text" placeholder="Digite o bairro...">
-          </div>
-
-          <div class="perfil-campo">
-            <label>Número</label>
-            <input type="text" placeholder="Digite o número...">
-          </div>
-
-          <div class="perfil-campo">
-            <label>Cidade</label>
-            <input type="text" placeholder="Digite a cidade...">
-          </div>
-
-          <div class="perfil-campo">
-            <label>Complemento</label>
-            <input type="text" placeholder="Apartamento, bloco, referência...">
-          </div>
-
-        </div>
-
+  <div class="save-confirm-overlay hidden" id="saveConfirmOverlay">
+    <div class="save-confirm-dialog">
+      <p>Tem certeza que deseja salvar as alterações?</p>
+      <div class="save-confirm-actions">
+        <button type="button" class="btn-cancel" id="cancelSaveBtn">Cancelar</button>
+        <button type="button" class="btn-editar" id="confirmSaveBtn">Confirmar</button>
       </div>
     </div>
   </div>

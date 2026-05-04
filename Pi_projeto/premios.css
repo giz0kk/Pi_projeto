@@ -4,6 +4,11 @@
   color-scheme: light;
   font-family: 'Sora', sans-serif;
   color: #17212a;
+  --primary: #8FFFC7;
+  --primary-dark: #0f2c21;
+  --primary-light: #C9EDDB;
+  --primary-alt: #d7f7e7;
+  --primary-soft: #edf8f1;
 }
 
 * {
@@ -32,11 +37,12 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 28px;
+  padding: 0 32px;
   gap: 18px;
   position: sticky;
   top: 0;
   z-index: 20;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .nav-left {
@@ -92,22 +98,40 @@ nav {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  color: #25374f;
-  font-size: 0.95rem;
+  color: #0f3f25;
+  font-size: 14px;
   font-weight: 600;
-  padding: 8px 0;
-  transition: color 0.2s ease, transform 0.2s ease;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #0f3f25;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
 }
 
 .menu li a:hover {
-  color: #164f38;
-  transform: translateY(-1px);
+  color: #0f3f25;
+  transform: translateY(-2px);
+}
+
+.menu li a:hover::after {
+  width: 80%;
 }
 
 .menu li a.active,
 .menu li a[aria-current="page"] {
   color: #0f3f25;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 999px;
   padding: 8px 16px;
   box-shadow: inset 0 0 0 1px rgba(47, 143, 131, 0.18);
@@ -184,11 +208,11 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 32px 40px;
-  background: linear-gradient(135deg, #0d6238 0%, #0a4a2a 100%);
-  border: none;
-  box-shadow: 0 20px 60px rgba(13, 98, 56, 0.2);
-  border-radius: 32px;
+  padding: 36px 42px;
+  background: linear-gradient(135deg, rgba(143, 255, 199, 0.22) 0%, rgba(223, 249, 234, 0.85) 35%, #ffffff 100%);
+  border: 1px solid rgba(143, 255, 199, 0.45);
+  box-shadow: 0 24px 60px rgba(15, 44, 33, 0.08);
+  border-radius: 40px;
   overflow: hidden;
   position: relative;
 }
@@ -196,11 +220,11 @@ main {
 .coupon-card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 300px;
-  height: 300px;
-  background: rgba(255, 255, 255, 0.05);
+  top: -35%;
+  right: -5%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle at center, rgba(143, 255, 199, 0.25), transparent 55%);
   border-radius: 50%;
   z-index: 0;
 }
@@ -222,13 +246,13 @@ main {
 .coupon-code {
   margin: 0;
   font-size: 2.8rem;
-  color: #ffffff;
+  color: var(--primary-dark);
   font-weight: 800;
   letter-spacing: -0.02em;
 }
 
 .card-detail .coupon-code {
-  color: #2e7d32;
+  color: var(--primary-dark);
   font-size: 1.8rem;
   line-height: 1.1;
   max-width: 100%;
@@ -240,7 +264,7 @@ main {
 
 .coupon-description {
   margin: 8px 0 0;
-  color: rgba(255, 255, 255, 0.85);
+  color: #4a6154;
   line-height: 1.6;
   font-size: 0.95rem;
   max-width: 520px;
@@ -248,13 +272,13 @@ main {
 
 .coupon-dates {
   margin: 12px 0 0;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.9rem;
+  color: #4a6154;
+  font-size: 0.95rem;
   font-weight: 500;
 }
 
 .date-start {
-  color: #4caf50;
+  color: var(--primary);
   font-weight: 600;
 }
 
@@ -265,15 +289,15 @@ main {
 
 .coupon-button {
   border: none;
-  padding: 14px 32px;
+  padding: 14px 34px;
   border-radius: 999px;
-  background: #ffffff;
-  color: #0d6238;
+  background: linear-gradient(90deg, #c7f3df 0%, #9de9c4 100%);
+  color: #0f2c21;
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+  box-shadow: 0 12px 28px rgba(15, 44, 33, 0.1);
+  transition: all 0.25s ease;
   position: relative;
   z-index: 1;
   white-space: nowrap;
@@ -281,7 +305,8 @@ main {
 
 .coupon-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 14px 32px rgba(15, 44, 33, 0.14);
+  background: #9ce1bb;
 }
 
 
@@ -293,14 +318,14 @@ main {
   padding: 14px 20px;
   border-radius: 999px;
   background: #ffffff;
-  box-shadow: 0 16px 40px rgba(13, 98, 56, 0.15);
-  border: 2px solid rgba(13, 98, 56, 0.08);
+  box-shadow: 0 16px 40px rgba(15, 44, 33, 0.12);
+  border: 2px solid rgba(15, 44, 33, 0.08);
   transition: all 0.3s ease;
 }
 
 .search-box:focus-within {
-  border-color: #0d6238;
-  box-shadow: 0 20px 50px rgba(13, 98, 56, 0.2);
+  border-color: var(--primary-dark);
+  box-shadow: 0 20px 50px rgba(15, 44, 33, 0.18);
 }
 
 .search-box input {
@@ -317,35 +342,35 @@ main {
   height: 44px;
   border: none;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0d6238 0%, #0a4a2a 100%);
+  background: var(--primary-alt);
   color: #ffffff;
   font-size: 16px;
   cursor: pointer;
   display: grid;
   place-items: center;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .search-box button:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 20px rgba(13, 98, 56, 0.3);
+  box-shadow: 0 8px 20px rgba(15, 44, 33, 0.3);
 }
 
 .points-card {
   min-width: 200px;
-  background: linear-gradient(135deg, #ffffff 0%, #f9fbfa 100%);
-  border: 2px solid #0d6238;
+  background: linear-gradient(135deg, #ffffff 0%, #f7fbf8 100%);
+  border: 1px solid rgba(143, 255, 199, 0.4);
   border-radius: 32px;
   padding: 22px 28px;
   display: grid;
   gap: 10px;
   justify-content: end;
-  box-shadow: 0 16px 40px rgba(13, 98, 56, 0.12);
+  box-shadow: 0 16px 40px rgba(15, 44, 33, 0.08);
 }
 
 .points-card span {
   font-size: 12px;
-  color: #0d6238;
+  color: var(--primary-dark);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 700;
@@ -353,7 +378,7 @@ main {
 
 .points-card strong {
   font-size: 2.8rem;
-  color: #0d6238;
+  color: var(--primary-dark);
   line-height: 1;
   font-weight: 800;
 }
@@ -398,28 +423,26 @@ main {
   z-index: 1;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 1px solid rgba(13, 98, 56, 0.06);
+  border: 1px solid rgba(143, 255, 199, 0.14);
 }
 
 .card:hover {
   z-index: 100;
-  box-shadow: 0 28px 60px rgba(13, 98, 56, 0.15);
+  box-shadow: 0 28px 60px rgba(143, 255, 199, 0.18);
   transform: translateY(-8px);
-  border-color: rgba(13, 98, 56, 0.15);
+  border-color: rgba(143, 255, 199, 0.2);
 }
 
 .card-icon {
   width: 56px;
   height: 56px;
-  margin: 0 auto;
-  border-radius: 16px;
-  background: #e7eaf1;
+  display: none;
 }
 
 .card-title {
   margin: 10px 0 5px;
   font-size: 18px;
-  color: #0d5838;
+  color: var(--primary-dark);
   font-weight: 700;
 }
 
@@ -428,11 +451,11 @@ main {
   font-size: 15px;
   font-weight: 700;
   color: #ffffff;
-  background: linear-gradient(135deg, #1a8a4a 0%, #0f6838 100%);
+  background: linear-gradient(135deg, #a8e6c9 0%, #7dd4a8 100%);
   padding: 8px 16px;
   border-radius: 20px;
   display: inline-block;
-  box-shadow: 0 8px 20px rgba(26, 138, 74, 0.2);
+  box-shadow: 0 8px 18px rgba(15, 44, 33, 0.1);
 }
 
 .card-detail {
@@ -444,10 +467,10 @@ main {
   width: min(380px, calc(100vw - 80px));
   min-width: 280px;
   background: linear-gradient(135deg, #ffffff 0%, #f8fbf9 100%);
-  border: 2px solid #1a8a4a;
+  border: 2px solid var(--primary-alt);
   border-radius: 32px;
   padding: 32px 28px;
-  box-shadow: 0 40px 100px rgba(26, 138, 74, 0.3);
+  box-shadow: 0 40px 100px rgba(143, 255, 199, 0.3);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -479,7 +502,7 @@ main {
 
 .coupon-date-start,
 .date-start {
-  color: #4caf50 !important;
+  color: var(--primary) !important;
 }
 
 .coupon-date-end,
@@ -565,14 +588,14 @@ main {
   margin: 0;
   font-size: 1.4rem;
   font-weight: 800;
-  color: #197b30;
+  color: var(--primary-dark);
 }
 
 .detail-badge {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #197b30;
+  color: var(--primary-dark);
 }
 
 .detail-text {
@@ -590,7 +613,7 @@ main {
   background: #f5faf5;
   border-radius: 18px;
   padding: 16px;
-  border: 1px solid rgba(13, 98, 56, 0.12);
+  border: 1px solid rgba(143, 255, 199, 0.2);
 }
 
 .detail-meta div {
@@ -608,7 +631,7 @@ main {
 
 .detail-meta strong {
   font-size: 0.95rem;
-  color: #197b30;
+  color: var(--primary-dark);
 }
 
 .card-description {
@@ -622,20 +645,20 @@ main {
   display: inline-flex;
   padding: 12px 20px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #1a8a4a 0%, #0f6838 100%);
+  background: linear-gradient(135deg, #c9f3df 0%, #a5edce 100%);
   color: #ffffff;
   font-weight: 700;
   font-size: 0.95rem;
   width: fit-content;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 25px rgba(26, 138, 74, 0.2);
+  transition: all 0.25s ease;
+  box-shadow: 0 10px 25px rgba(15, 44, 33, 0.08);
 }
 
 .badge:hover:not(.resgatado) {
   transform: translateY(-2px);
-  box-shadow: 0 14px 35px rgba(26, 138, 74, 0.3);
+  box-shadow: 0 14px 35px rgba(15, 44, 33, 0.12);
 }
 
 .resgatado {
@@ -655,7 +678,7 @@ main {
 .search-feedback {
   margin-top: 12px;
   font-size: 0.95rem;
-  color: #2f5b33;
+  color: var(--primary-dark);
 }
 
 .search-feedback.error {
@@ -663,25 +686,26 @@ main {
 }
 
 .search-feedback.success {
-  color: #0f5e32;
+  color: var(--primary-dark);
 }
 
 .card button {
-  background: #1c7c3f;
-  color: #fff;
+  background: #bceacf;
+  color: #0f2c21;
   border: none;
   padding: 8px 18px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 13px;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
   margin: 0 auto;
   display: inline-flex;
   align-items: center;
 }
 
 .card button:hover {
-  background: #166634;
+  background: #9ce1bb;
+  transform: translateY(-1px);
 }
 
 .cta {
@@ -696,18 +720,18 @@ main {
   border: none;
   border-radius: 999px;
   padding: 16px 0;
-  background: linear-gradient(90deg, #2fc06e 0%, #0d8442 100%);
-  color: #ffffff;
+  background: linear-gradient(90deg, #c7f3df 0%, #9de9c4 100%);
+  color: #0f2c21;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 16px 28px rgba(13, 98, 56, 0.16);
+  box-shadow: 0 16px 28px rgba(15, 44, 33, 0.08);
 }
 
 .footer {
   background: linear-gradient(180deg, #c9eddb 0%, #8fffc7 100%);
   padding: 100px 24px 30px;
-  border-top: 3px solid #4dbb72;
+  border-top: 3px solid var(--primary);
   position: relative;
 }
 
@@ -733,7 +757,7 @@ main {
 .footer-info h4,
 .footer-contato h4 {
   margin-bottom: 14px;
-  color: #0d6b38;
+  color: var(--primary-dark);
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -785,7 +809,7 @@ main {
   text-align: center;
   font-size: 13px;
   margin-top: 10px;
-  color: #284027;
+  color: var(--primary-dark);
   width: 100%;
 }
 
@@ -895,7 +919,7 @@ main {
 .resgate-title,
 .resgatado-title {
   margin: 0 0 10px 0;
-  color: #1a8a4a;
+  color: var(--primary-dark);
   font-size: 24px;
   font-weight: 700;
   max-width: 100%;
@@ -924,7 +948,7 @@ main {
 
 .resgate-dates .date-start,
 .resgatado-dates .date-start {
-  color: #4caf50;
+  color: var(--primary);
   font-weight: 700;
 }
 
@@ -941,7 +965,7 @@ main {
 
 .resgate-content h3 {
   margin: 0 0 20px 0;
-  color: #2e7d32;
+  color: var(--primary-dark);
   font-size: 28px;
   font-weight: 600;
 }
@@ -968,7 +992,7 @@ main {
 }
 
 .resgate-ok {
-  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  background: linear-gradient(135deg, var(--primary-alt) 0%, var(--primary) 100%);
   color: white;
   border: none;
   padding: 14px 32px;
@@ -981,9 +1005,9 @@ main {
 }
 
 .resgate-ok:hover {
-  background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-alt) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 8px 20px rgba(143, 255, 199, 0.3);
 }
 
 /* Resgatado Popup Styles */
@@ -1050,7 +1074,7 @@ main {
 
 .resgatado-title {
   margin: 0 0 8px 0;
-  color: #2e7d32;
+  color: var(--primary-dark);
   font-size: 24px;
   font-weight: 700;
 }
@@ -1062,7 +1086,7 @@ main {
 }
 
 .resgatado-dates .date-start {
-  color: #4caf50;
+  color: var(--primary);
   font-weight: 600;
 }
 
@@ -1074,12 +1098,12 @@ main {
 .resgatado-icon {
   font-size: 56px;
   margin-bottom: 20px;
-  color: #4caf50;
+  color: var(--primary);
 }
 
 .resgatado-content h3 {
   margin: 0 0 20px 0;
-  color: #2e7d32;
+  color: var(--primary-dark);
   font-size: 28px;
   font-weight: 600;
 }
@@ -1093,14 +1117,14 @@ main {
 
 .resgatado-codigo {
   background: #f5f5f5;
-  border: 2px dashed #4caf50;
+  border: 2px dashed var(--primary);
   border-radius: 8px;
   padding: 16px;
   margin: 20px 0;
   font-family: 'Courier New', monospace;
   font-size: 18px;
   font-weight: bold;
-  color: #2e7d32;
+  color: var(--primary-dark);
   letter-spacing: 2px;
 }
 
@@ -1118,7 +1142,7 @@ main {
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: #69b34e #eef6ed;
+  scrollbar-color: var(--primary-alt) #eef6ed;
 }
 
 body {
@@ -1136,13 +1160,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #69b34e;
+  background: var(--primary-alt);
   border-radius: 999px;
   border: 3px solid #eef6ed;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4c923d;
+  background: var(--primary);
 }
 
 ::-webkit-scrollbar-corner {
