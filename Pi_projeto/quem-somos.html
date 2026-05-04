@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoColeta - Quem Somos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="quem-somos.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="notif-popup.css">
+  <script>
+  if (!localStorage.getItem('loggedIn')) {
+    window.location.href = 'login.html';
+  }
+  </script>
+</head>
+
+<body class="app quem-somos">
+
+    <header class="topo">
+  <div class="nav-left">
+    <a href="tela-inicia.html" class="logo-link">
+      <img src="Imagens/logo.2.png" alt="EcoColeta">
+    </a>
+    <nav>
+      <ul class="menu">
+        <li><a href="tela-inicia.html">Home</a></li>
+        <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+        <li><a href="como-funciona.html">Como Funciona</a></li>
+        <li><a href="ecopontos.html">EcoPontos</a></li>
+        <li><a href="premios-disponiveis.html">Prêmios</a></li>
+        <li><a href="educacao-ambiental.html">Educação</a></li>
+        <li><a href="quem-somos.html">Quem Somos</a></li>
+        <li><a href="Ranking.html">Ranking</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="icones">
+    <div class="notif-wrapper">
+      <button class="notif-btn" aria-label="Notificações">
+          <img src="Imagens/icon notificacao.png" alt="Notificações" class="icon">
+      </button>
+      <div class="notif-overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="perfil.html">
+      <img src="Imagens/icons pessoa.png" alt="Perfil">
+    </a>
+  </div>
+</header>
+
+<script src="notif-popup.js"></script>
+
+
+  <!-- Seção de Apresentação -->
+  <section class="quem-somos-hero">
+    <div class="hero-decorative-elements">
+      <div class="hero-blob hero-blob-1"></div>
+      <div class="hero-blob hero-blob-2"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-badge">Sobre EcoColeta</span>
+      <h1>Transformando o Futuro com Sustentabilidade</h1>
+      <p>Conheça a missão que guia cada ação de nosso time dedicado</p>
+    </div>
+  </section>
+
+  <main class="conteudo-quem-somos">
+    
+    <!-- Seção Nossa História -->
+    <section class="nossa-historia">
+      <div class="historia-content">
+        <div class="historia-texto">
+          <h2>Nossa Jornada pela Sustentabilidade</h2>
+          <p>A EcoColeta nasceu de uma visão compartilhada: transformar a forma como a sociedade lida com seus resíduos. Criada por um grupo de profissionais apaixonados por sustentabilidade ambiental, nossa plataforma conecta indivíduos, comunidades e empresas em torno de um objetivo fundamental: cuidar do nosso planeta.</p>
+          <p>Desde o nosso lançamento, trabalhamos incansavelmente para criar soluções inovadoras que tornem a reciclagem acessível, recompensadora e genuinamente significativa. Acreditamos que cada pequeno gesto conta quando se trata de proteger o meio ambiente para as gerações futuras.</p>
+        </div>
+        <div class="historia-imagem">
+          <div class="placeholder-img">
+            <img src="Imagens/logo.2.png" alt="Logo EcoColeta" style="max-width: 300px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Missão, Visão e Valores -->
+    <section class="missao-visao-valores">
+      <h2 class="section-title">Missão, Visão e Valores</h2>
+      <div class="mvv-grid">
+        <div class="mvv-card missao">
+          <div class="mvv-icon">🎯</div>
+          <h3>Nossa Missão</h3>
+          <p>Facilitar o acesso à reciclagem responsável e engajar as pessoas através de incentivos significativos, promovendo uma cultura sólida de sustentabilidade e responsabilidade ambiental em toda a comunidade.</p>
+        </div>
+        
+        <div class="mvv-card visao">
+          <div class="mvv-icon">🌍</div>
+          <h3>Nossa Visão</h3>
+          <p>Ser a plataforma líder em soluções de reciclagem participativa no Brasil, criando um futuro onde a sustentabilidade é uma prática comum, acessível e integrada ao dia a dia de todos.</p>
+        </div>
+        
+        <div class="mvv-card valores">
+          <div class="mvv-icon">💚</div>
+          <h3>Nossos Valores</h3>
+          <p><strong>Sustentabilidade:</strong> Comprometimento genuíno com o planeta. <strong>Inovação:</strong> Busca contínua por soluções disruptivas. <strong>Inclusão:</strong> Acessibilidade para todos. <strong>Transparência:</strong> Comunicação clara e honesta.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Nossa Equipe -->
+    <section class="nossa-equipe">
+      <h2 class="section-title">Conheça Nossa Equipe</h2>
+      <p class="equipe-intro">Profissionais dedicados e apaixonados pela missão de transformar a sustentabilidade em uma realidade tangível e acessível para todos.</p>
+      
+      <div class="equipe-grid">
+        <div class="team-member">
+          <div class="member-avatar">
+            <img src="Imagens/icons pessoa.png" alt="João Silva">
+          </div>
+          <h4>João Silva</h4>
+          <p class="cargo">Fundador & CEO</p>
+          <p class="descricao">Visionário com 15 anos de experiência em sustentabilidade ambiental e inovação em tecnologia verde.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="member-avatar">
+            <img src="Imagens/icons pessoa.png" alt="Maria Santos">
+          </div>
+          <h4>Maria Santos</h4>
+          <p class="cargo">Diretora de Operações</p>
+          <p class="descricao">Especialista em logística reversa e gerenciamento inovador de resíduos com certificações internacionais.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="member-avatar">
+            <img src="Imagens/icons pessoa.png" alt="Carlos Oliveira">
+          </div>
+          <h4>Carlos Oliveira</h4>
+          <p class="cargo">Diretor de Tecnologia</p>
+          <p class="descricao">Desenvolvedor experiente apaixonado por criar soluções tecnológicas inovadoras e escaláveis.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="member-avatar">
+            <img src="Imagens/icons pessoa.png" alt="Ana Costa">
+          </div>
+          <h4>Ana Costa</h4>
+          <p class="cargo">Coordenadora de Parcerias</p>
+          <p class="descricao">Estrategista em relacionamento corporativo, conectando comunidades, empresas e governos pelo bem comum.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="member-avatar">
+            <img src="Imagens/icons pessoa.png" alt="Lucas Ferreira">
+          </div>
+          <h4>Lucas Ferreira</h4>
+          <p class="cargo">Desenvolvedor Full Stack</p>
+          <p class="descricao">Especialista em arquitetura de sistemas e desenvolvimento backend, com foco em performance e escalabilidade.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="member-avatar">
+            <img src="Imagens/icons pessoa.png" alt="Beatriz Mendes">
+          </div>
+          <h4>Beatriz Mendes</h4>
+          <p class="cargo">Desenvolvedora Frontend</p>
+          <p class="descricao">Criadora de interfaces intuitivas e responsivas, com expertise em UX/UI e animações web modernas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Impacto -->
+    <section class="impacto-section">
+      <h2 class="section-title">Nosso Impacto Global</h2>
+      <div class="impacto-stats">
+        <div class="stat-box">
+          <h3 class="stat-number">250+</h3>
+          <p class="stat-label">Ecopontos Cadastrados</p>
+        </div>
+        <div class="stat-box">
+          <h3 class="stat-number">15K+</h3>
+          <p class="stat-label">Usuários Ativos</p>
+        </div>
+        <div class="stat-box">
+          <h3 class="stat-number">500+</h3>
+          <p class="stat-label">Toneladas Recicladas</p>
+        </div>
+        <div class="stat-box">
+          <h3 class="stat-number">50+</h3>
+          <p class="stat-label">Parcerias Ativas</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-info">
+      <h4>Institucional</h4>
+      <p><img src="Imagens/icons pessoa.png" class="icon"> Universidade Faculdade Paraíso</p>
+      <p><img src="Imagens/cnpj..png" class="icon"> CNPJ: 00.000.000/0000-00</p>
+    </div>
+
+    <div class="footer-logo">
+      <img src="Imagens/logo preta.png" alt="EcoColeta">
+    </div>
+
+    <div class="footer-contato">
+      <h4>Contato</h4>
+      <p><img src="Imagens/telefone-.png" class="icon"> (88) 90000-0000</p>
+      <p><img src="Imagens/o-email 1.png" class="icon"> ecocoleta@gmail.com</p>
+    </div>
+
+  </div>
+
+  <div class="social">
+    <img src="Imagens/icons facebook.png">
+    <img src="Imagens/email.2.png">
+    <img src="Imagens/icons apicativo X.png">
+    <img src="Imagens/icons-youtube.png">
+    <img src="Imagens/icons-instagram.png">
+  </div>
+
+  <div class="footer-copy">
+    <p>©️ 2026 Todos os direitos reservados</p>
+  </div>
+</footer>
+
+<script src="notif-popup.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Perfil</title>  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">  <link rel="stylesheet" href="edicaoperfil.css">
+  <link rel="stylesheet" href="notif-popup.css">
+  <script>
+  if (!localStorage.getItem('loggedIn')) {
+    window.location.href = 'login.html';
+  }
+  </script>
+</head>
+
+<body class="app editar-perfil">
+
+  <div class="modal-overlay">
+    <div class="modal">
+      <div class="perfil-container">
+
+        <div class="perfil-header">
+          <div>
+            <span class="page-label">Perfil</span>
+            <h1 class="perfil-titulo">Editar perfil</h1>
+            <p class="perfil-subtitulo">Atualize seus dados de acesso e mantenha seu perfil seguro e alinhado com a sua conta.</p>
+          </div>
+          <button type="button" class="close-modal" onclick="fecharModal()">×</button>
+        </div>
+
+        <div class="perfil-topo">
+
+          <div class="perfil-info">
+
+            <div class="foto-box">
+              <img src="Imagens/mulher.png" class="foto-perfil">
+              <img src="Imagens/image.png" class="icone-camera">
+
+               <input type="file" id="fileInput" accept="image/*" hidden>
+            </div>
+
+            <div class="nome-com-lapis">
+              <span class="nome">Beatriz Helena</span>
+
+              <div class="lapis">
+                <img src="Imagens/lapis.png" alt="Editar nome">
+              </div>
+            </div>
+
+          </div>
+        
+        <button type="button" class="perfil-botao" onclick="confirmarPerfil()">
+      Confirmar
+    </button>
+
+        </div>
+
+        
+          <div class="perfil-campo">
+            <label>E-mail</label>
+            <input id="editEmail" type="email" placeholder="Digite aqui o seu e-mail..." required>
+            <span class="field-error" id="emailError"></span>
+          </div>
+
+          <div class="perfil-campo">
+            <label>Confirmar e-mail</label>
+            <input id="editConfirmEmail" type="email" placeholder="Confirme seu e-mail..." required>
+            <span class="field-error" id="confirmEmailError"></span>
+          </div>
+
+          <div class="perfil-campo">
+            <label>Senha</label>
+            <input id="editPassword" type="password" placeholder="Digite aqui a sua senha..." required>
+            <span class="field-error" id="passwordError"></span>
+          </div>
+
+          <div class="perfil-campo">
+            <label>Confirmar senha</label>
+            <input id="editConfirmPassword" type="password" placeholder="Confirme sua senha..." required>
+            <span class="field-error" id="confirmPasswordError"></span>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="save-confirm-overlay hidden" id="saveConfirmOverlay">
+    <div class="save-confirm-dialog">
+      <p>Tem certeza que deseja salvar as alterações?</p>
+      <div class="save-confirm-actions">
+        <button type="button" class="btn-cancel" id="cancelSaveBtn">Cancelar</button>
+        <button type="button" class="btn-editar" id="confirmSaveBtn">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+ <script src="edicaoperfil.js"></script>
+ <script>
+ function fecharModal() {
+   window.history.back();
+ }
+ </script>
+</body>
+</html>

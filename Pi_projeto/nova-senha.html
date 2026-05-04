@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Senha - EcoColeta</title>  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">  <link rel="stylesheet" href="premios.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="notif-popup.css">
+</head>
+
+<body class="auth nova-senha">
+
+  <img src="Imagens/logo telas.png" alt="Logo" class="logo">
+
+  <div class="container">
+
+    <h2>Defina sua nova senha</h2>
+
+    <p class="subtitulo">Crie uma nova senha</p>
+
+    <input id="newPassword" type="password" placeholder="Nova senha">
+    <span class="field-error" id="newPasswordError"></span>
+
+    <div class="regras-senha">
+      <p>• Pelo menos uma letra minúscula</p>
+      <p>• Pelo menos uma letra maiúscula</p>
+      <p>• Entre 8 e 16 caracteres</p>
+      <p>• Use letras, números e pontuação comum</p>
+    </div>
+
+    <button class="btn-verde" type="button" onclick="saveNewPassword()">Continuar</button>
+
+  </div>
+
+  <script>
+    function showError(inputId, errorId, message) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById(errorId);
+      if (input) input.classList.add('input-error');
+      if (error) error.textContent = message;
+    }
+
+    function clearErrors() {
+      const input = document.getElementById('newPassword');
+      if (input) input.classList.remove('input-error');
+      const error = document.getElementById('newPasswordError');
+      if (error) error.textContent = '';
+    }
+
+    function saveNewPassword() {
+      clearErrors();
+      const password = document.getElementById('newPassword').value.trim();
+      const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
+      const verified = sessionStorage.getItem('resetVerified');
+
+      if (verified !== 'true') {
+        window.location.href = 'recuperar.html';
+        return;
+      }
+
+      if (!password) {
+        showError('newPassword', 'newPasswordError', 'Digite a nova senha.');
+        return;
+      }
+
+      if (!passwordPattern.test(password)) {
+        showError('newPassword', 'newPasswordError', 'Senha inválida. Use 8-16 caracteres, com letras maiúsculas e minúsculas.');
+        return;
+      }
+
+      sessionStorage.removeItem('resetCode');
+      sessionStorage.removeItem('resetVerified');
+      localStorage.setItem('loggedIn', 'true');
+      window.location.href = 'senha-criada.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const verified = sessionStorage.getItem('resetVerified');
+      if (verified !== 'true') {
+        window.location.href = 'recuperar.html';
+      }
+    });
+  </script>
+</body>
+</html>

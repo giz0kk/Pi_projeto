@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="notif-popup.css">
+</head>
+<body>
+    <div class="notif-wrapper">
+        <button class="notif-btn" aria-label="Notificações">
+            <img src="Imagens/icon notificacao.png" alt="Notificações">
+        </button>
+        <div class="notif-overlay hidden">
+            <div class="notif-box">
+                <div class="header">
+                    <h2>Notificações</h2>
+                    <span class="close-notif" title="Fechar">&times;</span>
+                </div>
+                <div class="section">
+                    <p class="section-title">IMPORTANTE</p>
+                    <div class="item">
+                        <div class="icon green">♻️</div>
+                        <div>
+                            <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                            <span>há 30 minutos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <p class="section-title">MAIS NOTIFICAÇÕES</p>
+                    <div class="item">
+                        <div class="icon yellow">🏆</div>
+                        <div class="content">
+                            <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                            <span>há 3 horas</span>
+                        </div>
+                        <div class="badge">+50 pts</div>
+                    </div>
+                    <div class="item">
+                        <div class="icon purple">📅</div>
+                        <div>
+                            <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                            <span>há 5 horas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="notif-popup.js"></script>
+</body>
+</html>
