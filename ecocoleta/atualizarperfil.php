@@ -119,7 +119,7 @@ if ($resultado) {
     echo "
     <script>
       alert('Perfil atualizado!');
-      window.location.href='edicaoperfil.php';
+      window.location.href='perfil.php';
     </script>
     ";
 } else {
