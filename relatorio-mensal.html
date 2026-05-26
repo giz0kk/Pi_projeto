@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório Mensal | EcoColeta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="relatorio-mensal.css">
+</head>
+<body class="app relatorio-mensal">
+  <main>
+    <div class="content-wrapper">
+      <section class="report-header">
+        <div>
+          <p class="subtitle">Relatório Mensal</p>
+          <h1>Março de 2026</h1>
+        </div>
+        <div class="week-badge">Mês 03</div>
+      </section>
+
+      <section class="report-cards">
+        <article class="report-card">
+          <p>Total reciclado</p>
+          <strong>16,1 kg</strong>
+          <span>(+2,7 kg vs. mês anterior)</span>
+        </article>
+        <article class="report-card">
+          <p>EcoPontos ganhos</p>
+          <strong>32</strong>
+          <span>(+6 pontos)</span>
+        </article>
+        <article class="report-card">
+          <p>Dia mais produtivo</p>
+          <strong>Sexta-feira</strong>
+          <span>3.5kg reciclados</span>
+        </article>
+      </section>
+
+      <section class="weekly-chart-card">
+        <div class="weekly-chart-header">
+          <div>
+            <h2>Kg reciclados por dia</h2>
+          </div>
+          <div class="weekly-target">Meta do mês: <strong>15,0 kg</strong></div>
+        </div>
+
+        <div class="weekly-chart">
+          <div class="y-axis">
+            <span>4</span>
+            <span>3</span>
+            <span>2</span>
+            <span>1</span>
+            <span>0</span>
+          </div>
+          <div class="bars-grid">
+            <div class="bar-item">
+              <span class="day-label">S</span>
+              <div class="bar-area">
+                <span class="bar" style="--bar-height: 29%;">1 kg</span>
+              </div>
+              <span class="date-label">18/03</span>
+            </div>
+            <div class="bar-item green">
+              <span class="day-label">T</span>
+              <div class="bar-area">
+                <span class="bar" style="--bar-height: 57%;">2 kg</span>
+              </div>
+              <span class="date-label">19/03</span>
+            </div>
+            <div class="bar-item">
+              <span class="day-label">Q</span>
+              <div class="bar-area">
+                <span class="bar" style="--bar-height: 80%;">2,8 kg</span>
+              </div>
+              <span class="date-label">20/03</span>
+            </div>
+            <div class="bar-item green">
+              <span class="day-label">Q</span>
+              <div class="bar-area">
+                <span class="bar" style="--bar-height: 71%;">2,5 kg</span>
+              </div>
+              <span class="date-label">21/03</span>
+            </div>
+            <div class="bar-item">
+              <span class="day-label">S</span>
+              <div class="bar-area">
+                <span class="bar" style="--bar-height: 100%;">3,5 kg</span>
+              </div>
+              <span class="date-label">22/03</span>
+            </div>
+            <div class="bar-item green">
+              <span class="day-label">S</span>
+              <div class="bar-area">
+                <span class="bar" style="--bar-height: 51%;">1,8 kg</span>
+              </div>
+              <span class="date-label">23/03</span>
+            </div>
+            <div class="bar-item">
+              <span class="day-label">D</span>
+              <div class="bar-area">
+                <span class="bar" style="--bar-height: 71%;">2,5 kg</span>
+              </div>
+              <span class="date-label">24/03</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="weekly-summary">
+          <span>Total do mês: <strong>16,1 kg</strong></span>
+          <span>Média diária: <strong>2,3 kg</strong></span>
+        </div>
+      </section>
+
+      <section class="daily-details">
+        <h3>Detalhamento por dia</h3>
+        <ul>
+          <li><span>Segunda-feira</span><strong>1 kg</strong></li>
+          <li><span>Terça-feira</span><strong>2 kg</strong></li>
+          <li><span>Quarta-feira</span><strong>2,8 kg</strong></li>
+          <li><span>Quinta-feira</span><strong>2,5 kg</strong></li>
+          <li><span>Sexta-feira <span class="best-day">Melhor dia</span></span><strong>3,5 kg</strong></li>
+          <li><span>Sábado</span><strong>1,8 kg</strong></li>
+          <li><span>Domingo</span><strong>2,5 kg</strong></li>
+        </ul>
+      </section>
+
+      <section class="performance-note">
+        <div>
+          <strong>Desempenho: +20% melhor que o mês passado!</strong>
+          <p>Parabéns você está fazendo a diferença para o meio ambiente</p>
+        </div>
+      </section>
+
+      <section class="report-actions">
+        <a href="#" id="downloadPdfBtn" class="action-btn download-btn">Baixar PDF</a>
+        <a href="#" id="shareReportBtn" class="action-btn share-btn">Compartilhar</a>
+        <a href="pagina-relatorio.html" class="action-btn period-btn">Ver outro período</a>
+      </section>
+
+      <footer class="report-footer">
+        <p>Relatório gerado em 24 de março de 2026 às 18:30 • ecoColeta</p>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const downloadBtn = document.getElementById('downloadPdfBtn');
+      const shareBtn = document.getElementById('shareReportBtn');
+      const shareData = {
+        title: 'Relatório Mensal EcoColeta',
+        text: 'Confira meu relatório mensal no EcoColeta.',
+        url: window.location.href
+      };
+
+      downloadBtn?.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.print();
+      });
+
+      shareBtn?.addEventListener('click', async function(event) {
+        event.preventDefault();
+
+        if (navigator.share) {
+          try {
+            await navigator.share(shareData);
+          } catch (error) {
+            console.log('Compartilhamento cancelado ou não disponível', error);
+          }
+          return;
+        }
+
+        const copyText = shareData.url;
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(copyText);
+            alert('Link do relatório copiado para a área de transferência!');
+            return;
+          } catch (copyError) {
+            console.log('Erro ao copiar para a área de transferência', copyError);
+          }
+        }
+
+        const tempTextarea = document.createElement('textarea');
+        tempTextarea.value = copyText;
+        tempTextarea.style.position = 'fixed';
+        tempTextarea.style.left = '-9999px';
+        document.body.appendChild(tempTextarea);
+        tempTextarea.focus();
+        tempTextarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextarea);
+        alert('Link do relatório copiado para a área de transferência!');
+      });
+    });
+  </script>
+</body>
+</html>

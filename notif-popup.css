@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap');
+
+/* Títulos com fonte premium */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', 'Sora', system-ui, sans-serif;
+  letter-spacing: -0.5px;
+}
+
+/* Header nao pode cortar o dropdown de notificacoes */
+header.topo,
+.topo {
+  overflow: visible !important;
+}
+
+.notif-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  z-index: 10001;
+  overflow: visible;
+}
+
+.notif-btn {
+  cursor: pointer;
+  background: transparent !important;
+  border: none !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: visible;
+  box-sizing: border-box;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Botão do sino preenche o slot fixo do toolbar (.notif-wrapper 44×44) */
+header.topo .icones .notif-wrapper .notif-btn,
+.topo .icones .notif-wrapper .notif-btn {
+  width: 100%;
+  height: 100%;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border-radius: 12px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+header.topo .icones .notif-wrapper .notif-btn:hover,
+header.topo .icones .notif-wrapper .notif-btn:active,
+header.topo .icones .notif-wrapper .notif-btn:focus-visible {
+  transform: none;
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+header.topo .icones .notif-badge {
+  top: 3px;
+  right: 3px;
+}
+
+/* home.css / outros: scale no hover corta PNG dentro do botão */
+header.topo .icones img:hover,
+.topo .icones img:hover {
+  transform: none !important;
+  filter: none !important;
+}
+
+.notif-badge {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.notif-badge.hidden {
+  display: none !important;
+}
+
+.notif-status,
+.notif-empty,
+.notif-error {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #64748b;
+  text-align: center;
+}
+
+.notif-error {
+  color: #b91c1c;
+}
+
+.item[data-unread] {
+  background: rgba(143, 255, 199, 0.12);
+  border-radius: 12px;
+}
+
+.notif-btn img {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.08));
+}
+
+.notif-overlay {
+  position: fixed;
+  z-index: 10002;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  transform: translateY(-8px);
+  width: min(420px, calc(100vw - 24px));
+  max-width: 420px;
+  box-sizing: border-box;
+}
+
+.notif-overlay.show,
+.notif-overlay:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.notif-box {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 20px 64px rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+  max-height: min(420px, calc(100vh - 120px));
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.notif-box .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.notif-box .header h2 {
+  color: #111827;
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+.close-notif {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.04);
+  color: #475569;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.close-notif:hover {
+  background: rgba(15, 23, 42, 0.08);
+  color: #111827;
+}
+
+.section {
+  margin-top: 16px;
+}
+
+.section-title {
+  color: #475569;
+  font-weight: 700;
+  margin-bottom: 12px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 14px 14px 14px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.item .content,
+.item > div:nth-child(2) {
+  flex: 1;
+}
+
+.item p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.item span {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.notif-overlay .icon {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #111827;
+}
+
+.notif-btn img.icon {
+  width: 24px;
+  height: 24px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.green {
+  background: #d9f7e1;
+}
+
+.yellow {
+  background: #fff4ce;
+}
+
+.purple {
+  background: #ece8ff;
+}
+
+.badge {
+  margin-left: auto;
+  background: rgba(99, 102, 241, 0.12);
+  color: #4338ca;
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 520px) {
+  .notif-overlay {
+    width: calc(100vw - 24px) !important;
+    max-width: none !important;
+  }
+
+  .notif-box {
+    padding: 16px;
+  }
+}
+
+/*
+ * Toolbar do header (carregado por último nas páginas do app):
+ * - home.css empilhava .topo em coluna em telas <720px (antes restrito a body:not(.app)).
+ * - Alguns CSS globais usam img { max-width:100% } + hover scale e cortam o sino.
+ */
+body.app header.topo {
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+@media (max-width: 900px) {
+  body.app header.topo {
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+  }
+}
+
+body.app header.topo .icones {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  align-items: center !important;
+  align-self: center !important;
+}
+
+body.app header.topo .icones .notif-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.app header.topo .icones img {
+  max-width: none !important;
+  flex-shrink: 0;
+}
+
+body.app header.topo .icones .notif-btn,
+body.app header.topo .icones .notif-btn:hover {
+  overflow: visible !important;
+}
+
+body.app header.topo .icones .notif-btn img:hover,
+body.app header.topo .icones a img:hover,
+body.app header.topo .icones img:hover {
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Rodape encosta na scrollbar (carregado por ultimo nas paginas do app) */
+html:not(.auth-view),
+body:not(.auth),
+body.app {
+  scrollbar-gutter: auto !important;
+}
+
+body.app > footer.footer,
+body.app footer.footer,
+body.app #ecocoleta-site-footer {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+html:not(.auth-view) ::-webkit-scrollbar-track {
+  background: #d4ede1 !important;
+}
+
+html:not(.auth-view) {
+  scrollbar-color: #8FFFC7 #d4ede1 !important;
+}

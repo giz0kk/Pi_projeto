@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecopontos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="ecopontos.css">
+  <link rel="stylesheet" href="mapa.css?v=10">
+  <link rel="stylesheet" href="header.css?v=7">
+  <link rel="stylesheet" href="footer.css?v=9">
+  <link rel="stylesheet" href="notif-popup.css">
+  <script>
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      corePlugins: { preflight: false },
+      theme: {
+        extend: {
+          fontFamily: {
+            sora: ['Sora', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="pagina-ecopontos">
+
+    <header class="topo">
+  <div class="nav-left">
+    <a href="tela-inicia.html" class="logo-link">
+      <img src="Imagens/logo.2.png" alt="EcoColeta">
+    </a>
+    <nav>
+      <ul class="menu">
+        <li><a href="tela-inicia.html">Home</a></li>
+        <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+        <li><a href="como-funciona.html">Como Funciona</a></li>
+        <li><a href="ecopontos.html">EcoPontos</a></li>
+        <li><a href="premios-disponiveis.html">Prêmios</a></li>
+        <li><a href="educacao-ambiental.html">Educação</a></li>
+        <li><a href="quem-somos.html">Quem Somos</a></li>
+        <li><a href="Ranking.html">Ranking</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="icones">
+    <div class="notif-wrapper">
+      <button type="button" class="notif-btn" aria-label="Notificações">
+          <img src="Imagens/icon notificacao.png" alt="Notificações" class="icon">
+      </button>
+      <div class="notif-overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="perfil.html">
+      <img src="Imagens/icons pessoa.png" alt="Perfil">
+    </a>
+  </div>
+</header>
+
+<script src="header-nav.js?v=9"></script>
+<script src="notif-popup.js?v=3"></script>
+<main>
+  <div class="ecopontos">
+
+    <h2 class="titulo">Ecopontos</h2>
+
+<div class="container ecopontos-container">
+  <div class="mapa-box ecopontos-map-card eco-pontos card">
+    <div class="mapa-main mapa-main--embed">
+      <section class="mapa-toolbar ecopontos-map-controls-hidden" aria-labelledby="mapa-ecopontos-titulo">
+        <h3 id="mapa-ecopontos-titulo" class="mapa-embed-title">Mapa de EcoPontos</h3>
+        <p class="mapa-intro">
+          Veja os pontos de coleta da região, informe seu CEP ou use sua localização para traçar a rota até o ecoponto escolhido.
+        </p>
+
+        <div class="mapa-field mapa-field--cep">
+          <label for="cep-origem">CEP de partida</label>
+          <div class="mapa-cep-row">
+            <input id="cep-origem" class="mapa-input-text" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="Ex.: 63010-000" maxlength="9">
+            <button type="button" id="btn-cep" class="mapa-cep-btn">Usar este CEP</button>
+          </div>
+          <small class="mapa-field-hint">Se não informar um CEP, o mapa mostra todos os ecopontos encontrados.</small>
+        </div>
+
+        <div class="mapa-field">
+          <label for="ecoponto-select">EcoPonto de destino</label>
+          <select id="ecoponto-select"></select>
+        </div>
+
+        <div class="mapa-actions">
+          <button type="button" id="btn-local" class="btn-primary">Usar minha localização</button>
+          <button type="button" id="btn-calcular" class="btn-ghost">Calcular rota</button>
+        </div>
+
+        <p id="mapa-status" class="mapa-status" role="status" aria-live="polite">Carregando ecopontos...</p>
+        <p class="mapa-disclaimer">As rotas e tempos são estimativas calculadas com dados abertos e podem variar conforme trânsito, sinalização e condições da via.</p>
+      </section>
+
+      <div class="mapa-leaflet-wrap">
+        <div id="times-panel" class="times-panel times-panel--overlay hidden">
+          <div id="transport-times-widget"></div>
+        </div>
+        <div id="map" class="mapa-leaflet" role="application" aria-label="Mapa interativo de ecopontos"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lista lista-empty" aria-live="polite">
+  </div>
+</div>
+</main>
+<footer id="ecocoleta-site-footer" class="footer">
+  <div class="footer-container">
+
+    <div class="footer-info">
+      <h4>Institucional</h4>
+      <p><img src="Imagens/icons pessoa.png" class="icon"> Universidade Faculdade Paraíso</p>
+      <p><img src="Imagens/cnpj..png" class="icon"> CNPJ: 00.000.000/0000-00</p>
+    </div>
+
+    <div class="footer-logo">
+      <img src="Imagens/logo preta.png" alt="EcoColeta">
+    </div>
+
+    <div class="footer-contato">
+      <h4>Contato</h4>
+      <p><img src="Imagens/telefone-.png" class="icon"> (88) 90000-0000</p>
+      <p><img src="Imagens/o-email 1.png" class="icon"> ecocoleta@gmail.com</p>
+    </div>
+
+  </div>
+
+  <div class="social">
+    <img src="Imagens/icons facebook.png">
+    <img src="Imagens/email.2.png">
+    <img src="Imagens/icons apicativo X.png">
+    <img src="Imagens/icons-youtube.png">
+    <img src="Imagens/icons-instagram.png">
+  </div>
+
+  <div class="footer-copy">
+    <p>©️ 2026 Todos os direitos reservados</p>
+  </div>
+</footer>
+<script src="footer.js?v=9"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="transport-times-widget.js?v=1"></script>
+<script src="mapa.js?v=11"></script>
+<script src="ecopontos.js"></script>
+</body>
+</html>

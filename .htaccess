@@ -1,0 +1,15 @@
+# Gravar em UTF-8 sem BOM. UTF-16 provoca erro 500: Invalid command '\xff\xfe#'
+# O XAMPP já associa .php ao PHP; não é necessário AddHandler aqui.
+Options -Indexes
+
+DirectoryIndex tela-inicia.html index.html
+
+<FilesMatch "^(conexao\.config\.php|.*\.sql|composer\.(json|lock)|DEPLOY\.md)$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

@@ -1,0 +1,144 @@
+<?php
+/**
+ * Cadastro (etapa 1 de 2) - apenas cria/atualiza linha em `cadastro_pendente`
+ * e envia o codigo de 6 digitos no e-mail. A conta REAL na tabela `usuario`
+ * so e criada em verificar_cadastro.php depois que o usuario digita o codigo.
+ */
+
+ini_set("display_errors", "0");
+error_reporting(0);
+
+header("Content-Type: application/json; charset=utf-8");
+header("Cache-Control: no-store, no-cache, must-revalidate");
+
+require_once __DIR__ . "/conexao.php";
+require_once __DIR__ . "/email_helper.php";
+
+try {
+    $nome  = trim((string) ($_POST["nome"]  ?? ""));
+    $email = trim((string) ($_POST["email"] ?? ""));
+    $senha = (string) ($_POST["senha"] ?? "");
+
+    if ($nome === "" || $email === "" || $senha === "") {
+        echo json_encode(["erro" => "Preencha todos os campos"], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo json_encode(["erro" => "E-mail invalido"], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
+    if (strlen($senha) < 8 || strlen($senha) > 16) {
+        echo json_encode(["erro" => "A senha deve ter entre 8 e 16 caracteres"], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
+    /* 1) Bloqueia se ja existe usuario com esse e-mail (cadastro completo). */
+    $stmt = $conn->prepare("SELECT id_usuario FROM usuario WHERE email = ? LIMIT 1");
+    if (!$stmt) {
+        echo json_encode(["erro" => "Erro ao preparar consulta"], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    $stmt->bind_param("s", $email);
+    if (!$stmt->execute()) {
+        $stmt->close();
+        echo json_encode(["erro" => "Erro ao consultar usuarios"], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    if (ecocoleta_stmt_num_rows($stmt) > 0) {
+        $stmt->close();
+        echo json_encode(["erro" => "E-mail ja cadastrado. Faca login."], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    $stmt->close();
+
+    /* 2) Gera codigo e hash. */
+    $codigo = str_pad((string) random_int(0, 999999), 6, "0", STR_PAD_LEFT);
+    $codigoHash = password_hash($codigo, PASSWORD_DEFAULT);
+    $senhaHash  = password_hash($senha, PASSWORD_DEFAULT);
+
+    /* 3) UPSERT em cadastro_pendente (mesmo e-mail apenas substitui dados). */
+    $sqlUp = "INSERT INTO cadastro_pendente
+                (nome, email, senha_hash, codigo_hash, codigo_expira, tentativas, criado_em)
+              VALUES
+                (?, ?, ?, ?, DATE_ADD(NOW(), INTERVAL 15 MINUTE), 0, NOW())
+              ON DUPLICATE KEY UPDATE
+                nome = VALUES(nome),
+                senha_hash = VALUES(senha_hash),
+                codigo_hash = VALUES(codigo_hash),
+                codigo_expira = VALUES(codigo_expira),
+                tentativas = 0,
+                criado_em = NOW()";
+    $stmtUp = $conn->prepare($sqlUp);
+    if (!$stmtUp) {
+        echo json_encode([
+            "erro" => "Erro ao preparar cadastro pendente. Rode INSTALAR-BANCO.bat para garantir que a tabela cadastro_pendente existe.",
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+    $stmtUp->bind_param("ssss", $nome, $email, $senhaHash, $codigoHash);
+    if (!$stmtUp->execute()) {
+        $err = $conn->error;
+        $stmtUp->close();
+        if (stripos($err, "doesn't exist") !== false || stripos($err, "Unknown table") !== false) {
+            echo json_encode([
+                "erro" => "A tabela cadastro_pendente nao existe. Rode INSTALAR-BANCO.bat.",
+            ], JSON_UNESCAPED_UNICODE);
+        } else {
+            echo json_encode(["erro" => "Erro ao salvar cadastro pendente."], JSON_UNESCAPED_UNICODE);
+        }
+        exit;
+    }
+    $stmtUp->close();
+
+    /* 4) Decide se envia e-mail real ou retorna codigo na resposta (modo local). */
+    $cfg = ecocoleta_carregar_smtp_settings(__DIR__);
+    if (isset($cfg["erro"])) {
+        echo json_encode([
+            "erro" => "Cadastro pendente foi salvo, mas houve problema no e-mail: " . $cfg["erro"],
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
+    $modoLocal = !empty($cfg["modo_local_sem_email"]);
+    $exibirCodigoTeste = ecocoleta_request_localhost();
+
+    $resposta = [
+        "sucesso" => true,
+        "mensagem" => "Enviamos um codigo de 6 digitos para seu e-mail. Verifique a caixa de entrada e o spam.",
+        "email" => $email,
+    ];
+
+    if ($exibirCodigoTeste) {
+        $resposta["codigo_para_teste"] = $codigo;
+    }
+
+    if ($modoLocal) {
+        $resposta["mensagem"] = "Modo local sem envio de e-mail: o codigo aparece nesta tela.";
+        echo json_encode($resposta, JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
+    $envio = ecocoleta_enviar_codigo_por_email(
+        $cfg,
+        $email,
+        $nome,
+        $codigo,
+        "EcoColeta - codigo para confirmar seu cadastro",
+        "Use o codigo abaixo para confirmar seu cadastro no EcoColeta."
+    );
+
+    if (empty($envio["ok"])) {
+        echo json_encode([
+            "erro" => $envio["erro"] ?? "Falha ao enviar o e-mail. Tente novamente em alguns segundos.",
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
+    echo json_encode($resposta, JSON_UNESCAPED_UNICODE);
+} catch (Throwable $e) {
+    echo json_encode([
+        "erro" => "Erro no servidor ao processar cadastro.",
+    ], JSON_UNESCAPED_UNICODE);
+}

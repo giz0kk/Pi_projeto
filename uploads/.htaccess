@@ -1,0 +1,9 @@
+# Bloqueia listagem de diretório (Apache)
+Options -Indexes
+
+# Não executar scripts enviados por engano como "foto.php.jpg"
+<IfModule mod_authz_core.c>
+  <FilesMatch "(?i)\.(php|phtml|phar|php7|cgi|pl|py)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>

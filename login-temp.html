@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Temporário Desativado</title>
+  <meta http-equiv="refresh" content="0; url=login.html">
+</head>
+<body>
+  <p>Esta página temporária foi desativada por segurança. <a href="login.html">Ir para o login</a>.</p>
+  <script>
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+    window.location.replace('login.html');
+  </script>
+</body>
+</html>

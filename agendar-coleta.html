@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendar Coleta | EcoColeta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="header.css?v=7">
+  <link rel="stylesheet" href="footer.css?v=9">
+  <link rel="stylesheet" href="notif-popup.css">
+  <link rel="stylesheet" href="user-popup.css">
+  <link rel="stylesheet" href="agendar-coleta.css">
+</head>
+<body class="app agendar-coleta-page">
+  <header class="topo">
+    <div class="nav-left">
+      <a href="tela-inicia.html" class="logo-link">
+        <img src="Imagens/logo.2.png" alt="EcoColeta">
+      </a>
+      <nav>
+        <ul class="menu">
+          <li><a href="tela-inicia.html">Home</a></li>
+          <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+          <li><a href="como-funciona.html">Como Funciona</a></li>
+          <li><a href="ecopontos.html">EcoPontos</a></li>
+          <li><a href="premios-disponiveis.html">Prêmios</a></li>
+          <li><a href="educacao-ambiental.html">Educação</a></li>
+          <li><a href="quem-somos.html">Quem Somos</a></li>
+          <li><a href="Ranking.html">Ranking</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="icones">
+      <div class="notif-wrapper">
+        <button type="button" class="notif-btn" aria-label="Notificações">
+          <img src="Imagens/icon notificacao.png" alt="Notificações" class="icon">
+        </button>
+        <div class="notif-overlay hidden">
+          <div class="notif-box"></div>
+        </div>
+      </div>
+      <a href="perfil.html">
+        <img src="Imagens/icons pessoa.png" alt="Perfil">
+      </a>
+    </div>
+  </header>
+
+  <main class="agenda-main">
+    <section class="agenda-hero">
+      <div class="agenda-hero-copy">
+        <span class="agenda-badge">Coleta Premiada</span>
+        <h1>Agende sua coleta e transforme organização em EcoPoints.</h1>
+        <p>Escolha um dia e horário disponível no calendário. Cada agendamento fica salvo no seu perfil e dispara uma notificação de lembrete.</p>
+        <div class="agenda-actions">
+          <a href="perfil.html" class="agenda-link-secondary">Voltar ao perfil</a>
+          <button type="button" class="agenda-link-primary" id="agendaHelpBtn">Como agendar</button>
+        </div>
+      </div>
+
+      <aside class="agenda-award-card" aria-label="Resumo de agendamento">
+        <span class="award-medal">🏅</span>
+        <small>Agenda sustentável</small>
+        <strong id="agendaResumoCount">0 coletas</strong>
+        <p>marcadas neste mês</p>
+      </aside>
+    </section>
+
+    <section class="bairro-coletas-card" aria-label="Próximas coletas no seu bairro">
+      <div class="bairro-coletas-panel">
+        <h2>Próximas coletas no seu bairro</h2>
+        <button type="button" class="bairro-lista-btn" id="bairroListaBtn" aria-expanded="false" aria-controls="bairroListaTopicos">› Lista de coleta</button>
+        <div class="bairro-lista-topicos" id="bairroListaTopicos" hidden>
+          <button type="button" data-residuo="plastico">Plástico e embalagens</button>
+          <button type="button" data-residuo="papel">Papel e papelão</button>
+          <button type="button" data-residuo="vidro">Vidro</button>
+          <button type="button" data-residuo="metal">Metal</button>
+          <button type="button" data-residuo="eletronico">Eletrônicos</button>
+        </div>
+      </div>
+      <a href="formulario-coleta.html" class="bairro-agendar-btn">Agendar Coleta</a>
+    </section>
+
+    <section class="agenda-layout" id="agendaCalendario" aria-label="Calendário de agendamento de coleta">
+      <div class="calendar-panel">
+        <div class="calendar-topbar">
+          <div>
+            <span class="section-kicker">Escolha seu horário</span>
+            <h2 id="calendarMonthYear">Calendário de coleta</h2>
+          </div>
+          <div class="calendar-controls">
+            <button type="button" id="calendarPrev" class="btn-calendar" aria-label="Mês anterior">‹</button>
+            <button type="button" id="calendarNext" class="btn-calendar" aria-label="Próximo mês">›</button>
+          </div>
+        </div>
+
+        <div class="agenda-legend">
+          <span><i class="legend-empty"></i> Disponível</span>
+          <span><i class="legend-booked"></i> Coleta agendada</span>
+          <span><i class="legend-past"></i> Data passada</span>
+        </div>
+
+        <div class="calendar-scroll">
+          <div class="agenda-grid" id="agendaGrid" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <aside class="agenda-side-card">
+        <span class="side-medal">🎖️</span>
+        <h3>Como funciona</h3>
+        <p>Clique em uma célula vazia para agendar. Se quiser cancelar, clique novamente na coleta marcada.</p>
+        <div class="side-steps">
+          <span>1. Escolha o dia</span>
+          <span>2. Selecione o horário</span>
+          <span>3. Receba a confirmação</span>
+        </div>
+        <p class="agenda-status" id="agendaStatus">Carregando horários...</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer id="ecocoleta-site-footer"></footer>
+
+  <script src="header-nav.js?v=9"></script>
+  <script src="notif-popup.js?v=4"></script>
+  <script src="user-popup.js"></script>
+  <script src="footer.js?v=9"></script>
+  <script src="agendar-coleta.js"></script>
+</body>
+</html>

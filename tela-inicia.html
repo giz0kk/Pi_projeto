@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoColeta - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="home.css?v=6">
+  <link rel="stylesheet" href="mapa.css?v=10">
+  <link rel="stylesheet" href="header.css?v=7">
+  <link rel="stylesheet" href="footer.css?v=9">
+  <link rel="stylesheet" href="notif-popup.css">
+  <script>
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      corePlugins: { preflight: false },
+      theme: {
+        extend: {
+          fontFamily: {
+            sora: ['Sora', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="app home">
+
+    <header class="topo">
+  <div class="nav-left">
+    <a href="tela-inicia.html" class="logo-link">
+      <img src="Imagens/logo.2.png" alt="EcoColeta">
+    </a>
+    <nav>
+      <ul class="menu">
+        <li><a href="tela-inicia.html">Home</a></li>
+        <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+        <li><a href="como-funciona.html">Como Funciona</a></li>
+        <li><a href="ecopontos.html">EcoPontos</a></li>
+        <li><a href="premios-disponiveis.html">Prêmios</a></li>
+        <li><a href="educacao-ambiental.html">Educação</a></li>
+        <li><a href="quem-somos.html">Quem Somos</a></li>
+        <li><a href="Ranking.html">Ranking</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="icones">
+    <div class="notif-wrapper">
+      <button type="button" class="notif-btn" aria-label="Notificações">
+          <img src="Imagens/icon notificacao.png" alt="Notificações" class="icon">
+      </button>
+      <div class="notif-overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="perfil.html">
+      <img src="Imagens/icons pessoa.png" alt="Perfil">
+    </a>
+  </div>
+</header>
+
+<script src="header-nav.js?v=9"></script>
+<script src="notif-popup.js?v=3"></script>
+    
+
+  <section class="banner">
+    <div class="banner-texto">
+      <h1>Seja Bem Vindo ao EcoColeta</h1>
+      <p>Mantenha o planeta limpo e ganhe benefícios em troca</p>
+    </div>
+  </section>
+  <section class="titulo-materiais">
+    <h2>Nossa mudança no planeta</h2>
+  </section>
+
+  <section class="materiais">
+    <div class="material vermelho"><span>Plástico</span><h3>12 kg</h3></div>
+    <div class="material azul"><span>Papel</span><h3>12 kg</h3></div>
+    <div class="material verde"><span>Vidro</span><h3>12 kg</h3></div>
+    <div class="material amarelo"><span>Metal</span><h3>12 kg</h3></div>
+    <div class="material cinza"><span>Orgânico</span><h3>12 kg</h3></div>
+    <div class="material marrom"><span>Madeira</span><h3>12 kg</h3></div>
+  </section>
+
+  <main class="conteudo">
+
+    <div class="conteudo-col-esquerda">
+      <section class="eco-pontos card" id="eco-pontos-mapa">
+        <h2>EcoPontos perto de você</h2>
+        <p class="card-lead">Pontos parceiros para descarte correto de recicláveis. Localize o mais próximo e contribua com o destino certo dos materiais.</p>
+
+        <div class="mapa-main mapa-main--embed">
+          <section class="mapa-toolbar" aria-labelledby="mapa-embed-titulo">
+            <h3 id="mapa-embed-titulo" class="mapa-embed-title">Rota até o EcoPonto</h3>
+            <p class="mapa-intro">
+              Traçamos o caminho pela rede viária até o ecoponto escolhido e estimamos o tempo a pé, de carro,
+              de moto e de transporte público, incluindo uma média de espera em semáforos e paradas urbanas.
+            </p>
+
+            <div class="mapa-field mapa-field--cep">
+              <label for="cep-origem">CEP de partida</label>
+              <div class="mapa-cep-row">
+                <input type="text" id="cep-origem" class="mapa-input-text" placeholder="00000-000" maxlength="9" inputmode="numeric" autocomplete="postal-code" aria-describedby="cep-hint">
+                <button type="button" class="btn-ghost mapa-cep-btn" id="btn-cep">Usar este CEP</button>
+              </div>
+              <span id="cep-hint" class="mapa-field-hint">Usamos automaticamente o CEP salvo no seu perfil. Você também pode informar outro CEP aqui.</span>
+            </div>
+
+            <div class="mapa-field">
+              <label for="ecoponto-select">Destino</label>
+              <select id="ecoponto-select" aria-label="Escolha o ecoponto de destino"></select>
+            </div>
+
+            <div class="mapa-actions">
+              <button type="button" class="btn-primary" id="btn-local">Usar minha localização</button>
+              <button type="button" class="btn-ghost" id="btn-calcular">Recalcular rota</button>
+            </div>
+
+            <p id="mapa-status" class="mapa-status" role="status" aria-live="polite"></p>
+
+            <p class="mapa-disclaimer">
+              Linha verde no mapa: rota para automóvel (referência visual na malha viária).
+              Tempos de ônibus são aproximados (sem integração em tempo real com linhas municipais).
+              Dados de mapa © OpenStreetMap · Rotas © OSRM.
+            </p>
+          </section>
+
+          <div class="mapa-leaflet-wrap">
+            <div id="times-panel" class="times-panel times-panel--overlay hidden">
+              <div id="transport-times-widget"></div>
+            </div>
+            <div id="map" class="mapa-leaflet" role="application" aria-label="Mapa interativo da rota"></div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <section class="lado-direito">
+
+      <div class="card aprender">
+        <h2>Aprenda a separar seu lixo</h2>
+        <p class="card-lead">Guias objetivos sobre separação na fonte, destino dos resíduos e hábitos que reduzem desperdício.</p>
+
+        <ul>
+          <li>Como o lixo deve ser separado</li>
+          <li>Por que o lixo deve ser separado</li>
+          <li>Quais materiais podem ser reciclados</li>
+          <li>Dicas ambientais para reciclagem</li>
+        </ul>
+
+        <a href="educacao-ambiental.html" class="home-cta">Aprenda Mais</a>
+      </div>
+
+      <div class="card premios">
+        <h2>Prêmios</h2>
+        <p class="card-lead">Acumule pontos com entregas e resgates e troque por benefícios das empresas parceiras.</p>
+
+        <div class="premio-item">
+          <div class="premio-info">
+            <div>
+              <h4>IronFlex</h4>
+              <p>30% de descontos</p>
+            </div>
+            <p class="premio-pontos">289 pontos</p>
+          </div>
+        </div>
+
+        <div class="premio-item">
+          <div class="premio-info">
+            <div>
+              <h4>MoveUp Gym</h4>
+              <p>20% de descontos</p>
+            </div>
+            <p class="premio-pontos">412 pontos</p>
+          </div>
+        </div>
+
+        <div class="premio-item">
+          <div class="premio-info">
+            <div>
+              <h4>Pão Nobre</h4>
+              <p>15% de descontos</p>
+            </div>
+            <p class="premio-pontos">150 pontos</p>
+          </div>
+        </div>
+
+        <a href="premios-disponiveis.html" class="btn-premio">Ver Mais</a>
+      </div>
+
+    </section>
+
+    <section class="apoiadores-section">
+      <div class="apoiadores overflow-x-auto scroll-smooth">
+        <div class="apoiadores-track">
+          <div class="apoiadores-group">
+            <div class="apoio-card"><div class="apoio-box">VitaNex</div><p>Apoiador</p><span>1</span></div>
+            <div class="apoio-card"><div class="apoio-box">PharmaLeaf</div><p>Apoiador</p><span>2</span></div>
+            <div class="apoio-card"><div class="apoio-box">SaúdePrime</div><p>Apoiador</p><span>3</span></div>
+            <div class="apoio-card"><div class="apoio-box">MaxCompra</div><p>Apoiador</p><span>4</span></div>
+            <div class="apoio-card"><div class="apoio-box">MercaPlus</div><p>Apoiador</p><span>5</span></div>
+          </div>
+
+          <div class="apoiadores-group" aria-hidden="true">
+            <div class="apoio-card"><div class="apoio-box">VitaNex</div><p>Apoiador</p><span>1</span></div>
+            <div class="apoio-card"><div class="apoio-box">PharmaLeaf</div><p>Apoiador</p><span>2</span></div>
+            <div class="apoio-card"><div class="apoio-box">SaúdePrime</div><p>Apoiador</p><span>3</span></div>
+            <div class="apoio-card"><div class="apoio-box">MaxCompra</div><p>Apoiador</p><span>4</span></div>
+            <div class="apoio-card"><div class="apoio-box">MercaPlus</div><p>Apoiador</p><span>5</span></div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn-apoiador">Vire um Apoiador</button>
+    </section>
+  </main>
+
+  <footer id="ecocoleta-site-footer"></footer>
+  <script src="footer.js?v=9"></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="transport-times-widget.js?v=1"></script>
+<script src="mapa.js?v=11"></script>
+<script src="home.js"></script>
+</body>
+</html>
