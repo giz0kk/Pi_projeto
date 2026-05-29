@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <base href="../" data-app-base>
+  <script>(function(){var p=location.pathname.replace(/\\/g,"/"),b=document.querySelector("base[data-app-base]"),m=p.match(/^(.*\/)(?:auth|admin|pages|mapa)\/[^/]+$/);if(b)b.href=m?m[1]:p.replace(/\/[^/]*$/,"/")||"/";})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações | EcoColeta</title>
+  <style>
+    html.admin-auth-checking body { visibility: hidden; }
+  </style>
+  <script>document.documentElement.classList.add("admin-auth-checking");</script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin/home-adm-ecoponto.css?v=2">
+  <link rel="stylesheet" href="assets/css/edicaoperfil.css">
+  <link rel="stylesheet" href="admin/configuracoes-adm-ecoponto.css">
+</head>
+<body class="admin-dashboard-page adm-config-page">
+  <script src="admin/adm-sidebar-icons.js"></script>
+  <div class="adm-app">
+    <header class="adm-header">
+      <a href="pages/tela-inicia.html" class="adm-header-brand">
+        <img src="assets/images/logo.2.png" alt="EcoColeta">
+      </a>
+      <div class="adm-header-actions">
+        <button type="button" class="adm-profile-btn" id="profileToggle" aria-label="Menu do administrador" aria-expanded="false" aria-haspopup="true">
+          <span class="adm-avatar adm-avatar--sm" aria-hidden="true">
+            <span class="adm-avatar__circle">
+              <span class="adm-profile-initial" id="profileInitial">A</span>
+            </span>
+          </span>
+        </button>
+        <div class="adm-profile-menu hidden" id="profileMenu" role="menu">
+          <p class="adm-profile-name" id="profileName">Administrador</p>
+          <p class="adm-profile-email" id="profileEmail">—</p>
+          <p class="adm-profile-point" id="profilePoint">EcoPonto</p>
+          <button type="button" id="logoutAdmin" role="menuitem">Sair da conta</button>
+        </div>
+      </div>
+    </header>
+
+    <aside class="adm-sidebar" id="admSidebar" aria-label="Navegação do painel">
+      <div class="adm-sidebar-rail">
+        <div class="adm-sidebar-row">
+          <button type="button" class="adm-nav-btn adm-sidebar-toggle" id="sidebarToggle" aria-label="Expandir menu lateral" aria-expanded="false" aria-controls="admSidebarLabels">
+            <svg class="adm-sidebar-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="#adm-icon-menu"/></svg>
+          </button>
+        </div>
+        <nav class="adm-nav-list">
+          <div class="adm-sidebar-row">
+            <a href="admin/Home-ADM-Ecoponto.html" class="adm-nav-link" title="Meu Ecoponto">
+              <svg class="adm-sidebar-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="#adm-icon-home"/></svg>
+            </a>
+          </div>
+          <div class="adm-sidebar-row">
+            <a href="admin/Coletas-ADM-Ecoponto.html" class="adm-nav-link" title="Coletas">
+              <svg class="adm-sidebar-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="#adm-icon-truck"/></svg>
+            </a>
+          </div>
+          <div class="adm-sidebar-row">
+            <a href="admin/materias-ADM-Ecoponto.html" class="adm-nav-link" title="Materiais">
+              <svg class="adm-sidebar-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="#adm-icon-recycle"/></svg>
+            </a>
+          </div>
+          <div class="adm-sidebar-row">
+            <a href="admin/relatorio-ADM-Ecoponto.html" class="adm-nav-link" title="Relatórios">
+              <svg class="adm-sidebar-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="#adm-icon-reports"/></svg>
+            </a>
+          </div>
+          <div class="adm-sidebar-row">
+            <a href="admin/configuracoes-ADM-Ecoponto.html" class="adm-nav-link is-active" aria-current="page" title="Configurações" aria-label="Configurações">
+              <svg class="adm-sidebar-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="#adm-icon-settings"/></svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+      <div class="adm-sidebar-labels" id="admSidebarLabels" aria-hidden="true">
+        <div class="adm-sidebar-label-row adm-sidebar-label-spacer" aria-hidden="true"></div>
+        <a href="admin/Home-ADM-Ecoponto.html" class="adm-sidebar-label-row"><span>Meu Ecoponto</span></a>
+        <a href="admin/Coletas-ADM-Ecoponto.html" class="adm-sidebar-label-row"><span>Coletas</span></a>
+        <a href="admin/materias-ADM-Ecoponto.html" class="adm-sidebar-label-row"><span>Materiais</span></a>
+        <a href="admin/relatorio-ADM-Ecoponto.html" class="adm-sidebar-label-row"><span>Relatórios</span></a>
+        <a href="admin/configuracoes-ADM-Ecoponto.html" class="adm-sidebar-label-row is-active" aria-current="page"><span>Configurações</span></a>
+      </div>
+    </aside>
+
+    <main class="adm-main adm-config-main">
+      <p class="dashboard-auth-error" id="dashboardAuthError" role="alert"></p>
+
+      <header class="adm-config-head">
+        <h1 id="configPageTitle" class="adm-config-title">Configurações</h1>
+        <p class="adm-config-subtitle">Gerencie as configurações do sistema EcoColeta</p>
+      </header>
+
+      <div class="adm-config-grid">
+        <section class="adm-config-card" aria-labelledby="configProfileTitle">
+          <div class="adm-config-card-head">
+            <h2 id="configProfileTitle" class="adm-config-card-title">
+              <span class="adm-config-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg>
+              </span>
+              Perfil do Administrador
+            </h2>
+            <button type="button" class="adm-config-btn adm-config-btn--primary" id="btnEditProfile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              Editar Perfil
+            </button>
+          </div>
+          <div class="adm-config-profile">
+            <div class="adm-avatar adm-avatar--lg adm-config-profile-avatar" id="configAdminAvatarWrap" aria-hidden="true">
+              <span class="adm-avatar__circle">
+                <img alt="" class="adm-avatar__photo is-hidden" id="configAdminAvatar" width="80" height="80" decoding="async">
+                <span class="adm-avatar__initial" id="configAdminAvatarFallback">A</span>
+              </span>
+            </div>
+            <div class="adm-config-profile-info">
+              <h3 id="configAdminName">Administrador</h3>
+              <p id="configAdminEmail">—</p>
+              <span class="adm-config-badge">Administrador</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="adm-config-card" aria-labelledby="configSystemTitle">
+          <div class="adm-config-card-head">
+            <h2 id="configSystemTitle" class="adm-config-card-title">
+              <span class="adm-config-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg>
+              </span>
+              Configurações do Sistema
+            </h2>
+          </div>
+
+          <div class="adm-config-field">
+            <label class="adm-config-field-label" for="configLanguage">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Idioma
+            </label>
+            <select id="configLanguage" class="adm-config-select" name="idioma">
+              <option value="pt-BR" selected>Português (BR)</option>
+              <option value="en">English</option>
+              <option value="es">Español</option>
+            </select>
+          </div>
+
+          <div class="adm-config-row-inline">
+            <span class="adm-config-field-label" style="margin:0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              Notificações
+            </span>
+            <label class="adm-config-toggle">
+              <input type="checkbox" id="configNotifications" checked>
+              <span class="adm-config-toggle-track" aria-hidden="true"></span>
+            </label>
+          </div>
+
+          <div class="adm-config-field">
+            <span class="adm-config-field-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+              Aparência
+            </span>
+            <div class="adm-config-theme-group" role="group" aria-label="Modo de aparência">
+              <button type="button" class="adm-config-theme-btn is-active" data-theme="light" id="themeLight">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/></svg>
+                Modo claro
+              </button>
+              <button type="button" class="adm-config-theme-btn" data-theme="dark" id="themeDark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                Modo escuro
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="adm-config-card" aria-labelledby="configUsersTitle">
+          <div class="adm-config-card-head">
+            <h2 id="configUsersTitle" class="adm-config-card-title">
+              <span class="adm-config-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              Gestão de Administradores
+            </h2>
+            <button type="button" class="adm-config-btn adm-config-btn--primary" id="btnAddUser">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              Adicionar Administrador
+            </button>
+          </div>
+          <ul class="adm-config-user-list" id="configUserList">
+            <li class="adm-config-user-item">
+              <span class="adm-avatar adm-avatar--xs" aria-hidden="true"><span class="adm-avatar__circle"><span class="adm-avatar__initial">FA</span></span></span>
+              <div class="adm-config-user-meta">
+                <strong>Fabio Alves</strong>
+                <span>fabioalves@ecocoleta.com.br</span>
+                <span class="adm-config-badge" style="margin-top:6px">Admin Sistema</span>
+              </div>
+              <div class="adm-config-user-actions">
+                <button type="button" class="adm-config-icon-btn" data-user-action="edit" aria-label="Editar Fabio Alves">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                </button>
+                <button type="button" class="adm-config-btn--danger-icon" data-user-action="delete" aria-label="Excluir Fabio Alves">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                </button>
+              </div>
+            </li>
+            <li class="adm-config-user-item">
+              <span class="adm-avatar adm-avatar--xs" aria-hidden="true"><span class="adm-avatar__circle"><span class="adm-avatar__initial">AC</span></span></span>
+              <div class="adm-config-user-meta">
+                <strong>Ana Costa</strong>
+                <span>anacosta@ecocoleta.com.br</span>
+                <span class="adm-config-badge" style="margin-top:6px">Admin Sistema</span>
+              </div>
+              <div class="adm-config-user-actions">
+                <button type="button" class="adm-config-icon-btn" data-user-action="edit" aria-label="Editar Ana Costa">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                </button>
+                <button type="button" class="adm-config-btn--danger-icon" data-user-action="delete" aria-label="Excluir Ana Costa">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                </button>
+              </div>
+            </li>
+            <li class="adm-config-user-item">
+              <span class="adm-avatar adm-avatar--xs" aria-hidden="true"><span class="adm-avatar__circle"><span class="adm-avatar__initial">RM</span></span></span>
+              <div class="adm-config-user-meta">
+                <strong>Ricardo Mendes</strong>
+                <span>ricardo.mendes@ecocoleta.com.br</span>
+                <span class="adm-config-badge" style="margin-top:6px">Admin Sistema</span>
+              </div>
+              <div class="adm-config-user-actions">
+                <button type="button" class="adm-config-icon-btn" data-user-action="edit" aria-label="Editar Ricardo Mendes">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                </button>
+                <button type="button" class="adm-config-btn--danger-icon" data-user-action="delete" aria-label="Excluir Ricardo Mendes">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="adm-config-card" aria-labelledby="configCollectTitle">
+          <div class="adm-config-card-head">
+            <h2 id="configCollectTitle" class="adm-config-card-title">
+              <span class="adm-config-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7H13a1.5 1.5 0 0 1 1.5 1.5V11h2.04a1.5 1.5 0 0 1 1.34.83l1.46 2.92A1.5 1.5 0 0 1 19.5 16.5H21v2.25a.75.75 0 0 1-.75.75H19a2.25 2.25 0 0 1-4.5 0H9.5a2.25 2.25 0 0 1-4.5 0H3a.75.75 0 0 1-.75-.75V8.5Zm2.25 9.75a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm11.25 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM5.25 8.5h7.35l1.65 1.65H5.25V8.5Z"/></svg>
+              </span>
+              Configurações de Coleta
+            </h2>
+          </div>
+
+          <div class="adm-config-field">
+            <label class="adm-config-field-label" for="configHours">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Horários Padrão
+            </label>
+            <div class="adm-config-time-row">
+              <input type="text" id="configHours" class="adm-config-input" value="08:00-17:00" readonly>
+              <button type="button" class="adm-config-btn adm-config-btn--ghost" id="btnEditHours" aria-label="Editar horários">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="adm-config-field">
+            <span class="adm-config-field-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/></svg>
+              Tipos de coleta
+            </span>
+            <div class="adm-config-type-group" role="group" aria-label="Tipo de coleta">
+              <button type="button" class="adm-config-type-btn is-active" data-collect-type="truck">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7H13a1.5 1.5 0 0 1 1.5 1.5V11h2.04a1.5 1.5 0 0 1 1.34.83l1.46 2.92A1.5 1.5 0 0 1 19.5 16.5H21v2.25a.75.75 0 0 1-.75.75H19a2.25 2.25 0 0 1-4.5 0H9.5a2.25 2.25 0 0 1-4.5 0H3a.75.75 0 0 1-.75-.75V8.5Z"/></svg>
+                Caminhão
+              </button>
+              <button type="button" class="adm-config-type-btn" data-collect-type="prefeitura">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg>
+                Prefeitura
+              </button>
+            </div>
+          </div>
+
+          <div class="adm-config-field">
+            <span class="adm-config-field-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Áreas Atendidas
+            </span>
+            <div class="adm-config-chip-group" id="configAreas">
+              <span class="adm-config-chip">Centro</span>
+              <span class="adm-config-chip">Zona Norte</span>
+              <span class="adm-config-chip">Zona Sul</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="adm-config-card" aria-labelledby="configSecurityTitle">
+          <div class="adm-config-card-head">
+            <h2 id="configSecurityTitle" class="adm-config-card-title">
+              <span class="adm-config-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+              </span>
+              Segurança
+            </h2>
+            <button type="button" class="adm-config-btn adm-config-btn--primary" id="btnChangePassword">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Alterar Senha
+            </button>
+          </div>
+
+          <div class="adm-config-security-item">
+            <div class="adm-config-security-text">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+              <div>
+                <strong>Alterar Senha</strong>
+                <span>Atualize a sua senha de acesso</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="adm-config-security-item">
+            <div class="adm-config-security-text">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <div>
+                <strong>Autenticação em Dois Fatores</strong>
+                <span>Adicione uma camada extra de segurança</span>
+              </div>
+            </div>
+            <label class="adm-config-toggle">
+              <input type="checkbox" id="config2fa" checked>
+              <span class="adm-config-toggle-track" aria-hidden="true"></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="adm-config-card adm-config-save-card">
+          <button type="button" class="adm-config-btn adm-config-btn--primary" id="btnSaveConfig">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>
+            Salvar Alterações
+          </button>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="adm-config-toast" id="configToast" role="status" aria-live="polite"></div>
+
+  <div class="adm-config-modal hidden" id="editProfileModal" role="dialog" aria-modal="true" aria-labelledby="editProfileModalTitle">
+    <div class="adm-config-modal-backdrop" id="editProfileBackdrop" aria-hidden="true"></div>
+    <div class="adm-config-modal-panel">
+      <header class="adm-config-modal-head">
+        <button type="button" class="adm-config-modal-close" id="btnCloseEditProfile" aria-label="Fechar">×</button>
+        <p class="adm-config-modal-kicker">← Configurações</p>
+        <h2 id="editProfileModalTitle">Editar perfil do administrador</h2>
+        <p class="adm-config-modal-desc">Atualize nome, e-mail, senha e foto. Mesmas regras de segurança do perfil de usuário.</p>
+      </header>
+
+      <div class="adm-config-modal-body perfil-container adm-edicao-modal-card">
+        <div class="perfil-topo adm-edicao-modal-topo">
+          <div class="perfil-info">
+            <div class="foto-box foto-box-edicao">
+              <input type="file" id="modalFileInput" class="edicao-foto-input" accept="image/*" tabindex="-1" title="">
+              <label for="modalFileInput" class="foto-avatar-label">
+                <img src="assets/images/mulher.png" class="foto-perfil" id="modalFotoPerfil" alt="Foto do administrador">
+                <span class="foto-avatar-overlay" aria-hidden="true">Alterar foto</span>
+              </label>
+              <button type="button" class="icone-camera-btn" id="modalCameraBtn" aria-label="Abrir seletor de imagem">
+                <img src="assets/images/image.png" class="icone-camera" alt="">
+              </button>
+            </div>
+            <div class="nome-com-lapis">
+              <span class="nome" id="modalAdminNome">Administrador</span>
+              <button type="button" class="lapis" id="modalBtnEditarNome" aria-label="Editar nome">
+                <img src="assets/images/lapis.png" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <form class="adm-edicao-modal-form" id="editProfileForm" novalidate>
+          <div class="adm-edicao-modal-grid">
+            <div class="perfil-campo">
+              <label for="modalNomeEcoponto">Nome do EcoPonto</label>
+              <input id="modalNomeEcoponto" type="text" placeholder="Ex.: EcoPonto Central" maxlength="160">
+            </div>
+            <div class="perfil-campo">
+              <label for="modalEmail">E-mail</label>
+              <input id="modalEmail" type="email" autocomplete="email" required>
+              <span class="field-error" id="modalEmailError"></span>
+            </div>
+            <div class="perfil-campo">
+              <label for="modalConfirmEmail">Confirmar e-mail</label>
+              <input id="modalConfirmEmail" type="email" autocomplete="email" required>
+              <span class="field-error" id="modalConfirmEmailError"></span>
+            </div>
+            <div class="perfil-campo">
+              <label for="modalPassword">Nova senha</label>
+              <input id="modalPassword" type="password" placeholder="Deixe em branco para manter a atual" autocomplete="new-password">
+              <span class="field-error" id="modalPasswordError"></span>
+            </div>
+            <div class="perfil-campo">
+              <label for="modalConfirmPassword">Confirmar senha</label>
+              <input id="modalConfirmPassword" type="password" placeholder="Repita a nova senha" autocomplete="new-password">
+              <span class="field-error" id="modalConfirmPasswordError"></span>
+            </div>
+          </div>
+          <footer class="adm-config-modal-foot">
+            <button type="button" class="adm-config-btn adm-config-btn--ghost" id="btnCancelEditProfile">Cancelar</button>
+            <button type="submit" class="adm-config-btn adm-config-btn--primary" id="btnSaveEditProfile">Salvar alterações</button>
+          </footer>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="save-confirm-overlay hidden" id="modalSaveConfirmOverlay">
+    <div class="save-confirm-dialog">
+      <p>Deseja salvar as alterações do perfil administrativo?</p>
+      <div class="save-confirm-actions">
+        <button type="button" class="btn-cancel" id="modalCancelSaveBtn">Cancelar</button>
+        <button type="button" class="btn-editar" id="modalConfirmSaveBtn">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin/configuracoes-adm-ecoponto.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <base href="../" data-app-base>
+  <script>(function(){var p=location.pathname.replace(/\\/g,"/"),b=document.querySelector("base[data-app-base]"),m=p.match(/^(.*\/)(?:auth|admin|pages|mapa)\/[^/]+$/);if(b)b.href=m?m[1]:p.replace(/\/[^/]*$/,"/")||"/";})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Coleta | EcoColeta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/header.css?v=7">
+  <link rel="stylesheet" href="assets/css/footer.css?v=9">
+  <link rel="stylesheet" href="assets/css/notif-popup.css">
+  <link rel="stylesheet" href="assets/css/user-popup.css">
+  <link rel="stylesheet" href="assets/css/agendar-coleta.css">
+</head>
+<body class="app agendar-coleta-page formulario-coleta-page">
+  <header class="topo">
+    <div class="nav-left">
+      <a href="tela-inicia.html" class="logo-link">
+        <img src="assets/images/logo.2.png" alt="EcoColeta">
+      </a>
+      <nav>
+        <ul class="menu">
+          <li><a href="tela-inicia.html">Home</a></li>
+          <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+          <li><a href="como-funciona.html">Como Funciona</a></li>
+          <li><a href="ecopontos.html">EcoPontos</a></li>
+          <li><a href="premios-disponiveis.html">Prêmios</a></li>
+          <li><a href="educacao-ambiental.html">Educação</a></li>
+          <li><a href="quem-somos.html">Quem Somos</a></li>
+          <li><a href="Ranking.html">Ranking</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="icones">
+      <div class="notif-wrapper">
+        <button type="button" class="notif-btn" aria-label="Notificações">
+          <img src="assets/images/icon notificacao.png" alt="Notificações" class="icon">
+        </button>
+        <div class="notif-overlay hidden">
+          <div class="notif-box"></div>
+        </div>
+      </div>
+      <a href="perfil.html">
+        <img src="assets/images/icons pessoa.png" alt="Perfil">
+      </a>
+    </div>
+  </header>
+
+  <main class="agenda-main formulario-main">
+    <section class="agenda-form-card" id="agendaFormulario" aria-labelledby="agendaFormTitle">
+      <div class="agenda-form-heading">
+        <div>
+          <span class="section-kicker">Formulário de Agendamento</span>
+        </div>
+      </div>
+
+      <form class="agenda-form" id="agendaForm">
+        <div class="form-field field-full">
+          <label for="agendaResiduo">Tipo de Resíduo</label>
+          <input type="hidden" id="agendaResiduo" name="residuo" required>
+          <div class="topic-picker residue-picker" data-target="agendaResiduo" aria-label="Tipo de resíduo">
+            <button type="button" data-value="plastico"><span>🧴</span> Plástico</button>
+            <button type="button" data-value="papel"><span>📦</span> Papel</button>
+            <button type="button" data-value="vidro"><span>🍾</span> Vidro</button>
+            <button type="button" data-value="metal"><span>🛢️</span> Metal</button>
+            <button type="button" data-value="organico"><span>🍃</span> Orgânico</button>
+            <button type="button" data-value="eletronico"><span>🔌</span> Eletrônico</button>
+            <button type="button" data-value="misto"><span>♻️</span> Resíduo</button>
+            <button type="button" data-value="madeira"><span>🪵</span> Madeira</button>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="agendaData"><span>🗓</span> Data</label>
+          <input type="date" id="agendaData" name="data" required>
+          <small>Data</small>
+        </div>
+
+        <div class="form-field">
+          <label for="agendaHorario"><span>🕒</span> Horário</label>
+          <select id="agendaHorario" name="horario" required>
+            <option value="">Selecione o horário</option>
+            <option value="0">07:00 às 10:00</option>
+            <option value="1">10:00 às 13:00</option>
+            <option value="2">13:00 às 16:00</option>
+            <option value="3">16:00 às 19:00</option>
+            <option value="4">19:00 às 22:00</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="agendaTipoColeta"><span>♻️</span> Tipo de Coleta</label>
+          <select id="agendaTipoColeta" name="tipo_coleta" required>
+            <option value="">Selecione o método de coleta</option>
+            <option value="domiciliar">Coleta domiciliar</option>
+            <option value="condominio">Coleta em condomínio</option>
+            <option value="ponto_entrega">Entrega em ecoponto</option>
+          </select>
+        </div>
+
+        <div class="agenda-form-actions">
+          <button type="submit" class="form-submit-btn">Agendar Coleta</button>
+          <a href="agendar-coleta.html" class="form-cancel-btn form-back-btn">Cancelar</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer id="ecocoleta-site-footer"></footer>
+
+  <script src="assets/js/ecocoleta-paths.js?v=1"></script>
+  <script src="assets/js/header-nav.js?v=12"></script>
+  <script src="assets/js/notif-popup.js?v=4"></script>
+  <script src="assets/js/user-popup.js"></script>
+  <script src="assets/js/footer.js?v=9"></script>
+  <script src="assets/js/agendar-coleta.js"></script>
+</body>
+</html>

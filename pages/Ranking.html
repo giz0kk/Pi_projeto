@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <base href="../" data-app-base>
+  <script>(function(){var p=location.pathname.replace(/\\/g,"/"),b=document.querySelector("base[data-app-base]"),m=p.match(/^(.*\/)(?:auth|admin|pages|mapa)\/[^/]+$/);if(b)b.href=m?m[1]:p.replace(/\/[^/]*$/,"/")||"/";})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ranking EcoColeta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/ranking.css?v=5">
+  <link rel="stylesheet" href="assets/css/header.css?v=7">
+  <link rel="stylesheet" href="assets/css/footer.css?v=9">
+  <link rel="stylesheet" href="assets/css/notif-popup.css">
+</head>
+<body class="app">
+
+
+    <header class="topo">
+  <div class="nav-left">
+    <a href="tela-inicia.html" class="logo-link">
+      <img src="assets/images/logo.2.png" alt="EcoColeta">
+    </a>
+    <nav>
+      <ul class="menu">
+        <li><a href="tela-inicia.html">Home</a></li>
+        <li><a href="pagina-relatorio.html">Gerar Relatório</a></li>
+        <li><a href="como-funciona.html">Como Funciona</a></li>
+        <li><a href="ecopontos.html">EcoPontos</a></li>
+        <li><a href="premios-disponiveis.html">Prêmios</a></li>
+        <li><a href="educacao-ambiental.html">Educação</a></li>
+        <li><a href="quem-somos.html">Quem Somos</a></li>
+        <li><a href="Ranking.html">Ranking</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="icones">
+    <div class="notif-wrapper">
+      <button type="button" class="notif-btn" aria-label="Notificações">
+          <img src="assets/images/icon notificacao.png" alt="Notificações" class="icon">
+      </button>
+      <div class="notif-overlay hidden">
+        <div class="notif-box">
+          <div class="header">
+            <h2>Notificações</h2>
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="section">
+            <p class="section-title">IMPORTANTE</p>
+            <div class="item">
+              <div class="icon green">♻️</div>
+              <div>
+                <p>EcoColeta Novo ponto de coleta disponível próxima a você!</p>
+                <span>há 30 minutos</span>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <p class="section-title">MAIS NOTIFICAÇÕES</p>
+            <div class="item">
+              <div class="icon yellow">🏆</div>
+              <div class="content">
+                <p>Parabéns! Você ganhou <b>50 pontos</b> pela sua coleta de hoje</p>
+                <span>há 3 horas</span>
+              </div>
+              <div class="badge">+50 pts</div>
+            </div>
+            <div class="item">
+              <div class="icon purple">📅</div>
+              <div>
+                <p><b>Lembrete:</b> Dia de coleta no bairro amanhã</p>
+                <span>há 5 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="perfil.html">
+      <img src="assets/images/icons pessoa.png" alt="Perfil">
+    </a>
+  </div>
+</header>
+
+<script src="assets/js/ecocoleta-paths.js?v=1"></script>
+<script src="assets/js/header-nav.js?v=12"></script>
+<script src="assets/js/notif-popup.js?v=3"></script>
+
+    <section class="ranking-section">
+
+      <div class="ranking-hero">
+        <div class="ranking-hero-copy">
+          <span class="ranking-badge">Premiação EcoColeta</span>
+          <h1>Ranking dos bairros que mais transformam reciclagem em impacto.</h1>
+          <p>Suba no pódio, acompanhe sua posição e veja quais ruas estão liderando a coleta sustentável da semana.</p>
+        </div>
+        <div class="ranking-prize-card" aria-label="Destaque da premiação">
+          <span class="prize-crown">🏆</span>
+          <strong>Rua São Pedro</strong>
+          <small>Líder da semana</small>
+          <p>3.500 pts</p>
+        </div>
+      </div>
+
+      <div class="ranking-visitor-panel hidden" id="rankingVisitorPanel">
+        <div>
+          <span class="visitor-kicker">Modo visitante</span>
+          <h2>Veja o ranking geral sem entrar.</h2>
+          <p>Para acompanhar sua posição, progresso mensal e metas pessoais, faça login ou crie sua conta EcoColeta.</p>
+        </div>
+        <div class="visitor-actions">
+          <a href="auth/login.html" id="rankingVisitorLogin">Entrar</a>
+          <a href="auth/cadastro.html" id="rankingVisitorCadastro">Cadastrar</a>
+        </div>
+      </div>
+
+      <div class="topo-ranking">
+        <div>
+          <span class="section-kicker">Leaderboard</span>
+          <h2>Classificação semanal</h2>
+        </div>
+
+        <div class="busca">
+          <input type="text" placeholder="Buscar rua ou bairro">
+          <button type="button" aria-label="Buscar"> <img src="assets/images/lupa.png" alt=""></button>
+        </div>
+      </div>
+
+      <div class="podio-ranking" aria-label="Pódio do ranking">
+        <article class="podio-card podio-2">
+          <span class="award-medal award-medal--silver">2</span>
+          <p>2º lugar</p>
+          <h3>Rua Padre Cícero</h3>
+          <strong>3.200 pts</strong>
+          <small>165 kg reciclados</small>
+        </article>
+        <article class="podio-card podio-1">
+          <span class="award-medal award-medal--gold">1</span>
+          <p>1º lugar</p>
+          <h3>Rua São Pedro</h3>
+          <strong>3.500 pts</strong>
+          <small>180 kg reciclados</small>
+        </article>
+        <article class="podio-card podio-3">
+          <span class="award-medal award-medal--bronze">3</span>
+          <p>3º lugar</p>
+          <h3>Rua Santa Luzia</h3>
+          <strong>2.900 pts</strong>
+          <small>150 kg reciclados</small>
+        </article>
+      </div>
+
+        <div class="container-ranking">
+         <div class="tabela">
+      <div class="table-heading">
+        <div>
+          <span>Top participantes</span>
+          <h3>Disputa por EcoPoints</h3>
+        </div>
+        <p>Atualizado semanalmente</p>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Posição</th>
+            <th>Rua</th>
+            <th>Pontos</th>
+            <th>Reciclagem</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="top1">
+            <td><span class="rank-medal rank-medal--gold">1</span></td><td>Rua São Pedro</td><td>3.500</td><td>180</td>
+          </tr>
+          <tr class="top2">
+            <td><span class="rank-medal rank-medal--silver">2</span></td><td>Rua Padre Cícero</td><td>3.200</td><td>165</td>
+          </tr>
+          <tr class="top3">
+            <td><span class="rank-medal rank-medal--bronze">3</span></td><td>Rua Santa Luzia</td><td>2.900</td><td>150</td>
+          </tr>
+          <tr><td>04</td><td>Rua do Seminário</td><td>2.600</td><td>140</td></tr>
+          <tr><td>05</td><td>Rua São José</td><td>2.300</td><td>120</td></tr>
+          <tr><td>06</td><td>Rua N. Sra das Dores</td><td>2.100</td><td>110</td></tr>
+          <tr><td>07</td><td>Rua Leão XIII</td><td>1.900</td><td>98</td></tr>
+          <tr><td>08</td><td>Rua Dep. Golveia</td><td>1.700</td><td>85</td></tr>
+          <tr><td>09</td><td>Rua José Marrocos</td><td>1.500</td><td>70</td></tr>
+          <tr><td>10</td><td>Rua Santa Isabel</td><td>1.300</td><td>60</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="cards">
+
+  <div class="card" data-public-card="total-reciclado">
+    <span class="card-award-icon">♻️</span>
+    <h3>Total reciclado</h3>
+
+    <div class="linha">
+      <div>
+        <p class="numero">825Kg</p>
+        <p>Materiais reciclados</p>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-guest-card="posicao">
+    <span class="card-award-icon">🎖️</span>
+    <h3>Ranking Semanal</h3>
+    <p class="numero">15º Lugar</p>
+    <p>Posição do bairro da semana</p>
+  </div>
+  <div class="card" data-guest-card="progresso">
+    <span class="card-award-icon">🎯</span>
+    <h3>Seu progresso</h3>
+
+    <div class="progress-circle">
+      <span>75%</span>
+    </div>
+
+    <p class="meta">
+  <span class="titulo-meta">Meta Mensal</span><br>
+     900kg de 1200kg
+</p>
+  </div>
+
+</div>
+</section>
+
+<footer id="ecocoleta-site-footer"></footer>
+<script src="assets/js/footer.js?v=9"></script>
+<script src="assets/js/ranking.js?v=4"></script>
+</body>
+</html>

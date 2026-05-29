@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hub ADM Plataforma | EcoColeta</title>
+  <style>
+    html.hub-auth-checking body {
+      visibility: hidden;
+    }
+  </style>
+  <script>
+    document.documentElement.classList.add('hub-auth-checking');
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin/home-adm.css?v=2">
+</head>
+<body class="hub-page">
+  <div class="hub-app">
+    <header class="hub-header">
+      <a href="pages/tela-inicia.html" class="hub-brand">
+        <img src="assets/images/logo.2.png" alt="EcoColeta">
+      </a>
+      <div class="hub-profile">
+        <div class="hub-profile-meta">
+          <strong id="hubAdminName">Administrador</strong>
+          <span id="hubAdminCargo">Plataforma EcoColeta</span>
+        </div>
+        <button type="button" class="hub-logout" id="hubLogout">Sair</button>
+      </div>
+    </header>
+
+    <section class="hub-welcome">
+      <span class="hub-badge">✦ Painel premiado verde</span>
+      <h1>Olá, <span id="hubWelcomeName">Administrador</span></h1>
+      <p>
+        Hub da plataforma EcoColeta — visual alinhado ao site de prêmios, com identidade verde
+        exclusiva e separada do portal dos ecopontos parceiros.
+      </p>
+    </section>
+
+    <div class="hub-grid">
+      <a href="admin/Login-ADM-Ecoponto.html" class="hub-card">
+        <span class="hub-card-icon" aria-hidden="true">♻</span>
+        <h2>Portal EcoPonto ADM</h2>
+        <p>Acesse o painel dos parceiros: coletas, materiais, relatórios e configurações do ecoponto.</p>
+        <span class="hub-card-cta">Abrir portal →</span>
+      </a>
+
+      <a href="pages/tela-inicia.html" class="hub-card">
+        <span class="hub-card-icon" aria-hidden="true">🌐</span>
+        <h2>Site público</h2>
+        <p>Visualize a experiência do cidadão: mapa, ecopontos e agendamento de coletas.</p>
+        <span class="hub-card-cta">Ir ao site →</span>
+      </a>
+
+      <a href="pages/ecopontos.html" class="hub-card">
+        <span class="hub-card-icon" aria-hidden="true">📍</span>
+        <h2>Mapa de ecopontos</h2>
+        <p>Consulte pontos de coleta e rotas na região do Cariri.</p>
+        <span class="hub-card-cta">Ver mapa →</span>
+      </a>
+
+      <div class="hub-card is-muted" aria-disabled="true">
+        <span class="hub-card-icon" aria-hidden="true">📊</span>
+        <h2>Analytics global</h2>
+        <p>Indicadores consolidados da rede — módulo em evolução.</p>
+        <span class="hub-card-cta">Em breve</span>
+      </div>
+    </div>
+
+    <p class="hub-footer">
+      Sessão exclusiva da plataforma · <a href="admin/Login-ADM.html" style="color: var(--hub-gold-soft);">Trocar conta ADM</a>
+    </p>
+  </div>
+
+  <script src="admin/home-adm.js"></script>
+</body>
+</html>

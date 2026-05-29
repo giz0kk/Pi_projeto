@@ -1,0 +1,153 @@
+/* EcoColeta — tamanhos premium da marca (header, auth, footer, admin) */
+:root {
+  --eco-logo-header-w: 260px;
+  --eco-logo-header-h: 100px;
+  --eco-logo-header-w-desktop: clamp(220px, 17vw, 280px);
+  --eco-logo-header-h-desktop: 96px;
+  --eco-logo-header-w-tablet: 230px;
+  --eco-logo-header-w-mobile: 200px;
+  --eco-logo-header-h-mobile: 84px;
+  --eco-logo-auth-max-w: 300px;
+  --eco-logo-auth-max-h: 140px;
+  --eco-logo-footer-w: 260px;
+  --eco-logo-footer-max-h: 120px;
+  --eco-logo-admin-h: 54px;
+  --eco-logo-login-card: 240px;
+  --eco-logo-hub-w: 168px;
+}
+
+/* Header do site */
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  max-width: min(52vw, var(--eco-logo-header-w));
+}
+
+.logo-link img {
+  width: auto;
+  max-width: var(--eco-logo-header-w);
+  max-height: var(--eco-logo-header-h);
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.logo-link:hover img {
+  transform: scale(1.03);
+}
+
+@media (min-width: 901px) {
+  header.topo .logo-link img,
+  .topo .logo-link img,
+  .logo-link img {
+    max-width: var(--eco-logo-header-w-desktop);
+    max-height: var(--eco-logo-header-h-desktop);
+  }
+}
+
+@media (max-width: 1024px) {
+  .logo-link img {
+    max-width: var(--eco-logo-header-w-tablet);
+  }
+}
+
+@media (max-width: 900px) {
+  .logo-link {
+    max-width: min(56vw, 220px);
+  }
+
+  .logo-link img {
+    max-width: var(--eco-logo-header-w-mobile);
+    max-height: var(--eco-logo-header-h-mobile);
+  }
+}
+
+@media (max-width: 640px) {
+  .logo-link img {
+    max-width: 190px;
+    max-height: 78px;
+  }
+}
+
+/* Telas de autenticação */
+body.auth > .logo-container img,
+body.auth > img.logo {
+  max-width: min(var(--eco-logo-auth-max-w), 88vw);
+  max-height: min(var(--eco-logo-auth-max-h), 24vh);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+body.auth img.logo {
+  width: auto;
+}
+
+body.auth > .container {
+  max-height: calc(100vh - min(var(--eco-logo-auth-max-h), 140px) - clamp(20px, 4vh, 48px));
+}
+
+@supports (height: 100dvh) {
+  body.auth > .container {
+    max-height: calc(100dvh - min(var(--eco-logo-auth-max-h), 140px) - clamp(20px, 4vh, 48px));
+  }
+}
+
+@media (max-height: 640px) {
+  body.auth > .logo-container img,
+  body.auth > img.logo {
+    max-height: min(18vh, 112px);
+    max-width: min(260px, 85vw);
+  }
+
+  body.auth > .container {
+    max-height: calc(100vh - min(18vh, 112px) - 16px);
+  }
+}
+
+/* Rodapé */
+.footer-logo img {
+  width: var(--eco-logo-footer-w);
+  max-width: 100%;
+  max-height: var(--eco-logo-footer-max-h);
+  height: auto;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+#ecocoleta-site-footer .footer-logo-link img {
+  width: var(--eco-logo-footer-w) !important;
+  max-width: var(--eco-logo-footer-w) !important;
+  max-height: var(--eco-logo-footer-max-h) !important;
+  height: auto !important;
+}
+
+/* Admin */
+.adm-header-brand img {
+  height: var(--eco-logo-admin-h);
+  width: auto;
+  display: block;
+}
+
+.login-brand img {
+  width: var(--eco-logo-login-card);
+  max-width: 92%;
+  height: auto;
+}
+
+.brand img {
+  width: 180px;
+  height: auto;
+}
+
+.hub-brand img {
+  width: var(--eco-logo-hub-w);
+  height: auto;
+}
+
+.eco-premium-brand img {
+  width: min(200px, 22vh, 44vw);
+  height: auto;
+}

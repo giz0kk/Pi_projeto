@@ -2,7 +2,7 @@
 # O XAMPP já associa .php ao PHP; não é necessário AddHandler aqui.
 Options -Indexes
 
-DirectoryIndex tela-inicia.html index.html
+DirectoryIndex pages/tela-inicia.html index.html
 
 <FilesMatch "^(conexao\.config\.php|.*\.sql|composer\.(json|lock)|DEPLOY\.md)$">
   Require all denied
@@ -12,4 +12,97 @@ DirectoryIndex tela-inicia.html index.html
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# EcoColeta rewrites (URLs antigas na raiz)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /projeto_pi/
+
+# Imagens legado
+RewriteRule ^Imagens/(.*)$ assets/images/$1 [L,NC]
+
+# Auth
+RewriteRule ^login\.html$ auth/login.html [L]
+RewriteRule ^login\.php$ auth/login.php [L]
+RewriteRule ^cadastro\.html$ auth/cadastro.html [L]
+RewriteRule ^cadastro\.php$ auth/cadastro.php [L]
+RewriteRule ^recuperar\.html$ auth/recuperar.html [L]
+RewriteRule ^nova-senha\.html$ auth/nova-senha.html [L]
+RewriteRule ^verificacao\.html$ auth/verificacao.html [L]
+RewriteRule ^verificar-cadastro\.html$ auth/verificar-cadastro.html [L]
+RewriteRule ^verificar_cadastro\.php$ auth/verificar_cadastro.php [L]
+RewriteRule ^resetar_senha\.php$ auth/resetar_senha.php [L]
+
+# Admin
+RewriteRule ^Login-ADM\.html$ admin/Login-ADM.html [L]
+RewriteRule ^Login-ADM\.php$ admin/Login-ADM.php [L]
+RewriteRule ^Login-ADM-Ecoponto\.html$ admin/Login-ADM-Ecoponto.html [L]
+RewriteRule ^Login-ADM-Ecoponto\.php$ admin/Login-ADM-Ecoponto.php [L]
+RewriteRule ^Home-ADM\.html$ admin/Home-ADM.html [L]
+RewriteRule ^Home-ADM-Ecoponto\.html$ admin/Home-ADM-Ecoponto.html [L]
+RewriteRule ^admin-plataforma-session\.php$ admin/admin-plataforma-session.php [L]
+RewriteRule ^admin-ecoponto-session\.php$ admin/admin-ecoponto-session.php [L]
+RewriteRule ^login-adm-pontos\.php$ admin/login-adm-pontos.php [L]
+
+# Paginas
+RewriteRule ^tela-inicia\.html$ pages/tela-inicia.html [L]
+RewriteRule ^ecopontos\.html$ pages/ecopontos.html [L]
+RewriteRule ^perfil\.html$ pages/perfil.html [L]
+RewriteRule ^agendar-coleta\.html$ pages/agendar-coleta.html [L]
+RewriteRule ^Ranking\.html$ pages/Ranking.html [L]
+RewriteRule ^quem-somos\.html$ pages/quem-somos.html [L]
+RewriteRule ^como-funciona\.html$ pages/como-funciona.html [L]
+RewriteRule ^premios-disponiveis\.html$ pages/premios-disponiveis.html [L]
+RewriteRule ^edicaoperfil\.html$ pages/edicaoperfil.html [L]
+RewriteRule ^educacao-ambiental\.html$ pages/educacao-ambiental.html [L]
+RewriteRule ^pagina-relatorio\.html$ pages/pagina-relatorio.html [L]
+RewriteRule ^relatorio-mensal\.html$ pages/relatorio-mensal.html [L]
+RewriteRule ^formulario-coleta\.html$ pages/formulario-coleta.html [L]
+RewriteRule ^mapa\.html$ pages/mapa.html [L]
+
+# API
+RewriteRule ^ecocheck-api\.php$ api/ecocheck-api.php [L]
+RewriteRule ^logout\.php$ api/logout.php [L]
+RewriteRule ^agendamento_coleta\.php$ api/agendamento_coleta.php [L]
+RewriteRule ^notificacoes\.php$ api/notificacoes.php [L]
+RewriteRule ^meu_perfil\.php$ api/meu_perfil.php [L]
+RewriteRule ^geocode-nominatim\.php$ api/geocode-nominatim.php [L]
+RewriteRule ^resgate_premio\.php$ api/resgate_premio.php [L]
+RewriteRule ^registrar_entrega\.php$ api/registrar_entrega.php [L]
+RewriteRule ^excluir_conta\.php$ api/excluir_conta.php [L]
+RewriteRule ^atualizar-nome\.php$ api/atualizar-nome.php [L]
+RewriteRule ^atualizar_nome\.php$ api/atualizar_nome.php [L]
+RewriteRule ^atualizar-perfil\.php$ api/atualizar-perfil.php [L]
+RewriteRule ^atualizarperfil\.php$ api/atualizarperfil.php [L]
+RewriteRule ^atualizar-perfil-admin\.php$ api/atualizar-perfil-admin.php [L]
+RewriteRule ^edicaoperfil\.php$ api/edicaoperfil.php [L]
+RewriteRule ^configuracoes-adm-ecoponto\.php$ api/configuracoes-adm-ecoponto.php [L]
+RewriteRule ^meu-perfil-admin\.php$ api/meu-perfil-admin.php [L]
+
+# Assets legado (URLs antigas na raiz)
+RewriteRule ^home\.css$ assets/css/home.css [L]
+RewriteRule ^style\.css$ assets/css/style.css [L]
+RewriteRule ^header\.css$ assets/css/header.css [L]
+RewriteRule ^footer\.css$ assets/css/footer.css [L]
+RewriteRule ^premios\.css$ assets/css/premios.css [L]
+RewriteRule ^ranking\.css$ assets/css/ranking.css [L]
+RewriteRule ^perfil\.css$ assets/css/perfil.css [L]
+RewriteRule ^mapa\.js$ mapa/mapa.js [L]
+RewriteRule ^mapa\.css$ mapa/mapa.css [L]
+RewriteRule ^home\.js$ assets/js/home.js [L]
+RewriteRule ^header-nav\.js$ assets/js/header-nav.js [L]
+RewriteRule ^footer\.js$ assets/js/footer.js [L]
+RewriteRule ^premios\.js$ assets/js/premios.js [L]
+RewriteRule ^perfil\.js$ assets/js/perfil.js [L]
+RewriteRule ^ranking\.js$ assets/js/ranking.js [L]
+RewriteRule ^notif-popup\.js$ assets/js/notif-popup.js [L]
+RewriteRule ^agendar-coleta\.js$ assets/js/agendar-coleta.js [L]
+RewriteRule ^edicaoperfil\.js$ assets/js/edicaoperfil.js [L]
+RewriteRule ^ecopontos\.js$ assets/js/ecopontos.js [L]
+RewriteRule ^ecocheck-bridge\.js$ assets/js/ecocheck-bridge.js [L]
+RewriteRule ^ecocheck-widget\.css$ assets/css/ecocheck-widget.css [L]
+RewriteRule ^ecocheck\.css$ ecocheck-dist/ecocheck.css [L]
+RewriteRule ^ecocheck\.iife\.js$ ecocheck-dist/ecocheck.iife.js [L]
+RewriteRule ^images/(.*)$ assets/images/$1 [L,NC]
 </IfModule>
